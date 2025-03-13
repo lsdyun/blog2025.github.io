@@ -28,31 +28,27 @@
 <p>生成SSH和配置到GitHub参考: <a href="https://zhuanlan.zhihu.com/p/392994381">链接</a></p>
 <h3 id="五：补充："><a href="#五：补充：" class="headerlink" title="五：补充："></a>五：补充：</h3><p>·Hexo默认主题存放在node_modules&#x2F;hexo-theme-landscape目录下，可对_config.yml进行处理。</p>
 <p><font color="red">·当使用steam++加速GitHub时，会导致本地host被污染，导致无法上传项目到GitHub，最好先关闭加速在上传。</font></p>
-<h3 id="六、Hexo渲染和Typora图片问题"><a href="#六、Hexo渲染和Typora图片问题" class="headerlink" title="六、Hexo渲染和Typora图片问题"></a>六、Hexo渲染和Typora图片问题</h3><ol>
-<li><p>修改 Hexo 根目录的 <code>_config.yml</code>，确保以下配置：</p>
+<h3 id="六、Hexo渲染和Typora图片问题"><a href="#六、Hexo渲染和Typora图片问题" class="headerlink" title="六、Hexo渲染和Typora图片问题"></a>六、Hexo渲染和Typora图片问题</h3><p>1.修改 Hexo 根目录的 <code>_config.yml</code>，确保以下配置：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true  # 自动生成文章同名资源夹</span><br><span class="line">relative_link: false     # 禁止生成相对路径</span><br><span class="line"></span><br><span class="line">同时增加：(没这个也会导致渲染出问题)</span><br><span class="line"># 解决typera和hexo图片加载问题  </span><br><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装官方推荐的渲染插件：</p>
+
+<p>2.安装官方推荐的渲染插件：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save  # 先卸载旧版本（如有）</span><br><span class="line">npm install hexo-renderer-marked@latest --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Typora 设置路径：</p>
+
+<p>3.Typora 设置路径：</p>
 <p>偏好设置 → 图像 → 插入图片时选择 “复制到指定路径”</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">保存路径填：./$&#123;filename&#125;.assets/  </span><br><span class="line">勾选：优先使用相对路径</span><br></pre></td></tr></table></figure>
 
 <p><img src="/blog2025.github.io/2025/03/10/hello-world/image-20250313225230399.png" alt="image-20250313225230399"></p>
-</li>
-<li><p>格式→图像→设置图片根目录 “选择对应文件的存储位置”</p>
-</li>
-<li><p>‌插入图片后检查格式：</p>
+<p>4.格式→图像→设置图片根目录 “选择对应文件的存储位置”</p>
+<p>5‌.插入图片后检查格式：</p>
 <p>在 Markdown 中必须显示为 <code>![描述](图片名.jpg)</code>，而不是 <code>![描述](文章名/图片名.jpg)</code><br>（若出现多余路径，手动删除前缀）</p>
-</li>
-<li><p><font color="red">添加图片步骤</font></p>
+<p>6.<font color="red">添加图片步骤</font></p>
 <p>方法一：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">第一步、使用截图工具,不保存；</span><br><span class="line">第二步、直接将图片复制到Typora中；</span><br><span class="line">第三步、从Typora将图片保存到对应文件夹中；</span><br><span class="line">第四步、将Typora中的文件名的&quot;/&quot;删除，格式为：![描述](image.png)</span><br></pre></td></tr></table></figure>
 
 <p>方法二：（图片最后格式一定没有”&#x2F;“）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">第一步、使用截图工具，保存到对应目录；</span><br><span class="line">第二步、在Typora中，右击插入图像；</span><br><span class="line">第三步、将Typora中的文件名的&quot;/&quot;删除，格式为：![描述](image.png)</span><br></pre></td></tr></table></figure></li>
-</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">第一步、使用截图工具，保存到对应目录；</span><br><span class="line">第二步、在Typora中，右击插入图像；</span><br><span class="line">第三步、将Typora中的文件名的&quot;/&quot;删除，格式为：![描述](image.png)</span><br></pre></td></tr></table></figure>
+
 <p><img src="/blog2025.github.io/2025/03/10/hello-world/BB1msOOV.jpg"></p>
 <h3 id="七、参考资料："><a href="#七、参考资料：" class="headerlink" title="七、参考资料："></a>七、参考资料：</h3><p>安装教程一: <a href="https://blog.csdn.net/yaorongke/article/details/119089190">链接</a></p>
 <p>安装教程二: <a href="https://zhuanlan.zhihu.com/p/392994381">链接</a></p>
