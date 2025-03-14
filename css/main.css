@@ -1239,7 +1239,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff05ff;
+  background: #f10a12;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2609,4 +2609,28 @@ ul.breadcrumb li + li:last-child {
 }
 .links-of-blogroll-item {
   padding: 0;
+}
+body {
+  background: #ebf5e6 !important;
+  color: #454545 !important;
+}
+a {
+  color: #5b8e7d !important;
+}
+/*
+.highlight { background: rgba(255,255,255,0.9) !important; }
+
+@media (max-width: 767px) {
+  body { background: #F5FFFA !important; } // 更浅的底色
+}
+*/
+[data-theme="dark"] .header {
+  background: #2b4146 !important;
+}
+[data-theme="dark"] .post-header {
+  background: #334b4d !important;
+}
+.code-title {
+  background: #c7edcc !important;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 }
