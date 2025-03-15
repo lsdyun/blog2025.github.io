@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>软件工程导论</title>
+    <url>/blog2025.github.io/2025/03/13/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>软件工程</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Hexo安装、博客编写教程：</title>
     <url>/blog2025.github.io/2025/03/10/hello-world/</url>
-    <content><![CDATA[<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="一、流程"><a href="#一、流程" class="headerlink" title="一、流程"></a>一、流程</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmd进入hexo-blog目录本地库，</span><br><span class="line">使用命令进行操作，</span><br><span class="line">操作完成后使用 hexo g -d 生成静态页面并上传到GitHub。</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="一、流程"><a href="#一、流程" class="headerlink" title="一、流程"></a>一、流程</h3><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">cmd进入hexo-blog目录本地库，</span><br><span class="line">使用命令进行操作，</span><br><span class="line">操作完成后使用 <span class="attribute">hexo</span> g -d 生成静态页面并上传到GitHub。</span><br></pre></td></tr></table></figure>
 
 <h3 id="二、创建新帖子"><a href="#二、创建新帖子" class="headerlink" title="二、创建新帖子"></a>二、创建新帖子</h3><p>方法一：直接生成文章：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new 文章名称</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo</span> new <span class="comment"># 文章名称</span></span><br></pre></td></tr></table></figure>
 
 <p>方法二：生成文章和对应同名目录(用于存储图片资源等)：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post 文章名称</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo</span> new post <span class="comment"># 文章名称</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="/blog2025.github.io/2025/03/10/hello-world/image-20250313130306915.png"></p>
 <p>注：文章存储路径为：hexo-blog&#x2F;source&#x2F;_posts</p>
-<h3 id="三、Hexo命令："><a href="#三、Hexo命令：" class="headerlink" title="三、Hexo命令："></a>三、Hexo命令：</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init 初始化 npm install(一般来讲，这个只会在第一次安装hexo时使用)</span><br><span class="line">hexo clean：清除缓存</span><br><span class="line">hexo g 生成静态页面</span><br><span class="line">hexo d 上传到GitHub</span><br><span class="line">hexo s 本地预览</span><br><span class="line">hexo g -d 生成静态页面并上传到github</span><br><span class="line">ssh -T git@github.com 测试连通性</span><br></pre></td></tr></table></figure>
+<h3 id="三、Hexo命令："><a href="#三、Hexo命令：" class="headerlink" title="三、Hexo命令："></a>三、Hexo命令：</h3><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo</span> init <span class="comment"># 初始化 </span></span><br><span class="line">npm install <span class="comment"># (一般来讲，这个只会在第一次安装hexo时使用)</span></span><br><span class="line">hexo clean <span class="comment"># 清除缓存</span></span><br><span class="line">hexo g <span class="comment"># 生成静态页面</span></span><br><span class="line">hexo d <span class="comment"># 上传到GitHub</span></span><br><span class="line">hexo s <span class="comment"># 本地预览</span></span><br><span class="line">hexo g -d <span class="comment"># 生成静态页面并上传到github</span></span><br><span class="line">ssh -T git<span class="variable">@github</span>.com <span class="comment"># 测试连通性</span></span><br></pre></td></tr></table></figure>
 
 <p>更多命令: <a href="https://hexo.io/zh-cn/docs/commands">链接</a></p>
 <h3 id="四、注意事项："><a href="#四、注意事项：" class="headerlink" title="四、注意事项："></a>四、注意事项：</h3><p>问题一:   “You’ve successfully authenticated, but GitHub does not provide shell access.”	</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">·需要生成本地SSH ，再配置到GitHub中。</span><br><span class="line">·因为本次采用SSH进行远程连接，所以对于本地hexo-blog中的_config.xml进行配置为SSH格式。</span><br><span class="line">deploy:</span><br><span class="line">   type: git	</span><br><span class="line">   repo: git@github.com:lsdyun/blog2025.github.io.git</span><br><span class="line">   branch: main</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">·需要生成本地<span class="attribute">SSH</span> ，再配置到GitHub中。</span><br><span class="line">·因为本次采用SSH进行远程连接，所以对于本地hexo-blog中的_config.xml进行配置为SSH格式。</span><br><span class="line">deploy:</span><br><span class="line">   type: git	</span><br><span class="line">   repo: git<span class="variable">@github</span>.com:lsdyun/blog2025.github.io.git</span><br><span class="line">   branch: main</span><br></pre></td></tr></table></figure>
 
 <p>问题二：采用Http和SSH区别:(!!!推荐使用SSH)</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">采用Http每次都需要输入账号和密码，使用SSH则不需要。</span><br><span class="line">此外，GitHub已经禁止密码验证，强制要求使用个人访问令牌(PAT),所以此处才使用SSH。</span><br></pre></td></tr></table></figure>
@@ -29,10 +37,10 @@
 <h3 id="五：补充："><a href="#五：补充：" class="headerlink" title="五：补充："></a>五：补充：</h3><p>·Hexo默认主题存放在node_modules&#x2F;hexo-theme-landscape目录下，可对_config.yml进行处理。</p>
 <p><font color="red">·当使用steam++加速GitHub时，会导致本地host被污染，导致无法上传项目到GitHub，最好先关闭加速在上传。</font></p>
 <h3 id="六、Hexo渲染和Typora图片问题"><a href="#六、Hexo渲染和Typora图片问题" class="headerlink" title="六、Hexo渲染和Typora图片问题"></a>六、Hexo渲染和Typora图片问题</h3><p>1.修改 Hexo 根目录的 <code>_config.yml</code>，确保以下配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true  # 自动生成文章同名资源夹</span><br><span class="line">relative_link: false     # 禁止生成相对路径</span><br><span class="line"></span><br><span class="line">同时增加：(没这个也会导致渲染出问题)</span><br><span class="line"># 解决typera和hexo图片加载问题  </span><br><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">post_asset_folder: <span class="attribute">true</span>  <span class="comment"># 自动生成文章同名资源夹</span></span><br><span class="line">relative_link: <span class="literal">false</span>     <span class="comment"># 禁止生成相对路径</span></span><br><span class="line"></span><br><span class="line">同时增加：(没这个也会导致渲染出问题)</span><br><span class="line"><span class="comment"># 解决typera和hexo图片加载问题  </span></span><br><span class="line">marked:</span><br><span class="line">  prependRoot: <span class="literal">true</span></span><br><span class="line">  postAsset: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>2.安装官方推荐的渲染插件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save  # 先卸载旧版本（如有）</span><br><span class="line">npm install hexo-renderer-marked@latest --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">npm</span> uninstall hexo-renderer-marked --save  <span class="comment"># 先卸载旧版本（如有）</span></span><br><span class="line">npm install hexo-renderer-marked<span class="variable">@latest</span> --save</span><br></pre></td></tr></table></figure>
 
 <p>3.Typora 设置路径：</p>
 <p>偏好设置 → 图像 → 插入图片时选择 “复制到指定路径”</p>
@@ -49,26 +57,31 @@
 <p>方法二：（图片最后格式一定没有”&#x2F;“）</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">第一步、使用截图工具，保存到对应目录；</span><br><span class="line">第二步、在Typora中，右击插入图像；</span><br><span class="line">第三步、将Typora中的文件名的&quot;/&quot;删除，格式为：![描述](image.png)</span><br></pre></td></tr></table></figure>
 
+<h3 id="七、Hexo高亮问题："><a href="#七、Hexo高亮问题：" class="headerlink" title="七、Hexo高亮问题："></a>七、Hexo高亮问题：</h3><p>1.Hexo 7.x的配置文件(_config.xml)中:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">syntax_highlighter: highlight.js</span><br><span class="line">highlight:</span><br><span class="line">  line_number: true</span><br><span class="line">  auto_detect: false</span><br><span class="line">  tab_replace: &#x27;&#x27;</span><br><span class="line">  wrap: true</span><br><span class="line">  hljs: false</span><br><span class="line">prismjs:</span><br><span class="line">  preprocess: true</span><br><span class="line">  line_number: true</span><br><span class="line">  tab_replace: &#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>syntax_highlighter: 可选Hexo默认的highlight.js,也可选prismjs</p>
+<p>2.Next 8.22.0主题的配置文件(_config.xml)中</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # All available themes: https://theme-next.js.org/highlight/</span><br><span class="line">  theme:</span><br><span class="line">    light: default  ##这里决定了最后展示的效果</span><br><span class="line">    dark: stackoverflow-dark ##这里决定了最后展示的效果</span><br><span class="line">  prism:</span><br><span class="line">    light: prism-tomorrow  ##这里决定了最后展示的效果</span><br><span class="line">    dark: prism-tomorrow-dark ##这里决定了最后展示的效果</span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line">    enable: true</span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line">    style: </span><br><span class="line">  # Fold code block</span><br><span class="line">  fold:</span><br><span class="line">    enable: false</span><br><span class="line">    height: 500</span><br></pre></td></tr></table></figure>
+
 <p><img src="/blog2025.github.io/2025/03/10/hello-world/BB1msOOV.jpg"></p>
-<h3 id="七、参考资料："><a href="#七、参考资料：" class="headerlink" title="七、参考资料："></a>七、参考资料：</h3><p>安装教程一: <a href="https://blog.csdn.net/yaorongke/article/details/119089190">链接</a></p>
+<h3 id="八、参考资料："><a href="#八、参考资料：" class="headerlink" title="八、参考资料："></a>八、参考资料：</h3><p>安装教程一: <a href="https://blog.csdn.net/yaorongke/article/details/119089190">链接</a></p>
 <p>安装教程二: <a href="https://zhuanlan.zhihu.com/p/392994381">链接</a></p>
 <p>Next主题使用方法：<a href="https://zhuanlan.zhihu.com/p/618864711">链接</a></p>
-<p>Next 8 版本使用方法：<a href="https://www.cnblogs.com/jinwei26/articles/18460312">链接</a>（代码块，动态人物）</p>
-<p>图标：<a href="https://fontawesome.dashgame.com/">链接</a></p>
+<p>Next 8 版本使用方法：<a href="https://www.cnblogs.com/jinwei26/articles/18460312">链接</a>（代码块，动态人物|本项目采用该版本）</p>
+<p>Next新旧版本对比：<a href="https://www.imczw.com/post/tech/hexo5-next8-updated.html#%E9%BB%98%E8%AE%A4%E9%A1%B5%E5%A4%84%E7%90%86">链接</a></p>
+<p>图标icon：<a href="https://fontawesome.dashgame.com/">链接</a></p>
 <p>分类和标签功能：<a href="https://juejin.cn/post/6921750181297782798">链接</a></p>
 <p>阅读全文功能：<a href="https://blog.csdn.net/codejoker_7/article/details/123235687">链接</a></p>
 <p>暗黑模式：<a href="https://blog.csdn.net/rqh656418510/article/details/123676457">链接</a></p>
+<p>Hexo 7.x 语法高亮：<a href="https://hexo.io/zh-cn/docs/syntax-highlight">链接</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
 ]]></content>
       <categories>
         <category>自建网站</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>软件工程导论</title>
-    <url>/blog2025.github.io/2025/03/13/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>软件工程</category>
       </categories>
   </entry>
 </search>
