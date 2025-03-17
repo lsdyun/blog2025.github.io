@@ -1293,7 +1293,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #1dff00;
+    background: #dfff38;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2800,7 +2800,6 @@ header.header {
   }
 }
 body {
-  background-image: url("/images/background.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -2813,6 +2812,11 @@ body {
   padding: 20px;
   border-radius: 8px;
 /*windows11样式*/
+  box-shadow: 0 2px 8px -1px rgba(0,0,0,0.08), 0 4px 12px -2px rgba(0,0,0,0.06), 0 1px 2px rgba(255,255,255,0.2) inset;
+/* 顶部内嵌微光（模拟光照） */
+}
+.btn {
+  border-radius: 8px;
   box-shadow: 0 2px 8px -1px rgba(0,0,0,0.08), 0 4px 12px -2px rgba(0,0,0,0.06), 0 1px 2px rgba(255,255,255,0.2) inset;
 /* 顶部内嵌微光（模拟光照） */
 }
