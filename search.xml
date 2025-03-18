@@ -239,14 +239,14 @@
 <li><p>概念：前趋图（有向无循环）记为：DAG（类似于拓扑图）,</p>
 <p>前趋图中不允许有玄幻，所以是<strong>单向的</strong>。</p>
 <p>pi—weight权—&gt;pj；pi是pj的直接前趋，pj是pi的直接后继</p>
-<p><img src="/blog2025.github.io/2025/03/10/hello-world/png"></p>
+<p><img src="/blog2025.github.io/2025/03/18/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/DAG.png"></p>
 </li>
 <li><p>程序执行：</p>
 <p>①顺序：</p>
-<p><img src="/blog2025.github.io/2025/03/10/hello-world/png"></p>
+<p><img src="/blog2025.github.io/2025/03/18/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B1.png"></p>
 <p>特性：顺序性（严格一个接一个）、封闭性（独占资源）、可再现性（条件不改变，结果总相同）</p>
 <p>②并发：（不存在前趋关系）</p>
-<p><img src="/blog2025.github.io/2025/03/10/hello-world/png"></p>
+<p><img src="/blog2025.github.io/2025/03/18/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B2.png"></p>
 <p>特性：间断性、失去封闭性、不可再现性</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&amp;emsp;空格</span><br></pre></td></tr></table></figure>
 </li>
@@ -260,7 +260,7 @@
 <p>就绪Ready、执行Running、阻塞Block、创建、终止、挂起Suspend、激活Active</p>
 </li>
 </ol>
-<p><img src="/blog2025.github.io/2025/03/10/hello-world/.png"></p>
+<p><img src="/blog2025.github.io/2025/03/18/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81.png"></p>
 <ol start="5">
 <li><p>进程控制块PCB：</p>
 <p>包含信息：进程标识符、处理机状态、进程调度信息、进程控制信息</p>
