@@ -318,7 +318,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-03-23 12:45:37 / 修改时间：18:44:55" itemprop="dateCreated datePublished" datetime="2025-03-23T12:45:37+08:00">2025-03-23</time>
+      <time title="创建时间：2025-03-23 12:45:37 / 修改时间：18:46:52" itemprop="dateCreated datePublished" datetime="2025-03-23T12:45:37+08:00">2025-03-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -354,107 +354,6 @@
 <p>指令由操作码（操作）和地址码（操作数在存储器中的位置）组成；</p>
 <p>指令在存储器中是顺序存储的。</p>
 <p>机器以运算器为中心，输入输出设备与存储器间的数据传送通过运算器完成。</p>
-</li>
-<li><p>现代计算机组成：</p>
-<p>CPU、存储器、IO设备</p>
-<p>运算器：至少3个寄存器和1个算术逻辑单元ALU，ACC为累加器，MQ为乘商寄存器，累加寄存器AC</p>
-<p>主寄存器（主存&#x2F;内存）：<strong>主存地址寄存器MAR</strong>、<strong>主存数据寄存器MDR</strong></p>
-<p>控制器：神经中枢，由<strong>程序计数器PC</strong>（存放下一条指令的地址）、<strong>指令寄存器IR</strong>（存放当前正在执行的指令）、<strong>控制单元CU</strong>组成</p>
-<p>关系：<img src="/blog2025.github.io/2025/03/19/JAVA/%E5%8E%9F%E7%90%86/1.png"></p>
-</li>
-<li><p>机器指令格式：</p>
-<table>
-<thead>
-<tr>
-<th>操作码（取数、存数、加、减、乘、除、停机、打印等）</th>
-<th>地址码（操作数在存储器中的位置）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>6位</td>
-<td>10位</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>计算机硬件的主要技术指标：</p>
-<p>机器字长：CPU一次能处理数据的位数（字长越长，数的表示范围越大，精度越高）</p>
-<p>存储容量：主存容量和辅存容量</p>
-<p>运算速度：吉普森（Gibson）法衡量运算速度（每条指令的执行时间以及他们在全部操作中所占的百分比）</p>
-<p>或采用MIPS（百万条指令每秒）作为计量单位，或采用CPI（执行一条指令所需要的时钟周期（机器主频的倒数））</p>
-</li>
-<li><p>DMA技术：直接访问内存，无需 CPU 干预直接读写内存</p>
-</li>
-</ol>
-<h3 id="二、系统总线：（可看可不看）"><a href="#二、系统总线：（可看可不看）" class="headerlink" title="二、系统总线：（可看可不看）"></a>二、系统总线：（可看可不看）</h3><ol>
-<li><p>总线连接：将各部件连到<strong>一组</strong>公共信息传输线上。</p>
-</li>
-<li><p>分散连接：各部件之间使用单独的连线。</p>
-</li>
-<li><p>总线分类：</p>
-<table>
-<thead>
-<tr>
-<th>片内总线（芯片内部）</th>
-<th>系统总线（CPU、主存、IO设备各大部件之间的信息传输线）</th>
-<th>通信总线</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td>数据总线</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>地址总线</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>控制总线</td>
-<td></td>
-</tr>
-</tbody></table>
-</li>
-<li><p>总线特性：</p>
-<p>机械（插座标准）、电气（每一根传输线上信号的传递方向与有效的电平范围）</p>
-</li>
-<li><p>总线性能指标：</p>
-<p>宽度、带宽、时钟同步&#x2F;异步、复用、信号线数、控制方式、负载、电源电压</p>
-</li>
-<li><p>总线标准：</p>
-<p>ISA、EISA、VESA、PCI、AGP、RS-232C、USB</p>
-</li>
-<li><p>总线结构：</p>
-<p>单总线、多总线</p>
-</li>
-<li><p>总线控制：</p>
-<p>总线判优控制：</p>
-<table>
-<thead>
-<tr>
-<th>集中式（将控制逻辑集中在一处，如CPU）</th>
-<th>分布式（将控制逻辑分散在与总线连接的各个部件或设备上）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>链式查询</td>
-<td></td>
-</tr>
-<tr>
-<td>计数器定时查询</td>
-<td></td>
-</tr>
-<tr>
-<td>独立请求查询</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>总线通信控制：（总线周期4步）</p>
-<p>&emsp;申请分配阶段、寻址阶段、传数阶段、结束阶段</p>
-</li>
-</ol>
-<p>​		&emsp;四种通信控制方式：同步、异步、半同步、分离式</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog2025.github.io/2025/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/#more" rel="contents">
