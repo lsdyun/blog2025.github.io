@@ -22,22 +22,26 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"lsdyun.github.io","root":"/blog2025.github.io/","images":"/blog2025.github.io/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog2025.github.io/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog2025.github.io/js/config.js"></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="记录博客">
-<meta property="og:url" content="https://lsdyun.github.io/blog2025.github.io/index.html">
+    <meta name="description" content="一、MyBatis MyBatis是一个开源、轻量级的数据持久化框架，内部封装了JDBC。 MyBatis核心对象：（1）核心接口和类： SqlSessionFactoryBuilder：临时工具类，用完即销毁，无状态，无需长期持有。  SqlSessionFactory：线程安全，与应用同生命周期，通常只初始化一次，避免重复解析配置；缓存数据库配置、Mapper 映射等元信息；由 IoC 容器管">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis">
+<meta property="og:url" content="https://lsdyun.github.io/blog2025.github.io/2025/04/03/MyBatis/index.html">
 <meta property="og:site_name" content="记录博客">
+<meta property="og:description" content="一、MyBatis MyBatis是一个开源、轻量级的数据持久化框架，内部封装了JDBC。 MyBatis核心对象：（1）核心接口和类： SqlSessionFactoryBuilder：临时工具类，用完即销毁，无状态，无需长期持有。  SqlSessionFactory：线程安全，与应用同生命周期，通常只初始化一次，避免重复解析配置；缓存数据库配置、Mapper 映射等元信息；由 IoC 容器管">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-03T02:24:29.000Z">
+<meta property="article:modified_time" content="2025-04-03T09:57:52.176Z">
 <meta property="article:author" content="lsdyun">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://lsdyun.github.io/blog2025.github.io/">
+<link rel="canonical" href="https://lsdyun.github.io/blog2025.github.io/2025/04/03/MyBatis/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lsdyun.github.io/blog2025.github.io/2025/04/03/MyBatis/","path":"2025/04/03/MyBatis/","title":"MyBatis"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>记录博客</title>
+<title>MyBatis | 记录博客</title>
   
 
 
@@ -70,7 +74,7 @@
 
     <a href="/blog2025.github.io/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">记录博客</h1>
+      <p class="site-title">记录博客</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -123,7 +127,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -136,6 +140,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81MyBatis"><span class="nav-number">1.</span> <span class="nav-text">一、MyBatis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MyBatis%E6%98%AF%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E3%80%81%E8%BD%BB%E9%87%8F%E7%BA%A7%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E6%A1%86%E6%9E%B6%EF%BC%8C%E5%86%85%E9%83%A8%E5%B0%81%E8%A3%85%E4%BA%86JDBC%E3%80%82"><span class="nav-number">1.1.</span> <span class="nav-text">MyBatis是一个开源、轻量级的数据持久化框架，内部封装了JDBC。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MyBatis%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">MyBatis核心对象：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E6%A0%B8%E5%BF%83%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）核心接口和类：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%882%EF%BC%89MyBatis%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%88mybatis-config-xml%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）MyBatis核心配置文件（mybatis-config.xml）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89SQL%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%EF%BC%88mapper-xml%EF%BC%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）SQL映射文件（mapper.xml）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A7%E8%A1%8CSQL%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">执行SQL方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE"><span class="nav-number">1.4.</span> <span class="nav-text">标签</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.4.1.</span> <span class="nav-text">&lt;select&gt;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">&lt;insert&gt;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#-2"><span class="nav-number">1.4.3.</span> <span class="nav-text">&lt;update&gt;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#-3"><span class="nav-number">1.4.4.</span> <span class="nav-text">&lt;delete&gt;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%85%E6%94%AF%E6%8C%81%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.4.5.</span> <span class="nav-text">&lt;resultMap&gt;仅支持查询</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81SQL"><span class="nav-number">1.5.</span> <span class="nav-text">动态SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E9%A1%B5%E5%8A%9F%E8%83%BD"><span class="nav-number">1.6.</span> <span class="nav-text">分页功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.7.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.</span> <span class="nav-text">二、项目结构及模板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-MVC%E6%90%AD%E9%85%8DMyBatis"><span class="nav-number">2.1.</span> <span class="nav-text">Spring MVC搭配MyBatis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-Boot%E6%90%AD%E9%85%8DMyBatis"><span class="nav-number">2.2.</span> <span class="nav-text">Spring Boot搭配MyBatis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%AE%E5%88%AB"><span class="nav-number">2.3.</span> <span class="nav-text">差别</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -177,117 +182,17 @@
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/03/10/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/03/10/hello-world/" class="post-title-link" itemprop="url">Hexo使用、博客编写教程：</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-03-10 21:25:42" itemprop="dateCreated datePublished" datetime="2025-03-10T21:25:42+08:00">2025-03-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-02 17:56:46" itemprop="dateModified" datetime="2025-04-02T17:56:46+08:00">2025-04-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/%E8%87%AA%E5%BB%BA%E7%BD%91%E7%AB%99/" itemprop="url" rel="index"><span itemprop="name">自建网站</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		            <i class="fa fa-thumb-tack"></i>
-		            <font color=7D26CD>置顶</font>
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="一、流程"><a href="#一、流程" class="headerlink" title="一、流程"></a>一、流程</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmd进入hexo-blog目录本地库，</span><br><span class="line">使用命令进行操作，</span><br><span class="line">操作完成后使用 <span class="attribute">hexo</span> g -d 生成静态页面并上传到GitHub。</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、创建新帖子"><a href="#二、创建新帖子" class="headerlink" title="二、创建新帖子"></a>二、创建新帖子</h3><p>方法一：直接生成文章：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/03/10/hello-world/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/03/MyBatis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -301,13 +206,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
+      <meta itemprop="name" content="MyBatis | 记录博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/03/MyBatis/" class="post-title-link" itemprop="url">MyBatis</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          MyBatis
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -331,6 +236,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
 
@@ -343,8 +255,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、MyBatis"><a href="#一、MyBatis" class="headerlink" title="一、MyBatis"></a>一、MyBatis</h3><ol>
+    <div class="post-body" itemprop="articleBody"><h3 id="一、MyBatis"><a href="#一、MyBatis" class="headerlink" title="一、MyBatis"></a>一、MyBatis</h3><ol>
 <li><h4 id="MyBatis是一个开源、轻量级的数据持久化框架，内部封装了JDBC。"><a href="#MyBatis是一个开源、轻量级的数据持久化框架，内部封装了JDBC。" class="headerlink" title="MyBatis是一个开源、轻量级的数据持久化框架，内部封装了JDBC。"></a>MyBatis是一个开源、轻量级的数据持久化框架，内部封装了JDBC。</h4></li>
 <li><h4 id="MyBatis核心对象："><a href="#MyBatis核心对象：" class="headerlink" title="MyBatis核心对象："></a>MyBatis核心对象：</h4><h5 id="（1）核心接口和类："><a href="#（1）核心接口和类：" class="headerlink" title="（1）核心接口和类："></a><strong>（1）核心接口和类：</strong></h5><ul>
 <li><p><strong>SqlSessionFactoryBuilder</strong>：临时工具类，用完即销毁，无状态，无需长期持有。</p>
@@ -464,7 +375,7 @@
 </ul>
 </li>
 <li><h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><ul>
-<li><h5 id><a href="#" class="headerlink" title="&lt;select&gt;"></a><code>&lt;select&gt;</code></h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectAll&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.example.entity.Student&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;string&quot;</span>&gt;</span></span><br><span class="line">    SELECT id,NAME,FROM student WHERE NAME LIKE CONCAT (&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li><h5 id=""><a href="#" class="headerlink" title="&lt;select&gt;"></a><code>&lt;select&gt;</code></h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectAll&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.example.entity.Student&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;string&quot;</span>&gt;</span></span><br><span class="line">    SELECT id,NAME,FROM student WHERE NAME LIKE CONCAT (&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p><code>id</code>：尽量和Mapper.java的方法名相同。</p>
@@ -922,15 +833,7 @@
 </tbody></table>
 </li>
 </ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/04/03/MyBatis/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+
     </div>
 
     
@@ -938,303 +841,18 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/02/SpringDataJPA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/02/SpringDataJPA/" class="post-title-link" itemprop="url">Spring Data JPA</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-02 18:59:04 / 修改时间：20:00:54" itemprop="dateCreated datePublished" datetime="2025-04-02T18:59:04+08:00">2025-04-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、Spring-Data-JPA-与-Hibernate-的核心区别"><a href="#一、Spring-Data-JPA-与-Hibernate-的核心区别" class="headerlink" title="一、Spring Data JPA 与 Hibernate 的核心区别"></a>一、Spring Data JPA 与 Hibernate 的核心区别</h3><ol>
-<li><p>区别</p>
-<ul>
-<li><p>‌<strong>Hibernate</strong>‌：</p>
-<ul>
-<li>是独立的 ‌<strong>ORM 框架</strong>‌，直接实现 JPA 规范，负责将 Java 对象映射到数据库表，并管理 SQL 生成、缓存、事务等底层操作‌。</li>
-<li>提供 HQL（面向对象的查询语言）和 Criteria API （动态条件构建）等高级查询工具‌。</li>
-<li>需手动编写查询逻辑，灵活性高但开发效率较低‌。</li>
-<li>需通过 <code>Transaction</code> 对象显式控制事务边界（如 <code>begin()</code>、<code>commit()</code>）‌。</li>
-</ul>
-</li>
-<li><p>‌<strong>Spring Data JPA</strong>‌：</p>
-<ul>
-<li>是 ‌<strong>Spring 生态的子模块</strong>‌，基于 JPA 规范构建的 ‌<strong>数据访问层抽象</strong>‌，旨在简化 DAO 层开发‌。</li>
-<li>依赖 Hibernate 作为默认的 JPA 实现，但可与其他 JPA 兼容框架（如 EclipseLink）集成‌。</li>
-<li>通过 ‌<strong>方法命名规则</strong>‌（如 <code>findByUsernameAndEmail</code>）自动生成查询‌。</li>
-<li>支持 <code>@Query</code> 注解自定义 JPQL 或原生 SQL，平衡灵活性与简洁性‌。</li>
-<li>与 Spring 事务管理深度集成，支持声明式事务（<code>@Transactional</code> 注解）。</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/04/02/SpringDataJPA/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/02/Hibernate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/02/Hibernate/" class="post-title-link" itemprop="url">Hibernate</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-02 18:00:09 / 修改时间：18:57:58" itemprop="dateCreated datePublished" datetime="2025-04-02T18:00:09+08:00">2025-04-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h3><p>Hibernate 是 Java 生态中广泛使用的 ‌<strong>ORM（对象关系映射）框架</strong>‌，用于简化数据库操作，将 Java 对象与关系型数据库表自动映射，提供高效、面向对象的数据访问能力。</p>
-<p>结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">src/</span><br><span class="line">├── main/</span><br><span class="line">│   ├── java/</span><br><span class="line">│   │   ├── com.example.model       # 实体类（如 User.java）‌</span><br><span class="line">│   │   ├── com.example.dao         # DAO 接口与实现类（如 UserDaoImpl）‌</span><br><span class="line">│   │   ├── com.example.service     # 业务逻辑类（如 UserService）‌</span><br><span class="line">│   │   └── com.example.util        # 工具类（如 HibernateUtil.java）‌</span><br><span class="line">│   └── resources/</span><br><span class="line">│       ├── hibernate.cfg.xml       # Hibernate 主配置文件‌ </span><br><span class="line">│       └── com/example/model/      # 实体映射文件（如 User.hbm.xml，注解方式可省略）‌</span><br><span class="line">└── test/</span><br><span class="line">    └── java/</span><br><span class="line">        └── com.example.test        # 单元测试类（如 UserTest.java）‌</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="二、特点"><a href="#二、特点" class="headerlink" title="二、特点"></a>二、特点</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/04/02/Hibernate/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog2025.github.io/2025/04/02/SpringDataJPA/" rel="prev" title="Spring Data JPA">
+                  <i class="fa fa-angle-left"></i> Spring Data JPA
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/02/JDBC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/02/JDBC/" class="post-title-link" itemprop="url">JDBC</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-02 16:52:36 / 修改时间：18:03:01" itemprop="dateCreated datePublished" datetime="2025-04-02T16:52:36+08:00">2025-04-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、什么是JDBC？"><a href="#一、什么是JDBC？" class="headerlink" title="一、什么是JDBC？"></a>一、什么是JDBC？</h3><p>JDBC（Java Database Connectivity）是 Java 语言用于连接和操作关系型数据库的标准 API，提供了一套统一接口，支持与多种数据库交互‌。</p>
-<h3 id="二、模板"><a href="#二、模板" class="headerlink" title="二、模板"></a>二、模板</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DbUtil</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">URL</span> <span class="operator">=</span> <span class="string">&quot;jdbc:mysql://localhost:3306/test&quot;</span>;</span><br><span class="line">    <span class="comment">//MySQL8.0：&quot;jdbc:mysql://localhost:3306/test?useSSL=false&amp;serverTimezone=UTC&quot;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">USER</span> <span class="operator">=</span> <span class="string">&quot;root&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">PASSWORD</span> <span class="operator">=</span> <span class="string">&quot;123456&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">//1.加载驱动程序</span></span><br><span class="line">        Class.forName(<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>);</span><br><span class="line">        <span class="comment">//MySQL8.0：com.mysql.cj.jdbc.Driver</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//2. 获得数据库连接</span></span><br><span class="line">        <span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> DriverManager.getConnection(URL, USER, PASSWORD);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//3.操作数据库，实现增删改查</span></span><br><span class="line">        <span class="type">Statement</span> <span class="variable">stmt</span> <span class="operator">=</span> conn.createStatement();</span><br><span class="line">        <span class="type">ResultSet</span> <span class="variable">rs</span> <span class="operator">=</span> stmt.executeQuery(<span class="string">&quot;SELECT * FROM student&quot;</span>);</span><br><span class="line">        <span class="comment">//如果有数据，rs.next()返回true</span></span><br><span class="line">        <span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">            System.out.println(rs.getString(<span class="string">&quot;name&quot;</span>)+<span class="string">&quot; 年龄：&quot;</span>+rs.getInt(<span class="string">&quot;age&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//关闭资源</span></span><br><span class="line">        rs.close();  </span><br><span class="line">		stmt.close();  </span><br><span class="line">		conn.close();  <span class="comment">// 防止连接泄漏‌:ml-citation&#123;ref=&quot;2,5&quot; data=&quot;citationList&quot;&#125;  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/04/02/JDBC/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+            <div class="post-nav-item">
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          </div>
     </footer>
   </article>
 </div>
@@ -1242,520 +860,7 @@
 
 
 
-    
 
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/02/SpringBoot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/02/SpringBoot/" class="post-title-link" itemprop="url">Spring Boot</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-04-02 12:20:12" itemprop="dateCreated datePublished" datetime="2025-04-02T12:20:12+08:00">2025-04-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-03 11:56:59" itemprop="dateModified" datetime="2025-04-03T11:56:59+08:00">2025-04-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、定义："><a href="#一、定义：" class="headerlink" title="一、定义："></a>一、定义：</h3><p>Spring Boot项目结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">src/main/</span><br><span class="line">├── java/</span><br><span class="line">│   └── com.example/</span><br><span class="line">│       ├── controller/</span><br><span class="line">│       ├── service/</span><br><span class="line">│       ├── dao/</span><br><span class="line">│       └── Application.java  # 启动类（含 @SpringBootApplication）</span><br><span class="line">└── resources/</span><br><span class="line">    ├── static/</span><br><span class="line">    ├── templates/</span><br><span class="line">    └── application.properties</span><br></pre></td></tr></table></figure>
-
-<p>Spring Boot跨域请求处理：</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.mvc.cors.allowed-origins</span>=<span class="string">http://front.com</span></span><br><span class="line"><span class="attr">spring.mvc.cors.allowed-methods</span>=<span class="string">GET,POST</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/04/02/SpringBoot/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/01/SpringMVC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/01/SpringMVC/" class="post-title-link" itemprop="url">Spring MVC</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-04-01 17:36:56" itemprop="dateCreated datePublished" datetime="2025-04-01T17:36:56+08:00">2025-04-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-02 16:54:51" itemprop="dateModified" datetime="2025-04-02T16:54:51+08:00">2025-04-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、前后端开发历程："><a href="#一、前后端开发历程：" class="headerlink" title="一、前后端开发历程："></a>一、前后端开发历程：</h3><ol>
-<li><h4 id="三层架构："><a href="#三层架构：" class="headerlink" title="三层架构："></a>三层架构：</h4><p>‌<strong>发展原因</strong>‌：</p>
-<ul>
-<li>‌<strong>职责解耦</strong>‌：表现层、业务层、数据层，通过分层实现职责分离，降低代码耦合度，提升可扩展性‌。</li>
-<li>‌<strong>协作效率</strong>‌：开发团队可分工协作，例如后端专注于业务逻辑与数据，前端负责界面交互，减少开发冲突‌。</li>
-<li>‌<strong>复用性</strong>‌：业务逻辑层独立于表现层，可复用至不同终端（如 Web、移动端）‌</li>
-</ul>
-<p>‌<strong>局限性</strong>‌：</p>
-<ul>
-<li><p>‌<strong>Servlet 耦合</strong>‌：传统三层架构中，Servlet 需处理多个请求逻辑，导致代码臃肿和复用性差‌；</p>
-</li>
-<li><p>‌<strong>视图与业务未彻底分离</strong>‌：如 JSP 中仍嵌入 Java 代码，难以独立维护‌。</p>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/04/01/SpringMVC/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/01/Spring/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/01/Spring/" class="post-title-link" itemprop="url">Spring</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-04-01 11:43:52" itemprop="dateCreated datePublished" datetime="2025-04-01T11:43:52+08:00">2025-04-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-02 17:58:41" itemprop="dateModified" datetime="2025-04-02T17:58:41+08:00">2025-04-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、JavaBean（Bean-豆子）"><a href="#一、JavaBean（Bean-豆子）" class="headerlink" title="一、JavaBean（Bean&#x2F;豆子）"></a>一、JavaBean（Bean&#x2F;豆子）</h3><ol>
-<li><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>一个固定模式的Java类，用于封装数据，包含：</p>
-<p>①一个无参构造函数；</p>
-<p>②需要序列化（数据结构或对象转换为字节流）并实现Serializable接口；</p>
-<p>③可读写属性；</p>
-<p>④getter和setter方法方便外部程序读取和修改。</p>
-<p>范例：StudentsBean.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StudentsBean</span> <span class="keyword">implements</span> <span class="title class_">java</span>.io.Serializable</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    </span><br><span class="line">   <span class="keyword">public</span> <span class="title function_">StudentsBean</span><span class="params">()</span> &#123;</span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> Name;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.name = name;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/04/01/Spring/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">计算机组成原理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-03-23 12:45:37 / 修改时间：18:46:52" itemprop="dateCreated datePublished" datetime="2025-03-23T12:45:37+08:00">2025-03-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">计算机组成原理</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、基础概念"><a href="#一、基础概念" class="headerlink" title="一、基础概念"></a>一、基础概念</h3><ol>
-<li><p>冯·诺依曼计算机</p>
-<p>组成：</p>
-<p>运算器、存储器、控制器（控制、指挥程序和数据的输入运行及处理结果）、输入设备、输出设备；</p>
-<p>特点：</p>
-<p>指令和数据以同等地位存放于存储器内，可按地址寻访；</p>
-<p>指令和数据均用二进制数表示；</p>
-<p>指令由操作码（操作）和地址码（操作数在存储器中的位置）组成；</p>
-<p>指令在存储器中是顺序存储的。</p>
-<p>机器以运算器为中心，输入输出设备与存储器间的数据传送通过运算器完成。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/03/22/%E7%BB%83%E4%B9%A0%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/03/22/%E7%BB%83%E4%B9%A0%E9%A2%98/" class="post-title-link" itemprop="url">练习题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-03-22 18:12:15 / 修改时间：19:41:36" itemprop="dateCreated datePublished" datetime="2025-03-22T18:12:15+08:00">2025-03-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、概念题："><a href="#一、概念题：" class="headerlink" title="一、概念题："></a>一、概念题：</h3><ol>
-<li>在软件项目工程中为什么不能用单纯增加人数的方法缩短开发时间？</li>
-</ol>
-<p>   答：沟通成本激增、新人适配期长、 管理复杂度上升、任务不可分割性</p>
-<ol start="2">
-<li><p>为学校图书馆管理系统提供五条系统需求？</p>
-<p>答：多角色权限管理、自动化借阅与逾期处理、预约与续借功能、数据统计与可视化报表、图书全生命周期管理。</p>
-</li>
-<li><p>存取款流程图设计？</p>
-<p>答：插卡—&gt;输入密码—&gt;选择存款—&gt;放入现金—&gt;系统读取存款数目存入卡内—&gt;用户退出，取卡</p>
-<p>插卡—&gt;输入密码—&gt;选择取款—&gt;输入取款数目—&gt;系统判断余额是否充足，充足则出钱—&gt;用户退出，取卡</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/03/22/%E7%BB%83%E4%B9%A0%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/blog2025.github.io/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/blog2025.github.io/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
 
 </div>
   </main>

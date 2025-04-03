@@ -30,7 +30,7 @@
 <meta property="og:description" content="一、定义：Spring Boot项目结构： 1234567891011src&#x2F;main&#x2F;├── java&#x2F;│   └── com.example&#x2F;│       ├── controller&#x2F;│       ├── service&#x2F;│       ├── dao&#x2F;│       └── Application.java  # 启动类（含 @SpringBootApplication）└── res">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-02T04:20:12.000Z">
-<meta property="article:modified_time" content="2025-04-02T08:55:58.478Z">
+<meta property="article:modified_time" content="2025-04-03T03:56:59.245Z">
 <meta property="article:author" content="lsdyun">
 <meta name="twitter:card" content="summary">
 
@@ -140,7 +140,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">一、定义：</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">一、定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%B6%E4%BB%96"><span class="nav-number">2.</span> <span class="nav-text">二、其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E5%92%8C%E8%BD%AC%E5%8F%91%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">重定向和转发：</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/blog2025.github.io/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -221,9 +221,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-04-02 12:20:12 / 修改时间：16:55:58" itemprop="dateCreated datePublished" datetime="2025-04-02T12:20:12+08:00">2025-04-02</time>
+      <time title="创建时间：2025-04-02 12:20:12" itemprop="dateCreated datePublished" datetime="2025-04-02T12:20:12+08:00">2025-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-04-03 11:56:59" itemprop="dateModified" datetime="2025-04-03T11:56:59+08:00">2025-04-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -262,6 +268,69 @@
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.mvc.cors.allowed-origins</span>=<span class="string">http://front.com</span></span><br><span class="line"><span class="attr">spring.mvc.cors.allowed-methods</span>=<span class="string">GET,POST</span></span><br></pre></td></tr></table></figure>
 
 <p>Spring Boot异步处理：默认启用异步支持。</p>
+<h3 id="二、其他"><a href="#二、其他" class="headerlink" title="二、其他"></a>二、其他</h3><ol>
+<li><h4 id="重定向和转发："><a href="#重定向和转发：" class="headerlink" title="重定向和转发："></a>重定向和转发：</h4><p><strong>请求次数与客户端行为</strong>‌</p>
+<ul>
+<li>‌重定向<ul>
+<li>‌<strong>两次请求</strong>‌：客户端浏览器先向服务器发送请求，服务器返回新URL后，客户端再次发起新请求‌。</li>
+<li>‌<strong>客户端驱动</strong>‌：由浏览器主动跳转，地址栏显示<strong>新URL‌</strong>。</li>
+</ul>
+</li>
+<li>‌转发<ul>
+<li>‌<strong>单次请求</strong>‌：服务器内部直接将请求转发到目标资源，客户端无感知‌。</li>
+<li>‌<strong>地址栏不变</strong>‌：客户端浏览器始终显示<strong>原始请求的URL</strong>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>数据传递能力</strong>‌</p>
+<ul>
+<li>‌重定向<ul>
+<li>‌<strong>默认不传递数据</strong>‌：两次请求相互独立，需通过<code>Session</code>或<code>RedirectAttributes</code>显式传参‌。</li>
+<li>示例：登录成功后重定向到主页，防止表单重复提交‌。</li>
+</ul>
+</li>
+<li>转发<ul>
+<li>通过<code>request</code>对象共享数据，所有参数和属性在转发链中可传递‌。</li>
+<li>示例：用户权限验证后转发到不同页面，传递用户信息‌。</li>
+</ul>
+</li>
+</ul>
+<p> <strong>资源访问范围</strong>‌</p>
+<ul>
+<li>‌重定向<ul>
+<li>可跳转到任意资源（包括外部站点），如<code>https://www.baidu.com</code>‌</li>
+</ul>
+</li>
+<li>转发<ul>
+<li>仅限当前Web应用内的资源，无法跨域‌。</li>
+<li>示例：<code>/user/list</code>只能转发到同一项目的其他路径（如<code>/user/detail</code>）‌。</li>
+</ul>
+</li>
+</ul>
+<p>‌<strong>典型应用场景</strong>‌</p>
+<ul>
+<li>‌适用重定向的场景<ul>
+<li>防止重复提交表单（如支付成功后跳转到结果页）‌。</li>
+<li>资源迁移（旧URL重定向到新URL）‌。</li>
+</ul>
+</li>
+<li>‌适用转发的场景<ul>
+<li>服务器内部逻辑处理（如权限校验后显示不同视图）‌。</li>
+<li>共享请求数据（如查询结果传递到展示页）‌。</li>
+</ul>
+</li>
+</ul>
+<p><strong>总结</strong></p>
+<ul>
+<li>‌<strong>核心差异</strong>‌：转发是服务器内部跳转（<strong>单次请求</strong>），重定向是客户端跳转（<strong>两次请求</strong>）‌。</li>
+<li><strong>‌选择原则</strong>：<ul>
+<li>需跨域或避免重复提交 → 重定向‌。</li>
+<li>需共享请求数据或保持URL隐蔽 → 转发‌。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 
     </div>
 
