@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/blog2025.github.io/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -288,7 +288,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/07/SpringCloud/">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/08/SpringCloudAlibaba/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
@@ -306,7 +306,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/07/SpringCloud/" class="post-title-link" itemprop="url">Spring Cloud</a>
+          <a href="/blog2025.github.io/2025/04/08/SpringCloudAlibaba/" class="post-title-link" itemprop="url">Spring Cloud Alibaba</a>
         </h2>
 
         <div class="post-meta-container">
@@ -318,7 +318,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-04-07 11:38:41 / 修改时间：20:33:59" itemprop="dateCreated datePublished" datetime="2025-04-07T11:38:41+08:00">2025-04-07</time>
+      <time title="创建时间：2025-04-08 14:53:33 / 修改时间：15:21:47" itemprop="dateCreated datePublished" datetime="2025-04-08T14:53:33+08:00">2025-04-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -344,26 +344,267 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cuiqwei/article/details/118329609">参考一-写的好</a></p>
-<p><a target="_blank" rel="noopener" href="https://c.biancheng.net/springcloud/micro-service.html">参考二-写的最好</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cainiaoya.com/spring/spring-cloud-jiaocheng.html">参考三</a></p>
-<h3 id="一、微服务"><a href="#一、微服务" class="headerlink" title="一、微服务"></a>一、微服务</h3><ol>
-<li>定义：微服务架构是一种应用程序开发风格，一个单一的应用程序被分解为多个小服务，这些小服务在各自独立的进程中运行，且通过轻量级通信机制（HTTP RESTFUL API）进行通讯。</li>
-<li>特征：<ul>
-<li><strong>易于维护</strong>：微服务规模小，应该只处理单个业务任务。</li>
-<li><strong>独立的扩展和部署</strong>：微服务有其各自的部署模式和节奏。因此，每个服务都可以根据该服务应该满足的负载进行扩展。每个服务都可以根据其计划进行部署。<ul>
-<li><em>每个服务都可以独立的部署到各种环境中。（开发、测试、生产环境）</em></li>
-<li><em>每个服务都能独立启动或销毁而不会对其他服务造成影响。</em></li>
-<li><em>当用户量和并发量的增加时，我们还可以将微服务集群化部署，从而增加系统的负载能力。</em></li>
+          <h3 id="一、Spring-Cloud-和-Spring-Cloud-Alibaba"><a href="#一、Spring-Cloud-和-Spring-Cloud-Alibaba" class="headerlink" title="一、Spring Cloud 和 Spring Cloud Alibaba"></a>一、Spring Cloud 和 Spring Cloud Alibaba</h3><ol>
+<li><p><strong>服务注册与发现</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>组件</strong>‌</td>
+<td>‌<strong>Spring Cloud</strong>‌</td>
+<td>‌<strong>Spring Cloud Alibaba</strong>‌</td>
+</tr>
+<tr>
+<td>‌<strong>注册中心</strong>‌</td>
+<td>Eureka（AP 模式）‌</td>
+<td>‌<strong>Nacos</strong>‌（AP&#x2F;CP 模式可切换）‌</td>
+</tr>
+<tr>
+<td>‌<strong>核心差异</strong>‌</td>
+<td>仅支持服务注册与发现‌</td>
+<td>集成配置管理功能，支持动态配置刷新‌</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>服务调用与负载均衡</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‌<strong>组件</strong>‌</td>
+<td>‌<strong>Spring Cloud</strong>‌</td>
+<td>‌<strong>Spring Cloud Alibaba</strong>‌</td>
+</tr>
+<tr>
+<td>‌<strong>客户端负载</strong>‌</td>
+<td>Ribbon + OpenFeign‌</td>
+<td>‌<strong>Dubbo</strong>‌（高性能 RPC）‌</td>
+</tr>
+<tr>
+<td>‌<strong>协议支持</strong>‌</td>
+<td>HTTP&#x2F;REST‌</td>
+<td>支持 Dubbo 协议（TCP 长连接）‌</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>流量控制与熔断</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‌<strong>组件</strong>‌</td>
+<td>‌<strong>Spring Cloud</strong>‌</td>
+<td>‌<strong>Spring Cloud Alibaba</strong>‌</td>
+</tr>
+<tr>
+<td>‌<strong>熔断降级</strong>‌</td>
+<td>Hystrix（已停更）‌</td>
+<td>‌<strong>Sentinel</strong>‌（实时监控、规则持久化）</td>
+</tr>
+<tr>
+<td>‌<strong>核心特性</strong>‌</td>
+<td>简单熔断策略‌</td>
+<td>精细化流量控制（QPS&#x2F;线程数&#x2F;热点参数）‌</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>配置管理</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>组件</strong>‌</th>
+<th>‌<strong>Spring Cloud</strong>‌</th>
+<th>‌<strong>Spring Cloud Alibaba</strong>‌</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‌<strong>配置中心</strong>‌</td>
+<td>Spring Cloud Config‌</td>
+<td>‌<strong>Nacos Config</strong>‌（与注册中心一体化）‌</td>
+</tr>
+<tr>
+<td>‌<strong>优势</strong>‌</td>
+<td>需独立部署，功能基础‌</td>
+<td>动态配置推送、多环境隔离、版本回滚‌</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>分布式事务</strong></p>
+<table>
+<thead>
+<tr>
+<th>‌<strong>组件</strong>‌</th>
+<th>‌<strong>Spring Cloud</strong>‌</th>
+<th>‌<strong>Spring Cloud Alibaba</strong>‌</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‌<strong>解决方案</strong>‌</td>
+<td>无原生支持‌</td>
+<td>‌<strong>Seata</strong>‌（AT&#x2F;TCC 模式）‌</td>
+</tr>
+<tr>
+<td>‌<strong>适用场景</strong>‌</td>
+<td>需集成第三方框架‌</td>
+<td>跨服务事务一致性保障（如订单扣库存）</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>消息队列</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>组件</strong>‌</th>
+<th>‌<strong>Spring Cloud</strong>‌</th>
+<th>‌<strong>Spring Cloud Alibaba</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‌<strong>默认集成</strong>‌</td>
+<td>RabbitMQ&#x2F;Kafka‌</td>
+<td>‌<strong>RocketMQ</strong>‌（事务消息、顺序消息）‌‌</td>
+</tr>
+<tr>
+<td>‌<strong>优势</strong>‌</td>
+<td>通用性强‌</td>
+<td>高吞吐、低延迟，适合金融级场景‌</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>生态系统与适用场景</strong></p>
+<ul>
+<li>Spring Cloud<ul>
+<li>基于 Netflix OSS，适合公有云&#x2F;私有云部署‌。</li>
+<li>社区成熟，文档丰富，但部分组件已停更（如 Hystrix）‌。</li>
 </ul>
 </li>
-<li><strong>独立技术的使用</strong>：微服务的代码库与部署环境分离，因此可以根据用例决定微服务需要使用的语言和技术。无需在所有微服务中使用通用堆栈。<ul>
-<li><em>即不同的服务可以采用不同的技术、编程语言。</em></li>
+<li>‌Spring Cloud Alibaba<ul>
+<li>深度整合阿里云生态，支持国内企业级需求（如高并发、分布式事务）‌。</li>
+<li>组件性能优化（如 Nacos、Sentinel）更适合本土化生产环境‌</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>‌<strong>总结选型建议</strong>‌</p>
+<ul>
+<li>‌<strong>选择 Spring Cloud</strong>‌：若项目依赖 Netflix 生态或需快速集成国际化云服务‌。</li>
+<li><strong>‌选择 Spring Cloud Alibaba</strong>：<ul>
+<li>需要高性能 RPC（Dubbo）、动态配置管理（Nacos）或分布式事务（Seata）‌。</li>
+<li>国内云环境部署，尤其是阿里云用户‌。</li>
 </ul>
 </li>
 </ul>
 </li>
 </ol>
+<h3 id="二、服务注册与发现-Nacos"><a href="#二、服务注册与发现-Nacos" class="headerlink" title="二、服务注册与发现-Nacos"></a>二、服务注册与发现-Nacos</h3><h3 id="三、服务调用与负载均衡-Dubbo‌"><a href="#三、服务调用与负载均衡-Dubbo‌" class="headerlink" title="三、服务调用与负载均衡-Dubbo‌"></a>三、<strong>服务调用与负载均衡</strong>-<strong>Dubbo</strong>‌</h3><h3 id="四、熔断-‌Sentinel"><a href="#四、熔断-‌Sentinel" class="headerlink" title="四、熔断-‌Sentinel"></a>四、熔断-‌<strong>Sentinel</strong></h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog2025.github.io/2025/04/08/SpringCloudAlibaba/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/07/SpringCloud/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog2025.github.io/2025/04/07/SpringCloud/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-07 11:38:41" itemprop="dateCreated datePublished" datetime="2025-04-07T11:38:41+08:00">2025-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-04-08 19:14:03" itemprop="dateModified" datetime="2025-04-08T19:14:03+08:00">2025-04-08</time>
+    </span>
+
+  
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>title: Spring Cloud<br>date: 2025-04-07 11:38:41<br>categories:</p>
+<ul>
+<li>Spring<br>typora-root-url: SpringCloud</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cuiqwei/article/details/118329609">参考一-写的好</a></p>
+<p><a target="_blank" rel="noopener" href="https://c.biancheng.net/springcloud/micro-service.html">参考二-写的最好</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cainiaoya.com/spring/spring-cloud-jiaocheng.html">参考三</a></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog2025.github.io/2025/04/07/SpringCloud/#more" rel="contents">
@@ -1129,115 +1370,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog2025.github.io/2025/04/02/SpringBoot/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/01/SpringMVC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/01/SpringMVC/" class="post-title-link" itemprop="url">Spring MVC</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-04-01 17:36:56" itemprop="dateCreated datePublished" datetime="2025-04-01T17:36:56+08:00">2025-04-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-02 16:54:51" itemprop="dateModified" datetime="2025-04-02T16:54:51+08:00">2025-04-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、前后端开发历程："><a href="#一、前后端开发历程：" class="headerlink" title="一、前后端开发历程："></a>一、前后端开发历程：</h3><ol>
-<li><h4 id="三层架构："><a href="#三层架构：" class="headerlink" title="三层架构："></a>三层架构：</h4><p>‌<strong>发展原因</strong>‌：</p>
-<ul>
-<li>‌<strong>职责解耦</strong>‌：表现层、业务层、数据层，通过分层实现职责分离，降低代码耦合度，提升可扩展性‌。</li>
-<li>‌<strong>协作效率</strong>‌：开发团队可分工协作，例如后端专注于业务逻辑与数据，前端负责界面交互，减少开发冲突‌。</li>
-<li>‌<strong>复用性</strong>‌：业务逻辑层独立于表现层，可复用至不同终端（如 Web、移动端）‌</li>
-</ul>
-<p>‌<strong>局限性</strong>‌：</p>
-<ul>
-<li><p>‌<strong>Servlet 耦合</strong>‌：传统三层架构中，Servlet 需处理多个请求逻辑，导致代码臃肿和复用性差‌；</p>
-</li>
-<li><p>‌<strong>视图与业务未彻底分离</strong>‌：如 JSP 中仍嵌入 Java 代码，难以独立维护‌。</p>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/04/01/SpringMVC/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
