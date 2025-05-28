@@ -153,8 +153,8 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin &lt;branch-name&gt;</span><br></pre></td></tr></table></figure>
 
 <p>比如：</p>
-<p>默认推送到master分支</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push orign master -u</span><br></pre></td></tr></table></figure>
+<p>默认推送到main分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin main -u</span><br></pre></td></tr></table></figure>
 
 <p>推送到code-storage分支</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin code-storage -u</span><br></pre></td></tr></table></figure>
@@ -189,7 +189,23 @@
 <li><p>‌<strong>检查推送结果</strong>‌<br>访问 GitHub 仓库页面，确认文件是否已更新。若仍无变化，尝试强制推送（慎用）：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push -f origin 分支名</span><br></pre></td></tr></table></figure></li>
 </ol>
-]]></content>
+<h3 id="六、补充"><a href="#六、补充" class="headerlink" title="六、补充"></a>六、补充</h3><ol>
+<li><p>‌<strong>检查当前分支状态</strong>‌：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+
+<p>如果输出为空或没有<code>main</code>分支，说明需要初始化提交。</p>
+</li>
+<li><p>‌**初始化本地仓库（若未初始化）**‌：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;Initial commit&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>‌**重命名分支（如有<code>master</code>分支）**‌：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -m master main</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>‌<strong>关联远程仓库并推送</strong>‌：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin github.com:lsdyun/code-storage.git</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>若远程仓库已有<code>README.md</code>等文件，需先执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull origin main --allow-unrelated-histories</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Git</category>
       </categories>
