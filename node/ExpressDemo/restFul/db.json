@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    {
+      "id": 1746322845393,
+      "name": "zhangsan",
+      "email": "1111@163.com"
+    },
+    {
+      "id": 1746322868169,
+      "name": "lisi",
+      "email": "222@163.cpm"
+    }
+  ],
+  "products": []
+}

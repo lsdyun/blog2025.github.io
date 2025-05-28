@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文件上传表单</title>
+    <style>
+        .error { color: red; display: none; }  /* 错误提示样式*/
+    </style>
+</head>
+<body>
+    <h3>文件上传：</h3>
+    <form id="uploadForm" action="/file_upload" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <div>
+            选择一个文件上传: <br />
+            <input type="file" name="image" id="fileInput" size="50" />
+            <span id="errorMsg" class="error">请先选择文件！</span>
+        </div>
+        <br />
+        <input type="submit" value="上传文件" />
+    </form>
+
+    <script>
+        function validateForm() {
+            const fileInput = document.getElementById('fileInput');
+            const errorMsg = document.getElementById('errorMsg');
+            
+            if (fileInput.files.length === 0) {  // 检查文件是否为空
+                errorMsg.style.display = 'inline';  // 显示错误提示
+                return false;  // 阻止表单提交
+            }
+            return true;  // 允许提交
+        }
+
+        // 动态隐藏错误提示（当用户选择新文件时）
+     	document.getElementById('fileInput').addEventListener('change', function() {
+            document.getElementById('errorMsg').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

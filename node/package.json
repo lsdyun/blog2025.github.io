@@ -1,0 +1,27 @@
+{
+  "name": "stupro",
+  "version": "1.0.0",
+  "description": "测试Node.js的创建模块",
+  "main": "server.js",
+  "scripts": {
+    "test": "test server",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "null"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "liang",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "multer": "^1.4.5-lts.2",
+    "mysql2": "^3.14.1"
+  }
+}

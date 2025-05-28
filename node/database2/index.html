@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .user-form {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"], 
+        input[type="email"] {
+            width: 200px;
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .user-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .user-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .user-info {
+            flex-grow: 1;
+        }
+
+        .user-actions button {
+            margin-left: 10px;
+            background-color: #6c757d;
+        }
+
+        .error {
+            color: #dc3545;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>用户管理系统</h1>
+        
+        <!-- 添加用户表单 -->
+        <div class="user-form">
+            <h2>添加新用户</h2>
+            <div class="form-group">
+                <input type="text" id="username" placeholder="用户名" required>
+                <input type="email" id="email" placeholder="邮箱" required>
+                <button onclick="addUser()">添加用户</button>
+            </div>
+            <div id="form-error" class="error"></div>
+        </div>
+
+        <!-- 用户列表 -->
+        <h2>用户列表</h2>
+        <ul class="user-list" id="userList">
+            <!-- 用户列表将通过JavaScript动态加载 -->
+        </ul>
+    </div>
+
+    <script>
+        // 页面加载时获取用户列表
+        window.onload = loadUsers;
+
+        // 加载用户列表
+        async function loadUsers() {
+            try {
+                const response = await fetch('http://localhost:3001/api/users');
+                if (!response.ok) throw new Error('获取数据失败');
+                
+                const users = await response.json();
+                renderUserList(users);
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+
+        // 渲染用户列表
+        function renderUserList(users) {
+            const list = document.getElementById('userList');
+            list.innerHTML = ''; // 清空当前列表
+
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.className = 'user-item';
+                li.innerHTML = `
+                    <div class="user-info">
+                        <strong>${user.username}</strong> - ${user.email}
+                    </div>
+                    <div class="user-actions">
+                        <button onclick="showEditForm(${user.id}, '${user.email}')">修改邮箱</button>
+                        <button onclick="deleteUser(${user.id})">删除</button>
+                    </div>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        // 添加用户
+        async function addUser() {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+
+            if (!username || !email) {
+                showError('用户名和邮箱不能为空', 'form-error');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3001/api/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, email })
+                });
+
+                if (!response.ok) throw new Error('添加用户失败');
+
+                // 清空表单并刷新列表
+                document.getElementById('username').value = '';
+                document.getElementById('email').value = '';
+                loadUsers();
+            } catch (error) {
+                showError(error.message, 'form-error');
+            }
+        }
+
+        // 删除用户
+        async function deleteUser(userId) {
+            if (!confirm('确定要删除该用户吗？')) return;
+
+            try {
+                const response = await fetch(`http://localhost:3001/api/users/${userId}`, {
+                    method: 'DELETE'
+                });
+
+                if (!response.ok) throw new Error('删除用户失败');
+                
+                loadUsers();
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+
+        // 显示修改邮箱表单
+        function showEditForm(userId, currentEmail) {
+            const newEmail = prompt('请输入新的邮箱地址：', currentEmail);
+            if (newEmail && newEmail !== currentEmail) {
+                updateUserEmail(userId, newEmail);
+            }
+        }
+
+        // 更新用户邮箱
+        async function updateUserEmail(userId, newEmail) {
+            try {
+                const response = await fetch(`http://localhost:3001/api/users/${userId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: newEmail })
+                });
+
+                if (!response.ok) throw new Error('更新邮箱失败');
+                
+                loadUsers();
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+
+        // 显示错误信息
+        function showError(message, elementId = 'form-error') {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            setTimeout(() => errorElement.textContent = '', 3000);
+        }
+    </script>
+</body>
+</html>
