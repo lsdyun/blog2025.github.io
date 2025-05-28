@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>用户管理系统</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>用户管理</h1>
+    
+    <!-- 添加用户表单 -->
+    <form id="userForm">
+      <input type="text" id="name" placeholder="姓名" required>
+      <input type="email" id="email" placeholder="邮箱" required>
+      <button type="submit">添加用户</button>
+    </form>
+
+    <!-- 用户列表 -->
+    <div id="userList"></div>
+  </div>
+
+  <script>
+    // 获取DOM元素
+    const userForm = document.getElementById('userForm');
+    const userList = document.getElementById('userList');
+
+    // 加载用户列表
+    const loadUsers = async () => {
+      const response = await fetch('/api/users');
+      const users = await response.json();
+      userList.innerHTML = users.map(user => `
+        <div class="user-card" data-id="${user.id}">
+          <div>
+            <span>${user.name}</span>
+            <small>${user.email}</small>
+          </div>
+          <div>
+            <button onclick="editUser(${user.id})">编辑</button>
+            <button onclick="deleteUser(${user.id})">删除</button>
+          </div>
+        </div>
+      `).join('');
+    };
+
+    // 添加用户
+    userForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const newUser = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value
+      };
+
+      await fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newUser)
+      });
+
+      userForm.reset();
+      loadUsers();
+    };
+
+    // 删除用户
+    window.deleteUser = async (id) => {
+      if (confirm('确定要删除吗？')) {
+        await fetch(`/api/users/${id}`, { method: 'DELETE' });
+        loadUsers();
+      }
+    };
+
+    // 编辑用户（弹窗修改）
+    window.editUser = async (id) => {
+      const newName = prompt('输入新姓名');
+      const newEmail = prompt('输入新邮箱');
+      
+      if (newName && newEmail) {
+        await fetch(`/api/users/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: newName, email: newEmail })
+        });
+        loadUsers();
+      }
+    };
+
+    // 初始化加载
+    loadUsers();
+  </script>
+</body>
+</html>
