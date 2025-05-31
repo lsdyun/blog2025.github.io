@@ -201,6 +201,149 @@ print(a) """
 a.pop()
 print(a) """
 
-a = {1, 2, 3, 4, "haha"}
+""" a = {1, 2, 3, 4, "haha"}
 a.clear()
-print(a)
+print(a) """
+
+""" def http_error(status):
+    match status:
+        case 400:
+            return "Bad request"
+        case 404:
+            return "Not found"
+        case 418:
+            return "I'm a teapot"
+        case _:
+            return "Something's wrong with the internet"
+
+mystatus=400
+print(http_error(400)) """
+
+""" n = 100
+ 
+sum = 0
+counter = 1
+while counter <= n:
+    sum = sum + counter
+    counter += 1
+ 
+print("1 到 %d 之和为: %d" % (n,sum)) """
+
+""" var = 1
+while var == 1 :  # 表达式永远为 true
+   num = int(input("输入一个数字  :"))
+   print ("你输入的数字是: ", num)
+ 
+print ("Good bye!") """
+
+""" sites = ["Baidu", "Google","Runoob","Taobao"]
+for site in sites:
+    print(site) """
+
+""" word = 'helloworld'
+ 
+for letter in word:
+    print(letter) """
+
+#!/usr/bin/python3
+ 
+""" sites = ["Baidu", "Google","Runoob","Taobao"]
+for site in sites:
+    
+    if site == "Runoob":
+        print("菜鸟教程!")
+        break
+    print("循环数据 " + site)
+else:
+    print("没有循环数据!")
+print("完成循环!") """
+
+""" a = list(range(1,5))
+print(a) """
+
+""" words = ['hello', 'world', 'python']
+unique_chars = {ch for word in words for ch in word} 
+print(unique_chars) """
+
+""" gen = (x*2 for x in range(5)) 
+print(tuple(gen)) """
+
+""" list=[1,2,3,4]
+it = iter(list)
+print(next(it))
+print(next(it))
+for x in it:
+    print(x,end=" ") """
+
+""" import sys         # 引入 sys 模块
+
+list=[1,2,3,4]
+it = iter(list)	# 创建迭代器对象
+while True:
+    try:
+        print(next(it))
+    except StopIteration:
+        sys.exit() """
+
+""" class NumberIterator:
+    def __init__(self, max_num):
+        self.max = max_num
+        self.current = 0
+
+    def __iter__(self):
+        return self  # 返回迭代器对象本身
+
+    def __next__(self):
+        if self.current < self.max:
+            self.current += 1
+            return self.current
+        raise StopIteration  # 终止迭代
+    
+myclass = NumberIterator(5)
+myiter = iter(myclass)
+ 
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter)) """
+
+
+""" class NumberIterator:
+    def __init__(self, max_num):
+        self.max = max_num
+        self.current = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current >= self.max:
+            raise StopIteration
+        self.current += 1
+        return self.current
+
+# 直接使用类实例作为迭代器（无需显式调用iter()）
+nums = NumberIterator(5)
+for num in nums:
+    print(num) """
+
+
+""" def change(a):
+    print("a2的内存位置:",id(a),"|a2的值为:",a)
+    
+a = 1
+print("a1的内存位置:",id(a),"|a1的值为:",a)
+
+a = 2
+change(a) """
+
+def change(list):
+    print("列表2内存地址为:",id(list),"列表2的内容为:",list)
+
+
+list=[1,2,3,4]
+print("列表1内存地址为:",id(list),"列表1的内容为:",list)
+
+list.append([5,6,7,8])
+change(list)
