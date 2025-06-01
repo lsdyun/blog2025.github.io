@@ -338,7 +338,7 @@ print("a1的内存位置:",id(a),"|a1的值为:",a)
 a = 2
 change(a) """
 
-def change(list):
+""" def change(list):
     print("列表2内存地址为:",id(list),"列表2的内容为:",list)
 
 
@@ -347,3 +347,44 @@ print("列表1内存地址为:",id(list),"列表1的内容为:",list)
 
 list.append([5,6,7,8])
 change(list)
+ """
+
+
+""" 
+import time
+
+def timing_decorator(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"函数 {func.__name__} 执行耗时: {end_time - start_time:.4f}秒")
+        return result
+    return wrapper
+
+@timing_decorator
+def calculate_sum(n):
+    return sum(range(n+1))
+
+# 测试
+print(calculate_sum(1000000))
+ """
+""" import sys
+
+if __name__ == '__main__':
+   print('程序自身在运行')
+else:
+   print('我来自另一模块') """
+
+""" a = "hello world"
+print(str(a))
+print(repr(a)) """
+
+""" import math
+print('常量 PI 的值近似为： {}。'.format(math.pi))
+# 常量 PI 的值近似为： 3.141592653589793。
+print('常量 PI 的值近似为： {!s}。'.format(math.pi))
+# 常量 PI 的值近似为： 3.141592653589793。 """
+
+str = input("请输入：");
+print ("你输入的内容是: ", str)
