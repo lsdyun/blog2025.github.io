@@ -386,5 +386,26 @@ print('常量 PI 的值近似为： {}。'.format(math.pi))
 print('常量 PI 的值近似为： {!s}。'.format(math.pi))
 # 常量 PI 的值近似为： 3.141592653589793。 """
 
-str = input("请输入：");
+""" str = input("请输入：");
 print ("你输入的内容是: ", str)
+ """
+
+""" import os
+
+current_directory = os.getcwd()
+print("当前工作目录:", current_directory)
+
+files_and_dirs = os.listdir()
+print("目录内容:", files_and_dirs) """
+
+class firstClass:
+    a = 100
+    def firstMethod(self):
+        return "hello world!"
+    
+# 实例化类
+first = firstClass()
+
+# 访问类的属性和方法
+print("类的属性a值为:", first.a)
+print("类的方法firstMethod为:",first.firstMethod())
