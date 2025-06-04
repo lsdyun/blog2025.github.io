@@ -398,7 +398,7 @@ print("当前工作目录:", current_directory)
 files_and_dirs = os.listdir()
 print("目录内容:", files_and_dirs) """
 
-class firstClass:
+""" class firstClass:
     a = 100
     def firstMethod(self):
         return "hello world!"
@@ -408,4 +408,103 @@ first = firstClass()
 
 # 访问类的属性和方法
 print("类的属性a值为:", first.a)
-print("类的方法firstMethod为:",first.firstMethod())
+print("类的方法firstMethod为:",first.firstMethod()) """
+
+""" import re
+print(re.match('www', 'www.runoob.com').span())
+
+import re
+result = re.match(r'Hello', 'Hello world')  # 匹配成功
+print(result.group()) if result else print("No match") """
+
+
+""" import re
+ 
+line = "Cats are smarter than dogs"
+# .* 表示任意匹配除换行符(\n、\r)之外的任何单个或多个字符
+# (.*?) 表示"非贪婪"模式，只保存第一个匹配到的子串
+matchObj = re.match( r'(.*) are (.*?) (.*) (.*)', line, re.M|re.I)
+ 
+if matchObj:
+   print ("matchObj.group() : ", matchObj.group())
+   print ("matchObj.group(1) : ", matchObj.group(1))
+   print ("matchObj.group(2) : ", matchObj.group(2))
+   print ("matchObj.group(3) : ", matchObj.group(3))
+   print ("matchObj.group(4) : ", matchObj.group(4))
+else:
+   print ("No match!!") """
+
+""" import re
+text = "Contact: email@example.com, phone: 123-4567"
+match = re.search(r'(\w+@\w+\.\w+)', text)
+if match:
+    print("Found email:", match.group(1))  # 输出捕获的邮箱 """
+
+
+""" import re
+ 
+line = "Cats are smarter than dogs"
+ 
+matchObj = re.match( r'dogs', line, re.M|re.I)
+if matchObj:
+   print ("match --> matchObj.group() : ", matchObj.group())
+else:
+   print ("No match!!")
+ 
+matchObj = re.search( r'dogs', line, re.M|re.I)
+if matchObj:
+   print ("search --> matchObj.group() : ", matchObj.group())
+else:
+   print ("No match!!") """
+
+""" import re
+
+# 直接编译正则表达式
+pattern = re.compile(r'([a-z]+) ([a-z]+)', re.I)  # 忽略大小写
+
+# 执行匹配
+m = pattern.match('Hello World Wide Web')
+
+# 输出匹配结果
+print("完整匹配对象:", m)
+print("整个匹配内容:", m.group(0))
+print("整个匹配位置:", m.span(0))
+print("第一个分组内容:", m.group(1))
+print("第一个分组位置:", m.span(1))
+print("第二个分组内容:", m.group(2))
+print("第二个分组位置:", m.span(2))
+print("所有分组内容:", m.groups())
+
+# 故意访问不存在的分组
+print("尝试访问第三个分组:")
+try:
+    print(m.group(3))
+except IndexError as e:
+    print(f"出现错误: {e} (这是预期错误)") """
+
+
+""" import re
+
+# 直接编译正则表达式（匹配数字）
+pattern = re.compile(r'\d+')
+
+# 测试1：从字符串开头匹配（无数字开头）
+m1 = pattern.match('one12twothree34four')
+print("从头匹配结果:", m1)  # None
+
+# 测试2：从索引2开始匹配（字符'e'位置）
+m2 = pattern.match('one12twothree34four', 2, 10)
+print("位置2-10匹配:", m2)  # None
+
+# 测试3：从索引3开始匹配（字符'1'位置）
+m3 = pattern.match('one12twothree34four', 3, 10)
+print("位置3-10匹配:", m3)  # 返回Match对象
+
+# 输出匹配详情
+if m3:
+    print("匹配内容:", m3.group())  # '12'
+    print("起始位置:", m3.start())  # 3
+    print("结束位置:", m3.end())    # 5
+    print("位置范围:", m3.span())   # (3,5) """
+
+
