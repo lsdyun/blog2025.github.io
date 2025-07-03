@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qt 类继承关系可视化</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+            color: #f0f0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .diagram-container {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .info-container {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #4facfe;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .class-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .class-box {
+            width: 280px;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .class-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .class-box.qobject {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            border-left: 5px solid #ff5252;
+        }
+        
+        .class-box.qpaintdevice {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            border-left: 5px solid #4facfe;
+        }
+        
+        .class-box.qwidget {
+            background: linear-gradient(135deg, #0cebeb, #20e3b2);
+            border-left: 5px solid #20e3b2;
+        }
+        
+        .class-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .class-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .inheritance-arrow {
+            position: absolute;
+            width: 3px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        
+        .arrow-down {
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .arrow-down::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: -8px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid rgba(255, 255, 255, 0.7);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #0cebeb;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .feature-list {
+            padding-left: 20px;
+        }
+        
+        .feature-list li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        
+        .code-example {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #4facfe;
+        }
+        
+        .code-comment {
+            color: #a8a8a8;
+        }
+        
+        .code-keyword {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        .code-class {
+            color: #0cebeb;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-project-diagram"></i> Qt 类继承关系可视化</h1>
+            <p class="subtitle">QWidget 作为所有用户界面类的基类，继承自 QObject 和 QPaintDevice 类。本可视化展示了这些核心类的关系、功能及使用示例。</p>
+        </header>
+        
+        <div class="content">
+            <div class="diagram-container">
+                <h2 class="section-title"><i class="fas fa-sitemap"></i> 类继承关系图</h2>
+                <div class="class-diagram">
+                    <div class="class-box qobject">
+                        <div class="class-title">QObject</div>
+                        <div class="class-description">
+                            Qt 对象模型的核心基类，提供信号槽机制、对象树管理、事件处理等核心功能。
+                        </div>
+                        <div class="inheritance-arrow arrow-down"></div>
+                    </div>
+                    
+                    <div class="class-box qpaintdevice">
+                        <div class="class-title">QPaintDevice</div>
+                        <div class="class-description">
+                            所有可绘制对象的基类，定义绘图设备的抽象接口，如屏幕、打印机、图像缓冲区等。
+                        </div>
+                        <div class="inheritance-arrow arrow-down"></div>
+                    </div>
+                    
+                    <div class="class-box qwidget">
+                        <div class="class-title">QWidget</div>
+                        <div class="class-description">
+                            所有用户界面组件的基类，结合了 QObject 和 QPaintDevice 的功能，提供窗口系统集成、事件处理、布局管理和绘制能力。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-container">
+                <h2 class="section-title"><i class="fas fa-info-circle"></i> 类特性与功能</h2>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <h3 class="feature-title"><i class="fas fa-cube"></i> QObject 核心功能</h3>
+                        <ul class="feature-list">
+                            <li>父子对象关系管理</li>
+                            <li>信号与槽通信机制</li>
+                            <li>对象属性系统</li>
+                            <li>事件处理框架</li>
+                            <li>定时器支持</li>
+                            <li>国际化支持</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3 class="feature-title"><i class="fas fa-paint-brush"></i> QPaintDevice 核心功能</h3>
+                        <ul class="feature-list">
+                            <li>定义绘图设备接口</li>
+                            <li>管理设备坐标系统</li>
+                            <li>处理设备相关属性</li>
+                            <li>支持不同绘制后端</li>
+                            <li>提供设备度量信息</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3 class="feature-title"><i class="fas fa-window-maximize"></i> QWidget 核心功能</h3>
+                        <ul class="feature-list">
+                            <li>窗口系统集成</li>
+                            <li>事件处理与传播</li>
+                            <li>布局管理系统</li>
+                            <li>样式与主题支持</li>
+                            <li>焦点与键盘处理</li>
+                            <li>国际化与可访问性</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        <span>QWidget 使用示例</span>
+                        <span>C++ 代码</span>
+                    </div>
+                    <pre><code><span class="code-comment">// 创建自定义窗口部件</span>
+<span class="code-keyword">class</span> <span class="code-class">MyWidget</span> : <span class="code-keyword">public</span> <span class="code-class">QWidget</span> {
+    <span class="code-class">Q_OBJECT</span> <span class="code-comment">// 启用元对象系统功能</span>
+
+<span class="code-keyword">public</span>:
+    <span class="code-class">MyWidget</span>(<span class="code-class">QWidget</span> *parent = <span class="code-keyword">nullptr</span>) : <span class="code-class">QWidget</span>(parent) {
+        <span class="code-comment">// 创建子部件</span>
+        <span class="code-class">QLabel</span> *label = <span class="code-keyword">new</span> <span class="code-class">QLabel</span>(<span class="code-keyword">tr</span>(<span class="code-class">"Hello, QWidget!"</span>), <span class="code-keyword">this</span>);
+        <span class="code-class">QPushButton</span> *button = <span class="code-keyword">new</span> <span class="code-class">QPushButton</span>(<span class="code-keyword">tr</span>(<span class="code-class">"Click me"</span>), <span class="code-keyword">this</span>);
+        
+        <span class="code-comment">// 设置布局</span>
+        <span class="code-class">QVBoxLayout</span> *layout = <span class="code-keyword">new</span> <span class="code-class">QVBoxLayout</span>(<span class="code-keyword">this</span>);
+        layout->addWidget(label);
+        layout->addWidget(button);
+        
+        <span class="code-comment">// 连接信号槽</span>
+        connect(button, &<span class="code-class">QPushButton</span>::clicked, <span class="code-keyword">this</span>, &<span class="code-class">MyWidget</span>::onButtonClicked);
+    }
+
+<span class="code-keyword">private slots</span>:
+    <span class="code-keyword">void</span> onButtonClicked() {
+        <span class="code-comment">// 处理按钮点击事件</span>
+        <span class="code-class">QMessageBox</span>::information(<span class="code-keyword">this</span>, <span class="code-class">tr</span>(<span class="code-class">"Message"</span>), <span class="code-class">tr</span>(<span class="code-class">"Button clicked!"</span>));
+    }
+
+<span class="code-keyword">protected</span>:
+    <span class="code-comment">// 重写绘图事件</span>
+    <span class="code-keyword">void</span> paintEvent(<span class="code-class">QPaintEvent</span> *event) <span class="code-keyword">override</span> {
+        <span class="code-class">QPainter</span> painter(<span class="code-keyword">this</span>);
+        painter.setRenderHint(<span class="code-class">QPainter</span>::Antialiasing);
+        
+        <span class="code-comment">// 绘制自定义背景</span>
+        painter.fillRect(rect(), <span class="code-class">QColor</span>(<span class="code-class">"#2c3e50"</span>));
+        
+        <span class="code-class">QWidget</span>::paintEvent(event);
+    }
+};</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Qt 类继承关系可视化 | QObject → QPaintDevice → QWidget 继承体系</p>
+            <p>QWidget 作为所有 UI 组件的基类，结合了对象管理和绘图能力</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 添加简单的动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const classBoxes = document.querySelectorAll('.class-box');
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            // 类框动画
+            classBoxes.forEach((box, index) => {
+                setTimeout(() => {
+                    box.style.opacity = '1';
+                    box.style.transform = 'translateY(0)';
+                }, index * 300);
+            });
+            
+            // 特性卡片动画
+            featureCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200 + 900);
+            });
+        });
+    </script>
+</body>
+</html>
