@@ -1,0 +1,38 @@
+/****************主界面背景*******************/
+QMainWindow {
+    /*背景图片*/
+    background-image: url(:/image/bg.png);
+}
+
+/****************按钮部件*******************/
+QPushButton {
+    /*背景色*/
+    background-color: rgba(100, 225, 100, 30);
+    /*边框样式*/
+    border-style: outset;
+    /*边框宽度为4像素*/
+    border-width: 4px;
+    /*边框颜色*/
+    border-color: rgba(100, 200, 100, 150);
+    /*文字颜色*/
+    color: white;
+    /*文字大小*/
+    font-size: 12px;
+    /*内边距*/
+    padding: 5px;
+}
+
+/*鼠标悬停在按钮上时*/
+QPushButton:hover {
+    background-color: rgba(100, 255, 100, 100);
+    border-color: rgba(255, 225, 255, 200);
+    color: rgba(0, 0, 0, 200);
+}
+
+/*按钮被按下时*/
+QPushButton:pressed {
+    background-color: rgba(100, 255, 100, 200);
+    border-color: rgba(255, 225, 255, 30);
+    border-style: inset;
+    color: rgba(0, 0, 0, 100);
+}
