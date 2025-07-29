@@ -150,13 +150,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/blog2025.github.io/archives/">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/blog2025.github.io/categories/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
@@ -178,6 +178,401 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/28/JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog2025.github.io/2025/05/28/JavaScript/" class="post-title-link" itemprop="url">JavaScript</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-05-28 11:01:48 / 修改时间：11:19:52" itemprop="dateCreated datePublished" datetime="2025-05-28T11:01:48+08:00">2025-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="DOM和BOM"><a href="#DOM和BOM" class="headerlink" title="DOM和BOM"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_52736131/article/details/123563321">DOM和BOM</a></h1><p><img src="/blog2025.github.io/2025/05/28/JavaScript/91ccc53af38ce227f42999e03197fd6f.jpeg" alt="img"></p>
+<h3 id="一、DOM（Document-Object-Model-文档对象模型）📄"><a href="#一、DOM（Document-Object-Model-文档对象模型）📄" class="headerlink" title="一、DOM（Document Object Model ,文档对象模型）📄"></a>一、DOM（<strong>Document Object Model</strong> ,文档对象模型）📄</h3><p>‌<strong>定义</strong>‌：将 HTML&#x2F;XML 文档解析为树形结构对象<br>‌<strong>作用</strong>‌：操作网页内容<br>‌<strong>核心对象</strong>‌：<code>document</code><br>‌<strong>主要功能</strong>‌：</p>
+<ol>
+<li><p>‌节点操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy <span class="title class_">Codedocument</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;box&#x27;</span>)  <span class="comment">// 获取元素</span></span><br><span class="line">element.<span class="title function_">appendChild</span>(newNode)    <span class="comment">// 添加节点</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>‌内容修改</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy <span class="title class_">Codeelement</span>.<span class="property">innerHTML</span> = <span class="string">&#x27;&lt;b&gt;新内容&lt;/b&gt;&#x27;</span>  <span class="comment">// 修改HTML</span></span><br><span class="line">element.<span class="property">textContent</span> = <span class="string">&#x27;纯文本&#x27;</span>        <span class="comment">// 修改文本</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>‌样式控制</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy <span class="title class_">Codeelement</span>.<span class="property">style</span>.<span class="property">color</span> = <span class="string">&#x27;red&#x27;</span>       <span class="comment">// 行内样式</span></span><br><span class="line">element.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;active&#x27;</span>)   <span class="comment">// 类名操作</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>‌事件处理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy <span class="title class_">Codebutton</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;按钮被点击&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog2025.github.io/2025/05/28/JavaScript/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/28/ES6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog2025.github.io/2025/05/28/ES6/" class="post-title-link" itemprop="url">ES6</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-05-28 10:59:30 / 修改时间：11:19:31" itemprop="dateCreated datePublished" datetime="2025-05-28T10:59:30+08:00">2025-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/03/react.html">React 教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/escript6/escript6-m42v37eq.html">ES6 教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/es6-tutorial.html">ES6 教程 2</a></p>
+<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><h2 id="一、基础介绍"><a href="#一、基础介绍" class="headerlink" title="一、基础介绍"></a>一、基础介绍</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog2025.github.io/2025/05/28/ES6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/28/Ajax%20+%20axios/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog2025.github.io/2025/05/28/Ajax%20+%20axios/" class="post-title-link" itemprop="url">Ajax + Axios</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-05-28 10:58:36 / 修改时间：11:18:54" itemprop="dateCreated datePublished" datetime="2025-05-28T10:58:36+08:00">2025-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/ajax/ajax-tutorial.html">Ajax</a></h1><p><em>Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</em></p>
+<p><em>AJAX 最大的优点是在<strong>不重新加载</strong>整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</em></p>
+<p><em>XMLHttpRequest 只是实现 Ajax 的一种方式，当然也可以使用</em> <a target="_blank" rel="noopener" href="https://www.runoob.com/ajax/fetch-api.html">fetch API</a> <em>等现代方法。</em></p>
+<h2 id="一、工作原理"><a href="#一、工作原理" class="headerlink" title="一、工作原理"></a>一、工作原理</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog2025.github.io/2025/05/28/Ajax%20+%20axios/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/28/%E8%B7%AF%E7%BA%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog2025.github.io/2025/05/28/%E8%B7%AF%E7%BA%BF/" class="post-title-link" itemprop="url">路线</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-05-28 10:55:54 / 修改时间：11:20:55" itemprop="dateCreated datePublished" datetime="2025-05-28T10:55:54+08:00">2025-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/%E8%B7%AF%E7%BA%BF/" itemprop="url" rel="index"><span itemprop="name">路线</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="军工软件国产化开发学习路线（综合精简版）"><a href="#军工软件国产化开发学习路线（综合精简版）" class="headerlink" title="军工软件国产化开发学习路线（综合精简版）"></a>军工软件国产化开发学习路线（综合精简版）</h2><h4 id="一、基础能力建设（6-8个月）"><a href="#一、基础能力建设（6-8个月）" class="headerlink" title="一、基础能力建设（6-8个月）"></a>一、基础能力建设（6-8个月）</h4><p><strong>学习重点：</strong></p>
+<ol>
+<li><strong>核心开发能力</strong><ul>
+<li>编程语言：C++（内存管理&#x2F;并行计算）、Python（脚本&#x2F;AI）、Java（企业级开发）</li>
+<li>操作系统：<strong>OpenEuler</strong>容器化部署、**银河麒麟V10 SP3（桌面&#x2F;服务器版）**安全加固</li>
+<li>数据库：<strong>达梦&#x2F;人大金仓</strong>的分布式架构与国密加密存储</li>
+</ul>
+</li>
+<li><strong>军工理论基础</strong><ul>
+<li>工业软件体系：CAE&#x2F;CAD&#x2F;MBSE技术原理及国产替代瓶颈</li>
+<li>行业标准：GJB 5000B（软件成熟度模型）、GJB 438B（文档规范）</li>
+<li>安全规范：等保3.0、SM2&#x2F;SM4国密算法实现</li>
+</ul>
+</li>
+</ol>
+<p><strong>实践任务：</strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog2025.github.io/2025/05/28/%E8%B7%AF%E7%BA%BF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -662,121 +1057,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/08/SpringCloud/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/08/SpringCloud/" class="post-title-link" itemprop="url">Spring Cloud</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-04-08 14:53:33" itemprop="dateCreated datePublished" datetime="2025-04-08T14:53:33+08:00">2025-04-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-09 14:08:42" itemprop="dateModified" datetime="2025-04-09T14:08:42+08:00">2025-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cuiqwei/article/details/118329609">参考一-写的好</a></p>
-<p><a target="_blank" rel="noopener" href="https://c.biancheng.net/springcloud/micro-service.html">参考二-写的最好</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cainiaoya.com/spring/spring-cloud-jiaocheng.html">参考三</a></p>
-<h3 id="一、微服务"><a href="#一、微服务" class="headerlink" title="一、微服务"></a>一、微服务</h3><ol>
-<li>定义：微服务架构是一种应用程序开发风格，一个单一的应用程序被分解为多个小服务，这些小服务在各自独立的进程中运行，且通过轻量级通信机制（HTTP RESTFUL API）进行通讯。</li>
-<li>特征：<ul>
-<li><strong>易于维护</strong>：微服务规模小，应该只处理单个业务任务。</li>
-<li><strong>独立的扩展和部署</strong>：微服务有其各自的部署模式和节奏。因此，每个服务都可以根据该服务应该满足的负载进行扩展。每个服务都可以根据其计划进行部署。<ul>
-<li><em>每个服务都可以独立的部署到各种环境中。（开发、测试、生产环境）</em></li>
-<li><em>每个服务都能独立启动或销毁而不会对其他服务造成影响。</em></li>
-<li><em>当用户量和并发量的增加时，我们还可以将微服务集群化部署，从而增加系统的负载能力。</em></li>
-</ul>
-</li>
-<li><strong>独立技术的使用</strong>：微服务的代码库与部署环境分离，因此可以根据用例决定微服务需要使用的语言和技术。无需在所有微服务中使用通用堆栈。<ul>
-<li><em>即不同的服务可以采用不同的技术、编程语言。</em></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/04/08/SpringCloud/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/08/SpringCloudAlibaba/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -857,358 +1137,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog2025.github.io/2025/04/08/SpringCloudAlibaba/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/06/SpringSecurity/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/06/SpringSecurity/" class="post-title-link" itemprop="url">Spring Security</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-04-06 19:01:42" itemprop="dateCreated datePublished" datetime="2025-04-06T19:01:42+08:00">2025-04-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-24 10:52:42" itemprop="dateModified" datetime="2025-04-24T10:52:42+08:00">2025-04-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、Spring-Security概览"><a href="#一、Spring-Security概览" class="headerlink" title="一、Spring Security概览"></a>一、Spring Security概览</h3><ul>
-<li><p><a target="_blank" rel="noopener" href="https://springdoc.cn/spring-security/">Spring Security中文文档</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://springdoc.cn/spring-boot-spring-security-jwt-mysql/">Spring Security + JWT + MySQL 实现基于 Token 的身份认证</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46073538/article/details/128641746">教程</a></p>
-</li>
-<li><p>兼容性：</p>
-<ul>
-<li><strong>Spring Boot 3</strong>—<strong>Spring Security 6.2.x</strong> </li>
-<li><strong>Spring Boot 2</strong>—<strong>Spring Security 5.8.x</strong></li>
-</ul>
-</li>
-<li><p><strong>Spring Security</strong> 是一个提供身份<font color="red"><em><strong>认证、授权</strong></em></font>和防护常见攻击的框架。</p>
-<ul>
-<li><p><strong>身份认证（Authentication）</strong>：</p>
-<ul>
-<li><em><strong>验证用户身份（如用户名&#x2F;密码、短信验证等），解决“你是谁”的问题‌；</strong></em></li>
-<li><em>通过<code>UserDetailsService</code>接口实现自定义用户数据源查询‌</em>；</li>
-<li>支持表单登录、OAuth2、LDAP等多种认证方式，默认提供<strong>基础表单登录页‌</strong>；</li>
-<li>密码加密存储需使用<code>PasswordEncoder</code>接口实现类（如BCrypt算法）‌；</li>
-</ul>
-</li>
-<li><p><strong>权限控制（Authorization）</strong></p>
-<ul>
-<li><em><strong>根据用户权限控制资源访问（如角色分配、URL权限控制），解决“你能做什么”的问题‌</strong></em></li>
-<li>基于角色（Role）或权限（Permission）的访问控制‌；</li>
-<li>URL级别‌：通过配置<code>HttpSecurity</code>限制访问路径‌；</li>
-<li>方法级别‌：使用<code>@PreAuthorize</code>、<code>@Secured</code>等注解实现细粒度控制‌</li>
-<li>常用注解：<code>@PreAuthorize</code>、<code>@Secured</code>、<code>@PostAuthorize</code>‘</li>
-</ul>
-</li>
-<li><p><strong>安全防护机制</strong></p>
-<ul>
-<li><p>‌CSRF防护：默认启用，需配合模板引擎或手动配置令牌‌；</p>
-</li>
-<li><p>会话管理‌：防止会话固定攻击，支持并发会话控制‌；</p>
-</li>
-<li><p>HTTP安全头：自动配置X-Content-Type-Options等头部增强防护‌；</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/04/06/SpringSecurity/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/04/MyBatis-plus/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/04/MyBatis-plus/" class="post-title-link" itemprop="url">MyBatis-plus</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-04 13:17:11 / 修改时间：16:07:30" itemprop="dateCreated datePublished" datetime="2025-04-04T13:17:11+08:00">2025-04-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、MyBatis-plus初级"><a href="#一、MyBatis-plus初级" class="headerlink" title="一、MyBatis-plus初级"></a>一、MyBatis-plus初级</h3><p><a target="_blank" rel="noopener" href="https://baomidou.com/introduce/">官方网站</a></p>
-<ol>
-<li><h4 id="MyBatis-plus新功能"><a href="#MyBatis-plus新功能" class="headerlink" title="MyBatis-plus新功能"></a>MyBatis-plus新功能</h4><ul>
-<li><p>增强版的MyBatis，简化开发，提高效率；</p>
-</li>
-<li><p>启动会自动注入CRUD，性能无损耗；</p>
-</li>
-<li><p>内置通用Mapper，通用Service；</p>
-</li>
-<li><p>支持Lambda形式调用；</p>
-</li>
-<li><p>支持主键自动生成；</p>
-</li>
-<li><p>内置代码生成器，可快速生成Mapper、Model、Service、Controller代码；</p>
-</li>
-<li><p>内置分页插件（MyBatis物理分页-LIMIT），支持多种数据库；</p>
-</li>
-<li><p>内置性能分析插件；</p>
-</li>
-<li><p>内置全局拦截插件；</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/04/04/MyBatis-plus/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/03/MyBatis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/03/MyBatis/" class="post-title-link" itemprop="url">MyBatis</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-04-03 10:24:29" itemprop="dateCreated datePublished" datetime="2025-04-03T10:24:29+08:00">2025-04-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-04 13:28:39" itemprop="dateModified" datetime="2025-04-04T13:28:39+08:00">2025-04-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="一、MyBatis"><a href="#一、MyBatis" class="headerlink" title="一、MyBatis"></a>一、MyBatis</h3><ol>
-<li><h4 id="MyBatis是一个开源、轻量级的数据持久化框架，内部封装了JDBC。"><a href="#MyBatis是一个开源、轻量级的数据持久化框架，内部封装了JDBC。" class="headerlink" title="MyBatis是一个开源、轻量级的数据持久化框架，内部封装了JDBC。"></a>MyBatis是一个开源、轻量级的数据持久化框架，内部封装了JDBC。</h4></li>
-<li><h4 id="MyBatis核心对象："><a href="#MyBatis核心对象：" class="headerlink" title="MyBatis核心对象："></a>MyBatis核心对象：</h4><h5 id="（1）核心接口和类："><a href="#（1）核心接口和类：" class="headerlink" title="（1）核心接口和类："></a><strong>（1）核心接口和类：</strong></h5><ul>
-<li><p><strong>SqlSessionFactoryBuilder</strong>：临时工具类，用完即销毁，无状态，无需长期持有。</p>
-</li>
-<li><p><strong>SqlSessionFactory</strong>：线程安全，与应用同生命周期，通常只初始化一次，避免重复解析配置；缓存数据库配置、Mapper 映射等元信息；由 IoC 容器管理其生命周期。</p>
-</li>
-<li><p><strong>SqlSession</strong>：线程不安全，需在方法内创建并使用后立即关闭；代表一次数据库会话，用于执行 SQL、管理事务、获取 Mapper 接口。</p>
-<ul>
-<li><p><strong>构建阶段</strong>‌：<code>SqlSessionFactoryBuilder</code> 读取配置文件 → 创建 <code>SqlSessionFactory</code>。</p>
-</li>
-<li><p><strong>运行阶段</strong>‌：<code>SqlSessionFactory</code> 生产 <code>SqlSession</code> → <code>SqlSession</code> 执行 SQL。</p>
-</li>
-<li><p><strong>销毁阶段</strong>‌：<code>SqlSession</code> 执行完毕后关闭，<code>SqlSessionFactory</code> 随应用关闭销毁。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/04/03/MyBatis/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
