@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog2025.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog2025.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog2025.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog2025.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog2025.github.io/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lsdyun.github.io","root":"/blog2025.github.io/","images":"/blog2025.github.io/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog2025.github.io/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog2025.github.io/js/config.js"></script>
+
+    <meta name="description" content="peymanbateni&#x2F;simple-cnapshttps:&#x2F;&#x2F;github.com&#x2F;peymanbateni&#x2F;simple-cnaps Simple CNAPSSimple CNAPS 提出在基于马氏距离的分类器中使用分层正则化的聚类均值和协方差估计，以提高少样本分类的准确性。该方法将所述分类器整合到与 CNAPS 相同的神经自适应特征提取器中。更多细节，请参阅我们关于 Simple">
+<meta property="og:type" content="article">
+<meta property="og:title" content="simple-cnaps">
+<meta property="og:url" content="https://lsdyun.github.io/blog2025.github.io/2025/08/12/Few4/index.html">
+<meta property="og:site_name" content="记录博客">
+<meta property="og:description" content="peymanbateni&#x2F;simple-cnapshttps:&#x2F;&#x2F;github.com&#x2F;peymanbateni&#x2F;simple-cnaps Simple CNAPSSimple CNAPS 提出在基于马氏距离的分类器中使用分层正则化的聚类均值和协方差估计，以提高少样本分类的准确性。该方法将所述分类器整合到与 CNAPS 相同的神经自适应特征提取器中。更多细节，请参阅我们关于 Simple">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-12T01:58:24.449Z">
+<meta property="article:modified_time" content="2025-08-13T02:47:44.006Z">
+<meta property="article:author" content="lsdyun">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lsdyun.github.io/blog2025.github.io/2025/08/12/Few4/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lsdyun.github.io/blog2025.github.io/2025/08/12/Few4/","path":"2025/08/12/Few4/","title":"simple-cnaps"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>simple-cnaps | 记录博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog2025.github.io/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog2025.github.io/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记录博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog2025.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/blog2025.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/blog2025.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/blog2025.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#peymanbateni-simple-cnaps"><span class="nav-number">1.</span> <span class="nav-text">peymanbateni&#x2F;simple-cnaps</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Improved-Few-Shot-Visual-Classification"><span class="nav-number">1.1.</span> <span class="nav-text">Improved Few-Shot Visual Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Enhancing-Few-Shot-Image-Classification-with-Unlabelled-Examples"><span class="nav-number">1.2.</span> <span class="nav-text">Enhancing Few-Shot Image Classification with Unlabelled Examples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Beyond-Simple-Meta-Learning-Multi-Purpose-Models-for-Multi-Domain-Active-and-Continual-Few-Shot-Learning"><span class="nav-number">1.3.</span> <span class="nav-text">Beyond Simple Meta-Learning: Multi-Purpose Models for Multi-Domain, Active and Continual Few-Shot Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#On-Label-Efficient-Computer-Vision-Building-Fast-and-Effective-Few-Shot-Image-Classifiers"><span class="nav-number">1.4.</span> <span class="nav-text">On Label-Efficient Computer Vision: Building Fast and Effective Few-Shot Image Classifiers</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#plai-group-simple-cnaps"><span class="nav-number">2.</span> <span class="nav-text">plai-group&#x2F;simple-cnaps</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lsdyun"
+      src="/blog2025.github.io/images/avatar.png">
+  <p class="site-author-name" itemprop="name">lsdyun</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog2025.github.io/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog2025.github.io/categories/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lsdyun" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lsdyun" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/08/12/Few4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="simple-cnaps | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          simple-cnaps
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-08-12 09:58:24" itemprop="dateCreated datePublished" datetime="2025-08-12T09:58:24+08:00">2025-08-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-13 10:47:44" itemprop="dateModified" datetime="2025-08-13T10:47:44+08:00">2025-08-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/Few-shot-learning/" itemprop="url" rel="index"><span itemprop="name">Few-shot learning</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="peymanbateni-simple-cnaps"><a href="#peymanbateni-simple-cnaps" class="headerlink" title="peymanbateni&#x2F;simple-cnaps"></a>peymanbateni&#x2F;simple-cnaps</h1><p><a target="_blank" rel="noopener" href="https://github.com/peymanbateni/simple-cnaps">https://github.com/peymanbateni/simple-cnaps</a></p>
+<p><strong>Simple CNAPS</strong><br>Simple CNAPS 提出在基于马氏距离的分类器中使用分层正则化的聚类均值和协方差估计，以提高少样本分类的准确性。该方法将所述分类器整合到与 CNAPS 相同的神经自适应特征提取器中。更多细节，请参阅我们关于 Simple CNAPS 的论文： <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_CVPR_2020/html/Bateni_Improved_Few-Shot_Visual_Classification_CVPR_2020_paper.html">Improved Few-Shot Visual Classification</a>.。该论文的源代码位于 <code>simple-cnaps-src</code> 目录中。要复现我们的结果，请参考该文件夹内的 <code>README.md</code> 文件。</p>
+<ul>
+<li><strong>全局元数据集排名 (Simple CNAPS):</strong> <a target="_blank" rel="noopener" href="https://github.com/google-research/meta-dataset#training-on-all-datasets">https://github.com/google-research/meta-dataset#training-on-all-datasets</a></li>
+<li><strong>全局 Mini-ImageNet 排名 (Simple CNAPS):</strong><br>PWC PWC PWC PWC (注：原文为占位符，通常指向 PapersWithCode 链接)</li>
+<li><strong>全局 Tiered-ImageNet 排名 (Simple CNAPS):</strong><br>PWC PWC PWC PWC (注：原文为占位符，通常指向 PapersWithCode 链接)</li>
+</ul>
+<p><strong>Transductive CNAPS (直推式 CNAPS)</strong><br>Transductive CNAPS 将 Simple CNAPS 框架扩展到直推式少样本学习设置，其中所有查询样本一次性提供。该方法使用两步直推式任务编码器来调整特征提取器，并采用软 k 均值聚类细化程序，从而获得更好的测试时准确性。更多细节，请参阅我们关于 Transductive CNAPS 的论文： <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2006.12245">Enhancing Few-Shot Image Classification with Unlabelled Examples</a>。该工作的源代码位于 <code>transductive-cnaps-src</code> 目录中。要复现我们的结果，请参考该文件夹内的 <code>README.md</code> 文件。</p>
+<p><strong>主动学习和持续学习</strong><br>我们还评估了这两种方法在“开箱即用”的主动学习和持续学习范式中的表现。这些设置最初由 Requeima 等人提出，研究为少样本学习训练的分类器，在无需任何问题特定微调或训练的情况下，能否有效部署用于主动和持续学习。关于我们主动和持续学习实验及算法的更多细节，请参阅我们最新的论文：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2201.05151">Beyond Simple Meta-Learning: Multi-Purpose Models for Multi-Domain, Active and Continual Few-Shot Learning</a>。要复现报告的实验代码和说明，请参考 <code>active-learning</code> 和 <code>continual-learning</code> 文件夹。</p>
+<hr>
+<p><strong>改进的少样本视觉分类：</strong><a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_CVPR_2020/html/Bateni_Improved_Few-Shot_Visual_Classification_CVPR_2020_paper.html">Improved Few-Shot Visual Classification</a></p>
+<p><strong>利用未标记样本增强少样本图像分类：</strong><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2006.12245">Enhancing Few-Shot Image Classification with Unlabelled Examples</a></p>
+<p><strong>超越简单元学习：用于多领域、主动和持续少样本学习的多用途模型：</strong><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2201.05151">Beyond Simple Meta-Learning: Multi-Purpose Models for Multi-Domain, Active and Continual Few-Shot Learning</a></p>
+<p><strong>论标签高效的计算机视觉：构建快速有效的少样本图像分类器：</strong><a target="_blank" rel="noopener" href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0402554">On Label-Efficient Computer Vision: Building Fast and Effective Few-Shot Image Classifiers</a></p>
+<hr>
+<hr>
+<h2 id="Improved-Few-Shot-Visual-Classification"><a href="#Improved-Few-Shot-Visual-Classification" class="headerlink" title="Improved Few-Shot Visual Classification"></a>Improved Few-Shot Visual Classification</h2><p><strong>1. 问题背景：少样本图像分类</strong></p>
+<ul>
+<li><strong>目标</strong>：模型仅用<strong>极少量标注样本</strong>（如每类1-5张图）就能识别从未见过的新类别。</li>
+<li><strong>难点</strong>：传统深度学习需大量标注数据，而现实场景（如医疗、稀有物种识别）常缺乏数据。</li>
+<li><strong>现有方法局限</strong>：<ul>
+<li><strong>特征提取器</strong>：主流方法（如CNAPS）专注如何根据少量样本调整特征提取网络。</li>
+<li><strong>分类方式</strong>：多数用<strong>欧氏距离</strong>（假设各类特征分布均匀且无关），但实际特征分布复杂（如椭圆状）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>2. 核心创新：Simple CNAPS</strong></p>
+<p><strong>核心思想</strong></p>
+<blockquote>
+<p><strong>用马氏距离（Mahalanobis Distance）替代欧氏距离</strong>，并设计<strong>分层正则化的协方差估计</strong>方法，更精准建模各类特征分布。</p>
+</blockquote>
+<p><strong>关键改进</strong></p>
+<ul>
+<li><strong>马氏距离的优势</strong>：<ul>
+<li>欧氏距离：假设各类分布为“标准圆”（方差相同、方向无关）。</li>
+<li>马氏距离：考虑特征间相关性，形成“椭圆”决策边界（如图1），更贴合真实数据分布。</li>
+<li><strong>公式</strong>：<br>dk(x,y)&#x3D;12(x−y)T(Qkτ)−1(x−y)<em>d**k</em>​(<strong>x</strong>,<strong>y</strong>)&#x3D;21​(<strong>x</strong>−<strong>y</strong>)<em>T</em>(<strong>Q</strong><em>k**τ</em>​)−1(<strong>x</strong>−<strong>y</strong>)<br>（Qkτ<strong>Q</strong><em>k**τ</em>​是任务和类特定的协方差矩阵）</li>
+</ul>
+</li>
+<li><strong>协方差估计技巧</strong>（解决小样本问题）：<ul>
+<li>融合两个信息：<ol>
+<li><strong>类内协方差</strong>（ΣkτΣ<em>k**τ</em>）：当前类样本的特征分布。</li>
+<li><strong>任务全局协方差</strong>（ΣτΣ<em>τ</em>）：当前任务所有类的分布。</li>
+</ol>
+</li>
+<li><strong>自适应权重</strong>：<br>Qkτ&#x3D;λkτΣkτ+(1−λkτ)Στ+βI<strong>Q</strong><em>k**τ</em>​&#x3D;<em>λ<strong>k</strong>τ</em>​Σ<em>k**τ</em>​+(1−<em>λ<strong>k</strong>τ</em>​)Σ<em>τ</em>+<em>β**I</em><ul>
+<li>λkτ&#x3D;类样本数类样本数+1<em>λ<strong>k</strong>τ</em>&#x3D;类样本数+1类样本数：样本越少，越依赖全局信息（正则化更强）。</li>
+<li>βI<em>β**I</em>：防止矩阵不可逆。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>整体架构（对比CNAPS）</strong></p>
+<ul>
+<li><strong>保留部分</strong>：特征提取器（ResNet18 + FiLM自适应层），根据支持集动态调整特征。</li>
+<li><strong>替换部分</strong>：<ul>
+<li>CNAPS → 复杂自适应线性分类器（需训练77.8万参数）。</li>
+<li>Simple CNAPS → <strong>固定马氏距离分类器</strong>（零额外参数，更简单高效）。<br><a target="_blank" rel="noopener" href="https://production-media.paperswithcode.com/methods/Screen_Shot_2020-06-22_at_4.10.33_PM.png">https://production-media.paperswithcode.com/methods/Screen_Shot_2020-06-22_at_4.10.33_PM.png</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>3. 实验结果</strong></p>
+<p><strong>性能提升</strong></p>
+<ul>
+<li><strong>数据集</strong>：Meta-Dataset（12个数据集，8个训练域+4个外域）。</li>
+<li><strong>关键指标</strong>：<ul>
+<li><strong>域内平均准确率</strong>：73.8% → <strong>比原CNAPS提升4.2%</strong>。</li>
+<li><strong>外域平均准确率</strong>：69.7% → <strong>提升8.2%</strong>（泛化性更强）。</li>
+</ul>
+</li>
+<li><strong>小样本场景</strong>：<ul>
+<li>每类仅4个样本时，Simple CNAPS仍显著优于基线（图6）。</li>
+<li>1-shot设置下，miniImageNet准确率<strong>82.16%</strong>（原CNAPS 77.99%）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>消融实验</strong></p>
+<ul>
+<li><strong>马氏距离 vs 其他距离</strong>：<ul>
+<li>欧氏距离（L22<em>L</em>22） → 准确率下降2.6%</li>
+<li>余弦相似度 → 下降3.9%<br>（证明马氏距离的优越性）</li>
+</ul>
+</li>
+<li><strong>任务正则化项</strong>（ΣτΣ<em>τ</em>）：<ul>
+<li>移除后外域性能下降 → 验证分层正则化的必要性。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>4. 为什么有效？</strong></p>
+<ol>
+<li><strong>更科学的距离度量</strong>：<br>马氏距离建模类内特征分布（如方向、缩放），避免欧氏距离的“均匀分布”假设。</li>
+<li><strong>分层正则化</strong>：<ul>
+<li>样本极少时，用任务全局分布补充信息（防过拟合）。</li>
+<li>样本多时，专注类内分布（提升判别力）。</li>
+</ul>
+</li>
+<li><strong>端到端训练</strong>：<br>特征提取器从马氏距离损失中学习，主动生成利于协方差估计的特征。</li>
+</ol>
+<hr>
+<p><strong>5. 初学者要点</strong></p>
+<ul>
+<li><strong>关键创新点</strong>：用<strong>协方差矩阵+马氏距离</strong>替代简单的均值匹配。</li>
+<li><strong>优势</strong>：<ul>
+<li>更高准确率（尤其样本稀缺时）。</li>
+<li>零新增参数，结构更简洁。</li>
+<li>泛化性强（外域数据表现好）。</li>
+</ul>
+</li>
+<li><strong>典型应用场景</strong>：医疗影像、稀有物体识别等标注成本高的领域。</li>
+</ul>
+<blockquote>
+<p><strong>原文比喻</strong>（图1）：<br>欧氏距离像用“圆形漏斗”分类不同形状的积木，马氏距离则像用“定制形状的漏斗”——更贴合数据本质。</p>
+</blockquote>
+<hr>
+<p><strong>附：核心图表摘要</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>内容</strong></th>
+<th align="left"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">图1：决策边界对比</td>
+<td align="left">左：欧氏距离（圆形边界）→ 右：马氏距离（椭圆边界，更贴合数据分布）</td>
+</tr>
+<tr>
+<td align="left">图6：准确率 vs 样本数</td>
+<td align="left">样本增加时，Simple CNAPS性能提升显著快于基线（证明对小样本的适应性）</td>
+</tr>
+<tr>
+<td align="left">表1：域内数据集结果</td>
+<td align="left">Simple CNAPS在8个数据集上6项领先，平均73.8%</td>
+</tr>
+</tbody></table>
+<p>此工作证明：<strong>改进距离度量</strong>这一“简单”调整，能在少样本学习中带来显著突破，为后续研究开辟新方向（如探索其他Bregman散度）。</p>
+<hr>
+<hr>
+<h2 id="Enhancing-Few-Shot-Image-Classification-with-Unlabelled-Examples"><a href="#Enhancing-Few-Shot-Image-Classification-with-Unlabelled-Examples" class="headerlink" title="Enhancing Few-Shot Image Classification with Unlabelled Examples"></a>Enhancing Few-Shot Image Classification with Unlabelled Examples</h2><p>《利用未标记样本增强少样本图像分类》</p>
+<p><strong>1. 问题背景：直推式少样本学习</strong></p>
+<ul>
+<li><strong>目标</strong>：在少样本分类中，**同时利用标注的支持集（训练样本）和未标注的查询集（测试样本）**提升准确率。</li>
+<li><strong>挑战</strong>：传统方法（如Simple CNAPS）仅用支持集计算类均值和协方差，当样本极少（如每类1-5张）时估计不准确。</li>
+<li><strong>创新点</strong>：<br><strong>Transductive CNAPS</strong> &#x3D; Simple CNAPS + <strong>双阶段直推机制</strong><br>→ 同时优化特征提取和分类，利用未标注数据改进类参数估计。</li>
+</ul>
+<hr>
+<p><strong>2. 核心方法</strong></p>
+<p><strong>两项关键技术</strong></p>
+<ol>
+<li><strong>双通道任务编码器</strong><ul>
+<li>同时编码支持集和查询集：<ul>
+<li><strong>支持集嵌入</strong> es：按类别加权平均（防类别不平衡）</li>
+<li><strong>查询集嵌入</strong> eq：简单平均</li>
+</ul>
+</li>
+<li>通过LSTM融合生成最终任务表示 → <strong>动态适应特征提取器</strong>（图3）。<br><em>意义</em>：让特征提取感知查询集分布，提升域外泛化能力。</li>
+</ul>
+</li>
+<li><strong>软k均值聚类迭代优化</strong><ul>
+<li><strong>步骤</strong>（图1, 图4）：<br>① 用支持集初始化类均值 μk<strong>μ</strong><em>k</em>​ 和协方差 Qk<strong>Q</strong><em>k</em>​（同Simple CNAPS）<br>② <strong>迭代更新</strong>：<ul>
+<li><strong>E步</strong>：计算查询样本的软标签（属于各类的概率）</li>
+<li><strong>M步</strong>：用支持集（硬标签）+查询集（软标签）重新估计 μk 和 Qk</li>
+</ul>
+</li>
+<li><strong>动态迭代次数</strong>：每任务2-4步（避免过拟合，图6）。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>3. 为什么有效？</strong></p>
+<ul>
+<li><strong>小样本场景</strong>（每类&lt;10样本）：<br>查询集的软标签提供额外分布信息 → 显著提升协方差估计质量（图5a召回率最高提升9.8%）。</li>
+<li><strong>特征提取优化</strong>：<br>双通道编码器使特征更适应查询集分布 → 域外任务准确率提升明显（表1）。</li>
+<li><strong>对比纯高斯混合模型（GMM）</strong>：<br>本文的软k均值（忽略协方差行列式）比完整GMM准确率高4-8%（表3），因避免噪声敏感。</li>
+</ul>
+<hr>
+<p><strong>4. 实验结果</strong></p>
+<p><strong>关键指标</strong></p>
+<ul>
+<li><strong>Meta-Dataset基准</strong>（13个数据集）：<ul>
+<li><strong>整体平均排名1.9</strong>（超越所有基线，表1）</li>
+<li><strong>域外任务</strong>：4&#x2F;5数据集刷新SOTA（如Traffic Signs: <strong>76.1%</strong>）</li>
+<li><strong>提升来源</strong>：<ul>
+<li>双通道编码器 → 域外任务提升2.1%</li>
+<li>软聚类 → 域内任务提升1.8%</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Mini&#x2F;Tiered-ImageNet</strong>：<ul>
+<li><strong>FETI模式</strong>（用ImageNet预训练特征提取器）：<ul>
+<li>5-way 5-shot: <strong>91.5%</strong>（mini）&#x2F;<strong>87.7%</strong>（tiered）→ <strong>全面SOTA</strong>（表2）</li>
+</ul>
+</li>
+<li>每类查询样本增至50个 → 准确率持续上升（图8），证明未标注数据的价值。</li>
+</ul>
+</li>
+</ul>
+<p><strong>消融实验（表3）</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>组件</strong></th>
+<th align="left"><strong>影响</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">移除双通道编码器（FEOT）</td>
+<td align="left">域外任务↓2.1%</td>
+</tr>
+<tr>
+<td align="left">移除软聚类（COT）</td>
+<td align="left">域内任务↓1.8%</td>
+</tr>
+<tr>
+<td align="left">固定迭代步数</td>
+<td align="left">准确率↓0.5%（图6）</td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>5. 初学者要点</strong></p>
+<ul>
+<li><strong>核心创新</strong>：<br><strong>未标注数据指导模型优化</strong> → 通过软标签迭代修正类中心&#x2F;分布。</li>
+<li><strong>技术优势</strong>：<ul>
+<li>小样本场景（1-5 shot）提升显著</li>
+<li>域外泛化能力更强（双通道编码器捕捉任务特性）</li>
+</ul>
+</li>
+<li><strong>应用场景</strong>：<br>医疗影像（标注稀缺）、工业质检（需快速适应新缺陷类别）。</li>
+</ul>
+<blockquote>
+<p><strong>形象比喻</strong>：<br>就像老师先根据几个例题（支持集）讲解，再让学生（查询集）练习，根据练习反馈调整讲解重点——Transductive CNAPS让模型“教学相长”。</p>
+</blockquote>
+<hr>
+<p><strong>附：核心图表结论</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>图表</strong></th>
+<th align="left"><strong>关键结论</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">图5</td>
+<td align="left">每类样本&lt;10时，Transductive CNAPS召回率显著高于Simple CNAPS</td>
+</tr>
+<tr>
+<td align="left">表1</td>
+<td align="left">域外任务平均排名1.6（当前最佳），MSCOCO数据集提升至<strong>48.7%</strong></td>
+</tr>
+<tr>
+<td align="left">表2 (FETI)</td>
+<td align="left">预训练特征+直推学习 → mini-ImageNet 5-shot达<strong>91.5%</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<hr>
+<h2 id="Beyond-Simple-Meta-Learning-Multi-Purpose-Models-for-Multi-Domain-Active-and-Continual-Few-Shot-Learning"><a href="#Beyond-Simple-Meta-Learning-Multi-Purpose-Models-for-Multi-Domain-Active-and-Continual-Few-Shot-Learning" class="headerlink" title="Beyond Simple Meta-Learning: Multi-Purpose Models for Multi-Domain, Active and Continual Few-Shot Learning"></a>Beyond Simple Meta-Learning: Multi-Purpose Models for Multi-Domain, Active and Continual Few-Shot Learning</h2><p><strong>论文核心总结：让AI像人一样“小样本学习”</strong></p>
+<p><strong>1. 问题背景：</strong></p>
+<ul>
+<li><strong>深度学习的痛点：</strong> 训练强大的AI模型（如图像识别）通常需要海量<strong>标注好的数据</strong>，这既费钱又费力。</li>
+<li><strong>少样本学习的目标：</strong> 让AI模型像人类一样，只看到某个新类别（比如一种稀有鸟类）的<strong>几个例子（如5张图）</strong>，就能学会识别这个类别。</li>
+<li><strong>传统方法的局限：</strong> 很多现有的少样本学习方法在做分类判断时，假设提取到的图片特征之间<strong>互不相关</strong>，并且<strong>变化程度相同</strong>（就像假设所有特征的重要性都一样，并且分散程度一样）。这在现实中往往不成立（例如，“翅膀长度”和“羽毛颜色”这两个特征可能相关，且翅膀长度的变化范围可能比羽毛颜色大）。</li>
+</ul>
+<p><strong>2. 解决方案：Simple CNAPS (简单条件神经自适应过程)</strong></p>
+<ul>
+<li><strong>核心思想：</strong> 考虑特征之间的<strong>相关性</strong>和<strong>不同变化程度</strong>！</li>
+<li><strong>怎么做：</strong><ul>
+<li>用一个<strong>可调节的网络 (Adaptive Feature Extractor)</strong> 来提取图片特征。这个网络能根据当前的具体任务（比如要识别哪几个鸟类）进行微调。</li>
+<li>对于每个新类别，计算支持集图片（那几张例子图）特征的<strong>平均值 (µₖ)</strong> 和<strong>协方差矩阵 (Qₖ)</strong>。协方差矩阵就描述了特征之间如何相关以及各自的变化有多大。</li>
+<li>当遇到一张新图片（查询图片）时，计算它的特征向量到每个类别平均值向量之间的<strong>马氏距离 (Mahalanobis Distance)</strong>。这个距离很聪明，它会考虑协方差矩阵：如果某个特征在类内变化很大，那么在这个特征方向上距离远一点也没关系；如果特征之间高度相关，它会综合看待这些特征的变化。</li>
+<li>距离越近，属于该类别的概率就越高。</li>
+</ul>
+</li>
+<li><strong>好处：</strong> 效果更好！比之前一个很强的方法（CNAPS）在大型少样本数据集（Meta-Dataset）上提升了6.1%，而且还减少了78万多个参数。说明用数学（协方差+马氏距离）比用复杂网络学分类器更有效。</li>
+</ul>
+<p><strong>3. 进阶方案：Transductive CNAPS (直推式条件神经自适应过程)</strong></p>
+<ul>
+<li><strong>核心思想：</strong> 利用<strong>未标注的查询图片</strong>（测试图片）来进一步优化模型！就像考试时允许你瞄一眼所有题目（但不看答案）再作答。</li>
+<li><strong>怎么做：</strong><ul>
+<li><strong>任务编码器升级：</strong> 不仅看支持集例子，也把所有查询图片的特征整体信息考虑进去，生成一个更全面的“任务描述”。</li>
+<li><strong>软K均值聚类：</strong> 初始化：用支持集图片计算初始的类均值和协方差（就像Simple CNAPS那样）。<br>迭代：<ul>
+<li><strong>E步：</strong> 用当前的均值和协方差，给<strong>所有图片（支持集+查询集）</strong> 计算一个“软标签”（属于每个类的概率）。</li>
+<li><strong>M步：</strong> 用这些“软标签”作为权重，重新计算每个类的均值和协方差（支持集图片的权重是1，查询集图片的权重是其概率）。</li>
+<li>重复几次，直到类分配稳定或达到最大步数。</li>
+</ul>
+</li>
+<li>用最终精炼后的均值和协方差，对查询图片进行分类。</li>
+</ul>
+</li>
+<li><strong>好处：</strong> 效果比Simple CNAPS还要好！尤其是在每个类别例子特别少（如只有1个）的时候，提升更明显。因为它利用了额外的未标注信息来“校准”类的特征分布。</li>
+</ul>
+<p><strong>4. 多才多艺：扩展到主动学习和持续学习</strong></p>
+<ul>
+<li><strong>开箱即用的主动学习：</strong><ul>
+<li><strong>场景：</strong> 给你一堆<strong>没标签的图片</strong>，你每次可以花钱问一张图的标签。目标是<strong>用最少的钱</strong>让模型对这堆图分类得最好。</li>
+<li><strong>怎么做：</strong> 直接用训练好的Simple&#x2F;Transductive CNAPS模型，不需要额外训练。</li>
+<li><strong>策略：</strong> 尝试了三种选图问标签的方法：<ul>
+<li>随机选。</li>
+<li>选模型最<strong>不确定</strong>的图（预测熵最大）。</li>
+<li>选模型最<strong>不自信</strong>的图（最大类别概率最小）。</li>
+</ul>
+</li>
+<li><strong>结果：</strong> 基于不确定性的策略（后两种）效果远好于随机选。说明模型能很好地估计自己的“不知道”。</li>
+</ul>
+</li>
+<li><strong>开箱即用的持续学习：</strong><ul>
+<li><strong>场景：</strong> 模型要<strong>连续学习一系列不同的任务</strong>（比如先学识别猫狗，再学识别车辆，再学识别花卉…），学新任务时不能忘记旧任务，还不能存所有旧数据。</li>
+<li><strong>怎么做：</strong> 修改Simple&#x2F;Transductive CNAPS来累积类的知识。<ul>
+<li><strong>类参数更新：</strong> 遇到之前见过的类时，用新旧任务的数据加权平均更新该类别的均值和协方差（数量多的数据权重更大）。</li>
+<li><strong>特征空间适应：</strong> 尝试了三种策略更新任务编码（影响特征提取）：<ul>
+<li><strong>移动编码 (Moving)：</strong> 只用当前任务的编码。问题：特征空间变化太大，旧类知识在新空间失效。</li>
+<li><strong>首个编码 (First)：</strong> 固定用第一个任务的编码。问题：特征空间只优化了第一个任务。</li>
+<li><strong>平均编码 (Averaging)：</strong> 对历史所有任务的编码做加权平均。折中方案。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>结果：</strong> “首个编码”策略在“多头”（每个任务独立分类）设定下效果最好，但在“单头”（所有任务所有类一起分类）设定下遗忘严重。持续学习仍然是个挑战，但论文提供了可行的基线方法。</li>
+</ul>
+</li>
+</ul>
+<p><strong>5. 理论联系</strong></p>
+<ul>
+<li><strong>概率模型：</strong> Simple CNAPS 可以看作是正则化的高斯混合模型 (GMM) 的一种特例。</li>
+<li><strong>黎曼度量学习：</strong> 马氏距离可以理解为在特征空间定义了一种“弯曲的尺子”（黎曼度量）。这种“尺子”在类别中心附近，形状由该类的协方差矩阵决定。论文从几何角度解释了为什么马氏距离有效。</li>
+</ul>
+<p><strong>6. 关键贡献总结：</strong></p>
+<ol>
+<li><strong>Simple CNAPS：</strong> 用<strong>马氏距离</strong>代替传统分类器，显著提升少样本分类性能，且更简单高效。</li>
+<li><strong>Transductive CNAPS：</strong> 通过<strong>任务编码器升级</strong>和<strong>软K均值迭代优化</strong>，有效利用未标注查询数据，达到当时最好效果。</li>
+<li><strong>统一框架：</strong> 首次将同一个模型框架（Simple&#x2F;Trans CNAPS）成功应用于<strong>少样本分类、主动学习、持续学习</strong>三大任务，且是“开箱即用”（无需针对特定任务重新训练），展示了模型的<strong>鲁棒性和通用性</strong>。</li>
+<li><strong>理论见解：</strong> 连接了模型与概率混合模型（GMM）和黎曼几何（度量学习），提供了更深层的理解。</li>
+<li><strong>实验验证：</strong> 在多个大型标准数据集（Meta-Dataset, mini-ImageNet, tiered-ImageNet）上进行了广泛实验和消融研究，充分验证了方法的有效性和设计选择的重要性。</li>
+<li><strong>代码开源：</strong> 所有模型和代码都已公开。</li>
+</ol>
+<p><strong>7. 对初学者的启示：</strong></p>
+<ul>
+<li>少样本学习的关键挑战是<strong>数据极度稀缺</strong>。</li>
+<li>更<strong>精细地建模类别内部的特征分布</strong>（均值+协方差）比简单假设所有特征独立同分布更有效。</li>
+<li><strong>利用未标注数据（直推）</strong> 是提升小样本性能的有效途径。</li>
+<li>设计<strong>通用、灵活</strong>的模型架构（如CNAPS系列）可以让一个模型解决多种相关学习问题（分类、主动学、持续学）。</li>
+<li>好的模型设计有时需要结合<strong>深度网络</strong>和<strong>精巧的数学工具</strong>（如协方差估计、马氏距离）。</li>
+</ul>
+<p><strong>简单来说，这篇论文教会了AI模型：</strong></p>
+<ul>
+<li><strong>看几个例子学新东西时，要更“聪明”地比较特征（用马氏距离）。</strong></li>
+<li><strong>考试时允许先看看所有题目（但不看答案）能考得更好（直推学习）。</strong></li>
+<li><strong>同一个“大脑”既能快速学习新东西（少样本），又能聪明地问问题（主动学习），还能不断积累知识不忘记（持续学习）。</strong></li>
+</ul>
+<hr>
+<hr>
+<h2 id="On-Label-Efficient-Computer-Vision-Building-Fast-and-Effective-Few-Shot-Image-Classifiers"><a href="#On-Label-Efficient-Computer-Vision-Building-Fast-and-Effective-Few-Shot-Image-Classifiers" class="headerlink" title="On Label-Efficient Computer Vision: Building Fast and Effective Few-Shot Image Classifiers"></a>On Label-Efficient Computer Vision: Building Fast and Effective Few-Shot Image Classifiers</h2><p><strong>核心问题</strong></p>
+<p>现代深度学习依赖<strong>大量标注数据</strong>，但实际场景中标注成本高。<strong>小样本学习（Few-Shot Learning）</strong> 目标：仅用<strong>极少量标注样本</strong>（如每类1-5张图）训练高性能图像分类器。</p>
+<hr>
+<p><strong>创新方法</strong></p>
+<ol>
+<li><strong>Simple CNAPS</strong></li>
+</ol>
+<ul>
+<li><strong>核心思想</strong>：<br>传统分类器假设特征分布均匀（如图1a），但实际特征可能存在方向性差异（如图1b）。<br>→ 提出<strong>马氏距离（Mahalanobis Distance）</strong> 替代欧氏距离，通过<strong>协方差矩阵</strong>量化特征间相关性。</li>
+<li><strong>技术改进</strong>：<ul>
+<li>用<strong>正则化协方差估计</strong>（公式4.3）解决小样本下协方差计算不稳定问题。</li>
+<li>比原模型（CNAPS）参数量减少78.8万，性能反升6.1%。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>Transductive CNAPS</strong></li>
+</ol>
+<ul>
+<li><strong>核心思想</strong>：<br>利用<strong>未标注的测试数据</strong>（查询集）提升分类效果（图1c）。类似“先猜后改”：<br>① 用标注数据初始化类别参数；<br>② 预测未标注数据标签（软标签）；<br>③ 结合标注+未标注数据迭代优化参数（图4.5）。</li>
+<li><strong>关键技术</strong>：<ul>
+<li><strong>两步任务编码器</strong>（图4.4）：融合标注集和查询集信息生成任务特征。</li>
+<li><strong>动态迭代机制</strong>：根据任务复杂度自适应调整优化步数（图6.4）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>实验效果</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>基准数据集</strong></th>
+<th align="left"><strong>效果</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>Meta-Dataset</strong></td>
+<td align="left">Transductive CNAPS综合排名第1（表6.1-6.2）</td>
+</tr>
+<tr>
+<td align="left"><strong>mini&#x2F;tiered-ImageNet</strong></td>
+<td align="left">使用ImageNet预训练时，<strong>12项测试中8项刷新记录</strong>（表6.3-6.4）</td>
+</tr>
+<tr>
+<td align="left"><strong>关键发现</strong></td>
+<td align="left">样本越少（如每类&lt;10图），Transductive方法优势越大（图6.1）</td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>延伸应用</strong></p>
+<ul>
+<li><strong>主动学习（Active Learning）</strong>（图6.5）：<br>模型自动选择“最不确定”的样本请求标注，比随机标注效率提升20-30%。</li>
+<li><strong>持续学习（Continual Learning）</strong>（图6.2-6.3）：<br>提出<strong>特征空间稳定策略</strong>（如固定首次任务编码），缓解学习新任务时“遗忘旧知识”问题。</li>
+</ul>
+<hr>
+<p><strong>代码与理论</strong></p>
+<ul>
+<li><strong>开源地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/plai-group/simple-cnaps">GitHub</a></li>
+<li><strong>理论支撑</strong>：<ul>
+<li><strong>Bregman软聚类</strong>：解释马氏距离与聚类的关联（第5.1节）。</li>
+<li><strong>黎曼度量学习</strong>：将特征空间视为曲面，马氏距离近似曲面上最短路径（第5.2节）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>通俗理解</strong></p>
+<blockquote>
+<p>想象你要区分“猫狗”但每类只有1张图：</p>
+<ul>
+<li><strong>Simple CNAPS</strong>：不仅比较图片相似度，还学习“猫图之间哪些特征差异更重要”（如耳朵形状）。</li>
+<li><strong>Transductive CNAPS</strong>：额外利用待分类图片优化模型，类似“边考试边学习”。<br>两者结合，使模型在标注稀缺时更鲁棒高效。</li>
+</ul>
+</blockquote>
+<hr>
+<p>总结：论文通过<strong>改进距离度量</strong>和<strong>利用未标注数据</strong>，显著提升小样本分类性能，并拓展至主动&#x2F;持续学习场景，为低标注成本视觉任务提供实用方案。</p>
+<hr>
+<hr>
+<h1 id="plai-group-simple-cnaps"><a href="#plai-group-simple-cnaps" class="headerlink" title="plai-group&#x2F;simple-cnaps"></a>plai-group&#x2F;simple-cnaps</h1><p><a target="_blank" rel="noopener" href="https://github.com/plai-group/simple-cnaps">https://github.com/plai-group/simple-cnaps</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog2025.github.io/2025/08/05/Few3/" rel="prev" title="few_shot_meta_learning">
+                  <i class="fa fa-angle-left"></i> few_shot_meta_learning
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog2025.github.io/2025/08/13/Few5/" rel="next" title="google-research/big_vision">
+                  google-research/big_vision <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    
+    <!-- 去除心形图案
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    -->
+    <span class="post-meta-divider">|</span>
+
+    <span class="author" itemprop="copyrightHolder">lsdyun</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+<!--隐藏网页底部powered by Hexo 强力驱动-->
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/blog2025.github.io/js/comments.js"></script><script src="/blog2025.github.io/js/utils.js"></script><script src="/blog2025.github.io/js/motion.js"></script><script src="/blog2025.github.io/js/sidebar.js"></script><script src="/blog2025.github.io/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/blog2025.github.io/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/blog2025.github.io/js/third-party/fancybox.js"></script>
+
+  <script src="/blog2025.github.io/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+</body>
+</html>

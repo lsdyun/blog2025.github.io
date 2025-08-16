@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/blog2025.github.io/archives/">
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -178,6 +178,522 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/29/Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog2025.github.io/2025/05/29/Python/" class="post-title-link" itemprop="url">Python</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-05-29 10:22:14" itemprop="dateCreated datePublished" datetime="2025-05-29T10:22:14+08:00">2025-05-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-08 12:07:25" itemprop="dateModified" datetime="2025-06-08T12:07:25+08:00">2025-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h1><p><em><strong>Python 是一种解释型、面向对象、动态数据类型的高级程序设计语言。</strong></em></p>
+<ul>
+<li><p><strong>Python 是一种解释型语言： 这意味着开发过程中没有了编译这个环节。</strong></p>
+<p><strong>Python 代码执行时通过解释器逐行转换为机器指令，无需预编译步骤。</strong></p>
+<p><strong>Java 是编译+解释混合型，先将源代码编译为<code>.class</code>字节码文件，再由<code>JVM</code>解释或<code>JIT</code>动态编译为机器码。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello.py =&gt; 机器码 =&gt; 执行</span><br><span class="line">hello.java =&gt; hello.class =&gt; 机器码 =&gt; 执行</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>Python</strong></th>
+<th><strong>Java</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>‌执行速度‌</strong></td>
+<td><strong>解释执行效率较低（逐行翻译）</strong></td>
+<td><strong><code>JIT</code>编译优化后接近原生性能，适合高性能场景</strong></td>
+</tr>
+<tr>
+<td><strong>‌内存管理‌</strong></td>
+<td><strong>自动垃圾回收，但内存占用较高</strong></td>
+<td><strong>严格的<code>JVM</code>内存管理机制，适合处理大规模数据</strong></td>
+</tr>
+<tr>
+<td><strong>‌典型应用场景‌</strong></td>
+<td><strong>快速开发、脚本任务、数据分析&#x2F;ML</strong></td>
+<td><strong>企业级应用、安卓开发、高并发服务器</strong></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>Python 是交互式语言： 这意味着，您可以在一个 Python 提示符 <code>&gt;&gt;&gt;</code> 后直接执行代码。</strong></p>
+</li>
+<li><p><strong>Python 是面向对象语言: 这意味着Python支持面向对象的风格或代码封装在对象的编程技术。</strong></p>
+</li>
+<li><p><strong>Python 是初学者的语言：Python 对初级程序员而言，是一种伟大的语言，它支持广泛的应用程序开发，从简单的文字处理到 WWW 浏览器再到游戏。</strong></p>
+</li>
+</ul>
+<p><strong><em>Python</em> 常用文件扩展名为 .py。</strong></p>
+<p><strong><em>Python</em> 特点：</strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog2025.github.io/2025/05/29/Python/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/28/Git%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog2025.github.io/2025/05/28/Git%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Git</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-05-28 13:28:47" itemprop="dateCreated datePublished" datetime="2025-05-28T13:28:47+08:00">2025-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-03 13:50:16" itemprop="dateModified" datetime="2025-07-03T13:50:16+08:00">2025-07-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Git-教程"><a href="#Git-教程" class="headerlink" title="Git 教程"></a>Git 教程</h1><p><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-install-setup.html"><strong>Git 安装</strong></a></p>
+<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><ul>
+<li>**工作区：**就是你在电脑里能看到的目录。</li>
+<li>**暂存区：**英文叫 stage 或 index。一般存放在 <strong><code>.git</code></strong> 目录下的 index 文件（.git&#x2F;index）中，所以我们把暂存区有时也叫作索引（index）。</li>
+<li>**版本库：**工作区有一个隐藏目录 <strong><code>.git</code></strong>，这个不算工作区，而是 Git 的版本库。</li>
+</ul>
+<p><img src="https://www.runoob.com/wp-content/uploads/2015/02/1352126739_7909.jpg" alt="img"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog2025.github.io/2025/05/28/Git%E5%91%BD%E4%BB%A4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/28/Vue3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog2025.github.io/2025/05/28/Vue3/" class="post-title-link" itemprop="url">Vue3</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-05-28 11:23:53 / 修改时间：11:34:15" itemprop="dateCreated datePublished" datetime="2025-05-28T11:23:53+08:00">2025-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Vue3"><a href="#Vue3" class="headerlink" title="Vue3"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/vue3/vue3-project-intro.html">Vue3</a></h1><p>一个渐进式框架</p>
+<p>安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install vue@next</span><br></pre></td></tr></table></figure>
+
+<p>创建脚手架 CLI</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog2025.github.io/2025/05/28/Vue3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/28/Vue3%20%E5%AE%9E%E9%99%85%E5%BC%80%E5%8F%91%E6%A8%A1%E6%9D%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog2025.github.io/2025/05/28/Vue3%20%E5%AE%9E%E9%99%85%E5%BC%80%E5%8F%91%E6%A8%A1%E6%9D%BF/" class="post-title-link" itemprop="url">Vue3 实际开发模板</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-05-28 11:23:12 / 修改时间：11:23:49" itemprop="dateCreated datePublished" datetime="2025-05-28T11:23:12+08:00">2025-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Vue3-开发模板"><a href="#Vue3-开发模板" class="headerlink" title="Vue3 开发模板"></a>Vue3 开发模板</h2><p>以下是一个完整的、可直接运行的 Vue3 项目配置示例，实现了开发&#x2F;生产环境分离和 axios 封装：</p>
+<hr>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">my-vue-project/</span><br><span class="line">├── public/</span><br><span class="line">├── src/</span><br><span class="line">│   ├── utils/</span><br><span class="line">│   │   └── request.js    # axios 封装核心</span><br><span class="line">│   ├── views/</span><br><span class="line">│   │   └── HelloWorld.vue  # 示例页面</span><br><span class="line">│   └── main.js</span><br><span class="line">├── .env.development      # 开发环境配置</span><br><span class="line">├── .env.production       # 生产环境配置</span><br><span class="line">└── vue.config.js         # 代理配置</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog2025.github.io/2025/05/28/Vue3%20%E5%AE%9E%E9%99%85%E5%BC%80%E5%8F%91%E6%A8%A1%E6%9D%BF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/28/TypeScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog2025.github.io/2025/05/28/TypeScript/" class="post-title-link" itemprop="url">TypeScript</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-05-28 11:22:09 / 修改时间：11:22:52" itemprop="dateCreated datePublished" datetime="2025-05-28T11:22:09+08:00">2025-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://www.runoob.com/typescript/ts-tutorial.html">TypeScript 教程 1</a></p>
+<p><a target="_blank" rel="noopener" href="https://typescript.p6p.net/about/experience.html">TypeScript 教程 2</a></p>
+<h1 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h1><h2 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog2025.github.io/2025/05/28/TypeScript/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -665,483 +1181,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/28/%E7%B3%BB%E7%BB%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/05/28/%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">系统</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-05-28 10:55:54 / 修改时间：11:21:08" itemprop="dateCreated datePublished" datetime="2025-05-28T10:55:54+08:00">2025-05-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="国产化操作系统"><a href="#国产化操作系统" class="headerlink" title="国产化操作系统"></a>国产化操作系统</h2><h3 id="一、OpenEuler版本推荐"><a href="#一、OpenEuler版本推荐" class="headerlink" title="一、OpenEuler版本推荐"></a>一、OpenEuler版本推荐</h3><ol>
-<li>‌<strong>OpenEuler 24.03 LTS（长期支持版）</strong><ul>
-<li>‌<strong>安全性强化</strong>‌：集成安全启动、数据加密等机制，通过内核级防护满足军工领域高安全需求。</li>
-<li>‌<strong>硬件适配</strong>‌：支持鲲鹏、飞腾等国产芯片及ARM&#x2F;x86架构，适配军工场景的多样化硬件部署。</li>
-<li>‌<strong>技术特性</strong>‌：首个AI原生操作系统版本，支持AI框架优化和边缘计算节点管理，便于智能化军事应用开发。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h3 id="二、麒麟操作系统版本推荐"><a href="#二、麒麟操作系统版本推荐" class="headerlink" title="二、麒麟操作系统版本推荐"></a>二、麒麟操作系统版本推荐</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/05/28/%E7%B3%BB%E7%BB%9F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/28/Nginx/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/05/28/Nginx/" class="post-title-link" itemprop="url">Nginx</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-05-28 10:54:24 / 修改时间：11:20:26" itemprop="dateCreated datePublished" datetime="2025-05-28T10:54:24+08:00">2025-05-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a><a target="_blank" rel="noopener" href="https://nginx.mosong.cc/guide/">Nginx</a></h1><p><strong><a target="_blank" rel="noopener" href="https://www.w3ccoo.com/nginx/default.html">https://www.w3ccoo.com/nginx/default.html</a></strong></p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>Nignx：Web服务器&#x2F;反向代理服务器及电子邮件（IMAP&#x2F;POP3）代理服务器</p>
-<p>特点：占用内存少，并发能力强。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/05/28/Nginx/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/28/Docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/05/28/Docker/" class="post-title-link" itemprop="url">Docker</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-05-28 10:50:25 / 修改时间：11:19:14" itemprop="dateCreated datePublished" datetime="2025-05-28T10:50:25+08:00">2025-05-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-tutorial.html">Docker</a></h1><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2371321">虚拟机和容器的区别</a></p>
-<p><strong>虚拟机</strong>：通过软件模拟一个具有<strong>完整硬件系统功能</strong>、<strong>运行在一个完全隔离环境</strong>中的<strong>完整</strong>计算机系统。</p>
-<p><img src="/blog2025.github.io/2025/05/28/Docker/image-20250509100955448.png" alt="image-20250509100955448"></p>
-<ul>
-<li><strong>缺点</strong>：资源占用多、冗余步骤多、启动慢。</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/05/28/Docker/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/05/16/k8s/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/05/16/k8s/" class="post-title-link" itemprop="url">k8s</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-05-16 10:53:56" itemprop="dateCreated datePublished" datetime="2025-05-16T10:53:56+08:00">2025-05-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-05-28 11:20:09" itemprop="dateModified" datetime="2025-05-28T11:20:09+08:00">2025-05-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/k8s/" itemprop="url" rel="index"><span itemprop="name">k8s</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>‌<strong>k8s 和 Eureka&#x2F;Nacos 的关系就像快递公司和菜鸟驿站</strong>‌</p>
-<ol>
-<li>‌**k8s（快递公司）**‌：负责把你的应用包裹（容器）运到服务器仓库（集群），并保证包裹不丢（自动重启）、不够时加车（扩缩容）。</li>
-<li>‌**Eureka&#x2F;Nacos（菜鸟驿站）**‌：包裹送到后，帮你登记包裹位置（服务注册），告诉其他包裹去哪儿取货（服务发现），还能代收快递通知（动态配置）。</li>
-</ol>
-<p>‌**怎么用？**‌</p>
-<ul>
-<li>如果只用 k8s：相当于快递直接送货上门（Service DNS），简单但功能少。</li>
-<li>如果加上 Eureka&#x2F;Nacos：相当于用菜鸟驿站，能存包裹、发取件码（复杂治理），适合大社区（复杂微服务）。</li>
-</ul>
-<p>‌<strong>一句话总结</strong>‌：k8s 管运输，Eureka&#x2F;Nacos 管售后，按需选配！</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog2025.github.io/2025/05/16/k8s/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/04/13/React/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
-      <meta itemprop="name" content="lsdyun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 记录博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog2025.github.io/2025/04/13/React/" class="post-title-link" itemprop="url">React</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-13 11:20:03 / 修改时间：11:20:40" itemprop="dateCreated datePublished" datetime="2025-04-13T11:20:03+08:00">2025-04-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog2025.github.io/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-
-		<!--  设置置顶图标  -->
-		        
-		<!--  设置置顶图标  -->
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>教程：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/634471047?utm_psn=1687962556264763392">https://zhuanlan.zhihu.com/p/634471047?utm_psn=1687962556264763392</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/blog2025.github.io/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog2025.github.io/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog2025.github.io/page/3/">3</a><a class="page-number" href="/blog2025.github.io/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/blog2025.github.io/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/blog2025.github.io/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog2025.github.io/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog2025.github.io/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog2025.github.io/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/blog2025.github.io/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

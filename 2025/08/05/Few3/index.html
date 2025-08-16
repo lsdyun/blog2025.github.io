@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog2025.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog2025.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog2025.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog2025.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog2025.github.io/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lsdyun.github.io","root":"/blog2025.github.io/","images":"/blog2025.github.io/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog2025.github.io/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog2025.github.io/js/config.js"></script>
+
+    <meta name="description" content="few_shot_meta_learningFew-Shot少样本图像分类算法总结（含代码链接） Few-shot learning few_shot_meta_learning 该代码库包含了使用PyTorch解决少样本学习（few-shot learning）问题的多种元学习算法的实现，包括：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="few_shot_meta_learning">
+<meta property="og:url" content="https://lsdyun.github.io/blog2025.github.io/2025/08/05/Few3/index.html">
+<meta property="og:site_name" content="记录博客">
+<meta property="og:description" content="few_shot_meta_learningFew-Shot少样本图像分类算法总结（含代码链接） Few-shot learning few_shot_meta_learning 该代码库包含了使用PyTorch解决少样本学习（few-shot learning）问题的多种元学习算法的实现，包括：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-05T02:57:28.498Z">
+<meta property="article:modified_time" content="2025-08-12T01:55:46.700Z">
+<meta property="article:author" content="lsdyun">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lsdyun.github.io/blog2025.github.io/2025/08/05/Few3/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lsdyun.github.io/blog2025.github.io/2025/08/05/Few3/","path":"2025/08/05/Few3/","title":"few_shot_meta_learning"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>few_shot_meta_learning | 记录博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog2025.github.io/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog2025.github.io/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记录博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog2025.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/blog2025.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/blog2025.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/blog2025.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#few-shot-meta-learning"><span class="nav-number">1.</span> <span class="nav-text">few_shot_meta_learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E"><span class="nav-number">1.1.</span> <span class="nav-text">实现机制说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-number">1.2.</span> <span class="nav-text">数据源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C"><span class="nav-number">1.3.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E8%AF%B4%E6%98%8E"><span class="nav-number">1.4.</span> <span class="nav-text">最后说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-Agnostic-Meta-Learning-MAML"><span class="nav-number">1.5.</span> <span class="nav-text">Model-Agnostic Meta-Learning (MAML)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Probabilistic-Model-Agnostic-Meta-Learning-PLATIPUS"><span class="nav-number">1.6.</span> <span class="nav-text">Probabilistic Model-Agnostic Meta-Learning (PLATIPUS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prototypical-Networks-protonet"><span class="nav-number">1.7.</span> <span class="nav-text">Prototypical Networks (protonet)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bayesian-Model-Agnostic-Meta-Learning-BMAML-without-Chaser-loss"><span class="nav-number">1.8.</span> <span class="nav-text">Bayesian Model-Agnostic Meta-Learning (BMAML) (without Chaser loss)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amortized-Bayesian-Meta-Learning"><span class="nav-number">1.9.</span> <span class="nav-text">Amortized Bayesian Meta-Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Uncertainty-in-Model-Agnostic-Meta-Learning-using-Variational-Inference-VAMPIRE"><span class="nav-number">1.10.</span> <span class="nav-text">Uncertainty in Model-Agnostic Meta-Learning using Variational Inference (VAMPIRE)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PAC-Bayes-Meta-learning-with-Implicit-Task-specific-Posteriors"><span class="nav-number">1.11.</span> <span class="nav-text">PAC-Bayes Meta-learning with Implicit Task-specific Posteriors</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lsdyun"
+      src="/blog2025.github.io/images/avatar.png">
+  <p class="site-author-name" itemprop="name">lsdyun</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog2025.github.io/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog2025.github.io/categories/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lsdyun" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lsdyun" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/08/05/Few3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="few_shot_meta_learning | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          few_shot_meta_learning
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-08-05 10:57:28" itemprop="dateCreated datePublished" datetime="2025-08-05T10:57:28+08:00">2025-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-12 09:55:46" itemprop="dateModified" datetime="2025-08-12T09:55:46+08:00">2025-08-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/Few-shot-learning/" itemprop="url" rel="index"><span itemprop="name">Few-shot learning</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="few-shot-meta-learning"><a href="#few-shot-meta-learning" class="headerlink" title="few_shot_meta_learning"></a>few_shot_meta_learning</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/A15216110998/article/details/144417167">Few-Shot少样本图像分类算法总结（含代码链接）</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44211968/article/details/121314757">Few-shot learning</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/cnguyen10/few_shot_meta_learning">few_shot_meta_learning</a></p>
+<p>该代码库包含了使用PyTorch解决少样本学习（few-shot learning）问题的多种元学习算法的实现，包括：</p>
+<ul>
+<li><strong>模型不可知元学习：</strong><a target="_blank" rel="noopener" href="http://proceedings.mlr.press/v70/finn17a/finn17a.pdf">Model-Agnostic Meta-Learning (MAML)</a></li>
+<li><strong>概率模型不可知元学习：</strong><a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/8161-probabilistic-model-agnostic-meta-learning.pdf">Probabilistic Model-Agnostic Meta-Learning (PLATIPUS)</a></li>
+<li><strong>原型网络：</strong><a target="_blank" rel="noopener" href="http://papers.nips.cc/paper/6996-prototypical-networks-for-few-shot-learning.pdf">Prototypical Networks (protonet)</a></li>
+<li><strong>贝叶斯模型不可知元学习 (BMAML) (不含Chaser损失)：</strong><a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/7963-bayesian-model-agnostic-meta-learning.pdf">Bayesian Model-Agnostic Meta-Learning (BMAML)</a> (without Chaser loss)</li>
+<li><strong>摊销贝叶斯元学习：</strong><a target="_blank" rel="noopener" href="https://openreview.net/pdf?id=rkgpy3C5tX">Amortized Bayesian Meta-Learning</a></li>
+<li><strong>使用变分推断的模型不可知元学习中的不确定性：</strong> <a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content_WACV_2020/papers/Nguyen_Uncertainty_in_Model-Agnostic_Meta-Learning_using_Variational_Inference_WACV_2020_paper.pdf">Uncertainty in Model-Agnostic Meta-Learning using Variational Inference (VAMPIRE)</a></li>
+<li><strong>基于隐式任务特定后验的PAC-Bayes元学习：</strong><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9699417">PAC-Bayes Meta-learning with Implicit Task-specific Posteriors</a></li>
+</ul>
+<p><strong>使用模型函数形式 (functional form) 的更新</strong></p>
+<p><strong>“函数形式” (functional) 是什么意思？</strong><br>它类似于 PyTorch 中的 <code>torch.nn.functional</code> 模块，其中参数可以<strong>显式地</strong>处理，而不是像在 PyTorch <code>torch.nn.Sequential()</code> 中那样<strong>隐式地</strong>处理。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 传统方式 (隐式处理参数)</span></span><br><span class="line">y = net(x)  <span class="comment"># 参数由 PyTorch 隐式处理</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 函数形式</span></span><br><span class="line">y = functional_net(x, params=theta)  <span class="comment"># theta 是显式传入的参数</span></span><br></pre></td></tr></table></figure>
+
+<p>在当前版本的 PyTorch 中，需要通过 <code>torch.nn.functional</code> 手动实现感兴趣模型的每个组件的“函数形式”。然而，在更改网络架构时，这很不方便。</p>
+<p>幸运的是，Facebook Research 开发了 <code>higher</code> 库 - 这个库可以轻松地将任何“传统”神经网络转换为其“函数形式”，以便显式地处理参数。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义一个网络</span></span><br><span class="line">resnet18 = torchvision.models.resnet18(pretrained=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取其参数</span></span><br><span class="line">params = <span class="built_in">list</span>(resnet18.parameters())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将网络转换为函数形式</span></span><br><span class="line">f_resnet18 = higher.patch.make_functional(resnet18)  <span class="comment"># 注意修正了拼写错误 (restnet18 -&gt; resnet18)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用函数形式并显式处理参数进行前向传播</span></span><br><span class="line">y1 = f_resnet18(x=x1, params=params)  <span class="comment"># 更常见的调用方式</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新参数</span></span><br><span class="line">new_params = update_parameter(params)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用新参数对不同数据进行前向传播</span></span><br><span class="line">y2 = f_resnet18(x=x2, params=new_params)</span><br></pre></td></tr></table></figure>
+
+<p>因此，我们只需要加载或指定用 PyTorch 编写的“传统”模型，而无需手动重新实现其“函数形式”。一些常见模型已在 <code>CommonModels.py</code> 中实现。</p>
+<p>尽管 <code>higher</code> 提供了方便的 API 来跟踪梯度，但它不允许我们使用“一阶近似”（first-order approximation），这会导致更高的内存消耗和更长的训练时间。我已经创建了一个变通解决方案来启用“一阶近似”，并通过在运行代码时设置 <code>--first-order=True</code> 来控制它。</p>
+<h2 id="实现机制说明"><a href="#实现机制说明" class="headerlink" title="实现机制说明"></a><strong>实现机制说明</strong></h2><p>实现主要集中在抽象基类 <code>MLBaseClass.py</code> 中，一些辅助类和函数在 <code>_utils.py</code> 中。该实现的操作原理可分为 3 个步骤：</p>
+<p><strong>步骤 1：初始化超网络 (hyper-net) 和基础网络 (base-net)</strong><br>回顾元学习的本质：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">θ → w → y ← x,</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>θ</code> 表示超网络的参数，<code>w</code> 是基础模型的参数，<code>(x, y)</code> 是数据。</p>
+<p>该实现的设计遵循这个生成过程，超网络将生成基础网络。可以用以下伪代码概括：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化</span></span><br><span class="line">base_net = ResNet18()  <span class="comment"># 基础网络 (base-net)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 转换为函数形式</span></span><br><span class="line">f_base_net = torch_to_functional_module(module=base_net)  <span class="comment"># 概念步骤，实际由 higher 完成</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从基础网络创建超网络 (hyper-net)</span></span><br><span class="line">hyper_net = hyper_net_cls(base_net=base_net)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 超网络生成基础网络的参数</span></span><br><span class="line">base_net_params = hyper_net.forward()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进行预测</span></span><br><span class="line">y = f_base_net(x, params=base_net_params)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>MAML:</strong> 超网络就是基础网络的初始化。因此，生成过程遵循恒等操作，所以 <code>hyper_net_cls</code> 在 <code>_utils.py</code> 中被定义为 <code>IdentityNet</code> 类。</li>
+<li><strong>ABML 和 VAMPIRE:</strong> 基础网络参数是从由元参数参数化的对角高斯分布中抽取的样本。因此，超网络被设计来模拟这个抽样过程。在这种情况下，<code>hyper_net_cls</code> 是 <code>_utils.py</code> 中的 <code>NormalVariationalNet</code> 类。</li>
+<li><strong>原型网络 (Prototypical Networks)</strong> 由于其度量学习的性质，与上述算法不同。在实现中，只使用一个网络作为 <code>hyper_net</code>，而 <code>base_net</code> 被设置为 <code>None</code>。</li>
+</ul>
+<blockquote>
+<p><strong>为什么实现得如此复杂？</strong> 这是为了允许我们通过抽象基类 <code>MLBaseClass</code> 共享许多元学习算法的通用过程。如果这对您来说不清楚，请提出 issue 或给我发送电子邮件。我很乐意讨论以进一步提高代码的可读性。</p>
+</blockquote>
+<p><strong>步骤 2：任务适应 (通常称为内循环 - inner-loop)</strong><br>有两个子函数，分别对应于 MAML 类算法和 protonet。</p>
+<ol>
+<li><strong><code>adapt_to_episode</code> - 适用于 MAML 类算法</strong><br>思路很简单：<ul>
+<li>从超网络生成基础网络的参数</li>
+<li>使用生成的基础网络参数在训练数据（也称为支持数据 - support data）上计算损失</li>
+<li>最小化该损失相对于超网络参数的值</li>
+<li>返回用于该特定任务的（任务特定的）超网络（赋值给 <code>f_hyper_net</code>）</li>
+</ul>
+</li>
+<li><strong><code>adapt_to_task_by_calculating_prototypes</code> - 适用于原型网络</strong><ul>
+<li>在嵌入空间中计算并返回原型（prototypes）</li>
+</ul>
+</li>
+</ol>
+<p><strong>步骤 3：在验证子集上评估</strong><br>任务特定的超网络（对于 MAML 类算法是 <code>f_hyper_net</code>）或原型（对于原型网络）被用来预测验证子集中数据的标签。</p>
+<ul>
+<li><strong>训练时：</strong> 预测的标签用于计算损失，并更新超网络的参数以最小化该损失。</li>
+<li><strong>测试时：</strong> 预测的标签用于计算预测准确率。</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong> ABML 略有不同，因为它还包括任务特定超网络在训练子集上造成的损失。此外，它对超网络的参数施加了先验。这分别在方法 <code>loss_extra()</code> 和 <code>loss_prior</code> 中实现。</p>
+</blockquote>
+<h2 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a><strong>数据源</strong></h2><ol>
+<li><p><strong>回归 (Regression)</strong><br>PyTorch 中的 <code>DataLoader</code> 被修改为生成多模态任务的数据，其中每个回归任务由正弦函数或线性函数生成。要运行回归实验，请在输入参数中指定 <code>--datasource SineLine</code>。<br>还添加了一个 Jupyter Notebook (<code>visualize_regression.ipynb</code>) 来可视化保存在 <code>meta_learning</code> 文件夹中的回归结果。</p>
+</li>
+<li><p><strong>分类 (Classification)</strong><br>考虑了两个数据集：Omniglot 和 mini-ImageNet。它们按照 <code>torchvision.datasets.ImageFolder</code> 的结构组织：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Dataset</span><br><span class="line">│__alphabet1_character1 (或 class1)</span><br><span class="line">|__alphabet2_character2 (或 class2)</span><br><span class="line">...</span><br><span class="line">|__alphabetn_characterm (或 classz)</span><br></pre></td></tr></table></figure>
+
+<p>您可以在 <code>main.py</code> 中修改转换（transformations）以满足您对图像大小或图像标准化的需求。<br>该实现依赖于带有自定义 <code>EpisodeSampler.py</code> 的 <code>torch.utils.data.DataLoader</code> 来为每个任务生成数据。该实现还支持通过输入参数附加 <code>--datasource dataset_name --datasource another_dataset_name</code> 来加载多个数据集。</p>
+<blockquote>
+<p>如果需要 Omniglot 的原始结构 (train -&gt; alphabets -&gt; characters)，您可能需要将所有的字母表名称列表附加到 <code>config[&#39;datasource&#39;]</code>。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a><strong>运行</strong></h2><p>要运行代码，复制并粘贴每个算法脚本开头的命令，并根据需要更改可配置参数。</p>
+<p>要进行测试，只需通过变量 <code>resume_epoch</code> 指定要使用的已保存模型，并将 <code>main.py</code> 顶部找到的命令末尾的 <code>--train</code> 替换为 <code>--test</code>。</p>
+<p><strong>Tensorboard</strong><br>Tensorboard 也已集成到实现中。因此，您可以在您喜欢的浏览器上打开它并监控训练：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir=&lt;您存放日志的目标文件夹&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后在浏览器中打开：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:6006/</span><br></pre></td></tr></table></figure>
+
+<p>查看训练进度。</p>
+<h2 id="最后说明"><a href="#最后说明" class="headerlink" title="最后说明"></a><strong>最后说明</strong></h2><p>如果只需要运行 MAML 那么 <code>torch-meta</code> 是一个值得一看的代码库。<code>torch-meta</code> 和我的实现之间的区别在于，我的实现扩展到了其他算法，如 VAMPIRE 和 ABML。</p>
+<hr>
+<h2 id="Model-Agnostic-Meta-Learning-MAML"><a href="#Model-Agnostic-Meta-Learning-MAML" class="headerlink" title="Model-Agnostic Meta-Learning (MAML)"></a>Model-Agnostic Meta-Learning (MAML)</h2><p><strong>核心问题：如何让AI学得更快？</strong></p>
+<p>想象一下，你想学一项新技能（比如弹一首新曲子），但你不想从头学起。你希望利用之前学其他乐器的经验，<strong>只用很少的练习（几个例子）就能快速上手</strong>。这就是“小样本学习”（Few-Shot Learning）的目标。MAML 就是为了解决这个问题而提出的。</p>
+<p><strong>MAML 的核心思想：学会如何学习</strong></p>
+<ol>
+<li><strong>目标不是学会具体任务，而是学会“快速适应”的能力：</strong> MAML 训练一个模型（比如神经网络），让它具备一种超能力：<strong>当遇到一个全新但类似的任务时，只需要看几个例子，稍微调整一下自己（做几次梯度更新），就能很好地完成这个新任务。</strong></li>
+<li><strong>怎么训练这种能力？</strong> 它进行一种特殊的“集训”：<ul>
+<li><strong>“集训营”（元训练阶段）：</strong> 让模型接触<strong>很多很多</strong>不同的相关任务（比如识别不同字母、预测不同正弦波、控制机器人做不同动作）。</li>
+<li><strong>“集训”方式：</strong> 在每个任务上，模型只被允许看<strong>很少的样本（K个）</strong>，然后进行<strong>1次或几次</strong>梯度更新（微调自己）。</li>
+<li><strong>关键考核点：</strong> 考核的不是模型在“集训”任务上微调前的表现，而是<strong>考核它在微调后</strong>，在<strong>同一任务的新样本上</strong>的表现好不好。</li>
+<li><strong>终极目标：</strong> 找到一组<strong>初始参数</strong>，使得模型在遇到任何一个新任务时，只要进行那1次或几次微调，就能立刻变厉害！这组初始参数就像是“万能基础”。</li>
+</ul>
+</li>
+</ol>
+<p><strong>MAML 为什么厉害？（优势）</strong></p>
+<ol>
+<li><strong>模型通用（Model-Agnostic）：</strong> 它不挑食！<strong>任何</strong>可以用梯度下降训练的网络（比如图片分类用的CNN、文本处理用的RNN、机器人控制用的策略网络）都能用MAML训练。它不需要改变模型本身的结构。</li>
+<li><strong>任务通用：</strong> <strong>任何</strong>需要学习的问题（比如看图分类、预测数值、教机器人走路）都能用。只要你能定义损失函数和梯度下降就行。</li>
+<li><strong>简单高效：</strong> 它本身不增加额外的复杂模块或参数。核心就是优化那组初始参数。</li>
+<li><strong>效果好：</strong> 在多个标准测试（如小样本图像识别Omniglot&#x2F;MiniImagenet、正弦波回归、机器人控制）上，它学出来的模型比当时其他方法（包括专门为分类设计的复杂方法）适应新任务更快、效果更好，而且用的参数更少。</li>
+<li><strong>潜力大：</strong> 模型在新任务上微调后，如果继续给它更多样本或让它多练几次（更多梯度步），它还能变得更好，不会轻易“练过头”（过拟合）。</li>
+</ol>
+<p><strong>直观理解 MAML 在做什么</strong></p>
+<ul>
+<li><strong>学“可塑性”：</strong> 想象捏橡皮泥。MAML 不是把橡皮泥捏成某个固定形状（学会特定任务），而是把橡皮泥练得特别<strong>软、特别好塑形</strong>（优化初始参数）。这样，当你需要捏一个新东西（新任务）时，你只需轻轻几下（少量梯度步），就能很快捏出来。</li>
+<li><strong>找“敏感点”：</strong> MAML 在寻找模型参数空间里一个神奇的区域。在这个区域里，参数对任务的变化<strong>特别敏感</strong>。只要任务稍有不同，参数往正确的方向轻轻动一点点（微调），就能让模型的表现大幅提升。</li>
+<li><strong>“好学生”特质：</strong> MAML 训练出来的模型像一个“学习能力超强的好学生”。它在上“通识课”（元训练）时，重点锻炼的是<strong>理解新知识的核心规律和快速应用的能力</strong>，而不是死记硬背具体内容。所以遇到新“科目”（新任务）时，它只需要翻翻书（看几个例子），稍加练习（微调），就能考高分（泛化好）。</li>
+</ul>
+<p><strong>实验证明了什么？</strong></p>
+<ol>
+<li><strong>回归（预测数值）：</strong> 比如预测不同形状的正弦波。MAML模型用5个点就能准确画出整条曲线，而普通预训练模型做不到。</li>
+<li><strong>分类（识别图片）：</strong> 比如Omniglot（手写字符）和MiniImagenet（小图片集）上的小样本识别。MAML的准确率和当时最好的专用方法差不多甚至更好。</li>
+<li><strong>强化学习（控制机器人）：</strong> 比如让机器人快速学会跑向新位置或用新速度奔跑。MAML模型微调几次后性能就远超随机初始化和普通预训练模型。</li>
+</ol>
+<p><strong>总结一句话</strong></p>
+<p><strong>MAML 是一种让AI模型获得“快速学习新技能”超能力的训练方法。它通过在各种任务上模拟“快速微调+考核效果”的集训，找到一组神奇的初始参数，使得模型遇到任何新任务时，只需看几个例子、微调几次，就能立刻上手，表现优异。它简单、通用、效果好。</strong></p>
+<hr>
+<h2 id="Probabilistic-Model-Agnostic-Meta-Learning-PLATIPUS"><a href="#Probabilistic-Model-Agnostic-Meta-Learning-PLATIPUS" class="headerlink" title="Probabilistic Model-Agnostic Meta-Learning (PLATIPUS)"></a>Probabilistic Model-Agnostic Meta-Learning (PLATIPUS)</h2><p><strong>核心问题：小样本学习的“模糊性”</strong><br>想象你只看到5张“奇怪的动物”照片（训练数据），就要学会区分所有“奇怪动物”（新任务）。但“奇怪动物”可能指外星生物、深海生物或变异宠物——这就是<strong>任务模糊性</strong>。传统元学习方法（如MAML）会强行学一个“平均答案”，但可能都不准确，也无法告诉你答案有多不确定。</p>
+<p><strong>PLATIPUS 的解决方案：学会“抖着手”学习</strong><br>PLATIPUS 的核心创新是让模型在适应新任务时<strong>加入可控的噪声</strong>，从而产生<strong>多个可能的解决方案</strong>（采样模型），而不仅仅是一个。</p>
+<ol>
+<li><strong>元训练（学“抖”的策略）：</strong><ul>
+<li>和 MAML 一样，在大量相似小任务上训练，目标是找到一个好的模型初始点 (<code>µθ</code>)。</li>
+<li><strong>关键不同：</strong> PLATIPUS 不仅学初始点，还学<strong>怎么在梯度下降时合理地“抖”（注入噪声）</strong>。它通过一个叫<strong>变分推断</strong>的技术训练，目标是：当你在新任务上“抖着手”（带噪声的梯度下降）做几步适应后，得到的多个模型应该能很好地解释这个新任务的训练数据（即使数据少且模糊）。</li>
+<li>它额外学习：<ul>
+<li>初始参数的<strong>不确定性 (<code>σ²θ</code>)</strong>：初始点本身就不完全确定。</li>
+<li>梯度下降时的<strong>噪声大小 (<code>vq</code>)</strong> 和**“抖动”方式 (<code>γp</code>, <code>γq</code>)**。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>元测试（“抖着手”解决新任务）：</strong><ul>
+<li>拿到一个新任务的少量数据（如5张“奇怪动物”图）。</li>
+<li><strong>步骤1 (采样初始点)：</strong> 根据学到的初始不确定性 (<code>σ²θ</code>)，从初始点分布中<strong>采样</strong>一个初始参数 <code>θ</code>（不再是 MAML 的固定点）。</li>
+<li><strong>步骤2 (“抖动着”学习)：</strong> 在这个采样的初始点 <code>θ</code> 上，像 MAML 一样用训练数据做几步梯度下降来适应新任务。<strong>但关键！</strong> 在梯度下降过程中，会按训练时学到的策略<strong>加入噪声 (<code>vq</code>)</strong>。这就像“抖着手”调整模型参数。</li>
+<li><strong>结果：</strong> 运行多次，你就能得到<strong>多个不同的模型 (<code>φi</code>)</strong>。每个模型都是对新任务的一种可能的解释（例如一个认为是外星生物分类器，一个认为是深海生物分类器）。</li>
+</ul>
+</li>
+</ol>
+<p><strong>为什么好？</strong></p>
+<ul>
+<li><strong>处理模糊性：</strong> 当少量数据不足以确定唯一答案时，PLATIPUS 能给出<strong>多个合理的备选方案</strong>。</li>
+<li><strong>量化不确定性：</strong> 看看这些不同方案之间的差异有多大，就能<strong>估计模型对新任务答案的不确定性</strong>。差异大&#x3D;不确定性高。</li>
+<li><strong>支持主动学习：</strong> 知道哪里不确定（比如某些图片让所有采样模型分类结果差异很大），就可以<strong>优先询问这些点的真实标签</strong>，用最少的新数据消除最大不确定性。</li>
+<li><strong>模型无关 &amp; 可扩展：</strong> 和 MAML 一样，适用于各种神经网络结构（CNN, MLP等），只增加了少量参数（方差项）。</li>
+</ul>
+<p><strong>形象比喻：</strong></p>
+<ul>
+<li><strong>MAML：</strong> 一个经验丰富的工匠，拿到5个零件（数据），迅速用固定手法打磨出一个他认为最合适的工具（模型）。</li>
+<li><strong>PLATIPUS：</strong> 同一个工匠，但他知道零件信息太少，工具可能有多种用途。他这次<strong>故意在打磨时手微微抖动</strong>（加噪声），打磨多次。结果得到<strong>几件略有不同的工具</strong>，每件都适用这5个零件，但可能对应不同的最终用途（解决模糊性）。他还能看出哪部分设计最不稳定（不确定性），下次可以重点看相关零件（主动学习）。</li>
+</ul>
+<p><strong>关键创新点：</strong></p>
+<ul>
+<li>将 MAML 的<strong>确定性</strong>适应过程，改造成了<strong>概率性（随机）</strong> 的适应过程。</li>
+<li>在元训练阶段，利用<strong>变分推断</strong>优化这个随机适应过程，使得它在测试时产生的样本能近似代表模糊任务的后验分布。</li>
+<li>提供了一种<strong>简单有效</strong>（梯度下降 + 噪声）且<strong>可扩展</strong>的方式来为深度模型做小样本贝叶斯推断。</li>
+</ul>
+<p><strong>总结一句话：</strong><br>PLATIPUS 让小样本学习模型学会“抖着手”学习，在面对模糊的少量数据时，能生成多个可能的解决方案，并量化自己的不确定性，而不是武断地给出一个答案。</p>
+<hr>
+<h2 id="Prototypical-Networks-protonet"><a href="#Prototypical-Networks-protonet" class="headerlink" title="Prototypical Networks (protonet)"></a>Prototypical Networks (protonet)</h2><p><strong>核心思想：用“类别代表点”做分类</strong></p>
+<p>想象一下，你想认识几种新鸟，但每种鸟只给你看1-5张照片（<strong>小样本学习</strong>），或者只给你一段文字描述没有照片（<strong>零样本学习</strong>）。你怎么快速学会辨认它们？</p>
+<p>原型网络的思路很简单：</p>
+<ol>
+<li><strong>学一个“好”的空间：</strong> 用一个神经网络（<strong>嵌入函数 <code>fφ</code></strong>）把图片（或其他数据）转换到一个新的“特征空间”。在这个空间里，<strong>同一个类别的图片会聚在一起，不同类别的图片会分得比较开。</strong></li>
+<li><strong>计算“类别代表点”（原型）：</strong><ul>
+<li><strong>小样本：</strong> 对于每个新类别，把这个类别的那几张（比如1张或5张）<strong>支持图片</strong>，用学好的网络 <code>fφ</code> 转换成特征向量，然后<strong>计算这些特征向量的平均值</strong>。这个平均值点就是这个类别的 <strong>“原型” (<code>ck</code>)</strong>。它代表了这类鸟在特征空间里的“中心位置”。</li>
+<li><strong>零样本：</strong> 对于每个新类别，把描述它的文字（<strong>元数据 <code>vk</code></strong>，比如“红羽毛、长尾巴”）用另一个神经网络 (<code>gϑ</code>) 也转换成特征空间里的一个点。这个点就是该类的 <strong>“原型” (<code>ck</code>)</strong>。它代表了根据描述“想象”出来的类别中心。</li>
+</ul>
+</li>
+<li><strong>分类新图片：</strong> 来了一张新鸟的图片（<strong>查询图片 <code>x</code></strong>），也用网络 <code>fφ</code> 把它转换到同一个特征空间，得到一个点 <code>fφ(x)</code>。然后，<strong>计算这个点到所有类别原型 (<code>ck</code>) 的距离</strong>（通常用 <strong>欧氏距离</strong>）。<strong>离哪个类别的原型最近，就认为这张新图片属于哪个类别</strong>。分类概率用 <code>softmax</code> 函数根据距离计算出来。</li>
+</ol>
+<p><strong>🔑 关键点与为什么有效&#x2F;特别</strong></p>
+<ol>
+<li><strong>“平均”就是好代表：</strong> 论文证明了，在特征空间里用 <strong>平均值</strong> 作为类别的代表点（原型），并且使用 <strong>欧氏距离</strong> 进行分类，理论上是合理的（和一种叫“指数族分布”的聚类模型等价）。实践也证明这比用复杂的加权方式（如匹配网络）或训练复杂模型（如元学习LSTM）更有效，尤其在数据极少时。</li>
+<li><strong>“情景训练” (Episodic Training)：</strong> 训练时模仿测试时的场景！不是像传统分类那样把所有数据一起训练。而是每次训练：<ul>
+<li>随机选一小批（比如 <code>NC=20</code> 或 <code>60</code> 个）类别。</li>
+<li>从每个选中类别里随机抽少量（比如 <code>NS=1</code> 或 <code>5</code> 张）图片作为<strong>支持集</strong>。</li>
+<li>再从这些类别里另抽一些图片作为<strong>查询集</strong>。</li>
+<li>用支持集计算原型，然后用原型去分类查询集，计算损失并更新网络。这样网络<strong>专门练习了“用很少样本学习新类别”</strong> 的能力。</li>
+</ul>
+</li>
+<li><strong>距离很重要 - 欧氏 &gt; 余弦：</strong> 实验结果明确显示，用 <strong>平方欧氏距离</strong> 比常用的 <strong>余弦相似度</strong> 效果好得多！这是因为计算平均值作为原型天然更适合欧氏距离（它是 Bregman 散度的一种）。</li>
+<li><strong>训练时“难度”高一点更好：</strong> 训练时每次模拟的类别数 (<code>NC</code>, 也叫 <code>way</code>) <strong>比测试时多</strong>（比如测试做 5 类分类，训练用 20 或 60 类），效果更好。这迫使网络在特征空间里学到<strong>更精细、判别性更强的特征</strong>。</li>
+<li><strong>简单高效：</strong> 相比同时期其他小样本学习方法（如需要复杂注意力机制的匹配网络、需要学习训练算法的元学习LSTM），原型网络<strong>结构简单、计算量小、更容易理解和实现</strong>。</li>
+<li><strong>统一框架：</strong> 巧妙地将<strong>小样本学习</strong>（用图片算原型）和<strong>零样本学习</strong>（用元数据算原型）统一在同一个框架下，核心都是“找原型 -&gt; 算距离 -&gt; 分类”。</li>
+</ol>
+<p><strong>🎯 总结给初学者</strong></p>
+<ul>
+<li><strong>目标：</strong> 让模型只靠<strong>极少量样本</strong>（小样本）或<strong>文字描述</strong>（零样本）就能认识新类别并分类新图片。</li>
+<li><strong>怎么做：</strong><ul>
+<li>训练一个网络，把数据映射到一个“好”的特征空间（同类相聚，异类分离）。</li>
+<li><strong>小样本：</strong> 用新类别的几张图，在这个空间里算出它们的“平均点”（原型）。</li>
+<li><strong>零样本：</strong> 用新类别的描述，在这个空间里“画”出一个点（原型）。</li>
+<li>新图片进来，也映射到这个空间，看它<strong>离哪个原型最近</strong>，就分到哪类。</li>
+</ul>
+</li>
+<li><strong>为什么牛：</strong><ul>
+<li><strong>思路简单直接</strong>（平均值代表一类 + 最近邻分类）。</li>
+<li><strong>效果非常好</strong>，在小样本和零样本任务上都达到或接近当时最好水平。</li>
+<li><strong>训练方法巧妙</strong>（情景训练模拟真实挑战）。</li>
+<li><strong>发现关键细节</strong>（欧氏距离比余弦好，训练时增加类别数）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>简单记忆：</strong> 原型网络就是 <strong>“算平均 -&gt; 当代表 -&gt; 比距离 -&gt; 定类别”</strong>，用一种精心设计的方式，让模型在样本极少时也能快速学会新东西。它证明了在小数据场景下，<strong>简单的归纳偏好 (Inductive Bias) 往往比复杂的模型结构更有效。</strong></p>
+<hr>
+<h2 id="Bayesian-Model-Agnostic-Meta-Learning-BMAML-without-Chaser-loss"><a href="#Bayesian-Model-Agnostic-Meta-Learning-BMAML-without-Chaser-loss" class="headerlink" title="Bayesian Model-Agnostic Meta-Learning (BMAML) (without Chaser loss)"></a>Bayesian Model-Agnostic Meta-Learning (BMAML) (without Chaser loss)</h2><p>贝叶斯模型无关元学习（BMAML）的论文核心思想</p>
+<p><strong>核心目标：</strong><br>让机器学习模型具备“<strong>学会如何快速学习新任务</strong>”的能力（元学习），并且在面对新任务时仅有<strong>极少数据（少样本）</strong> 的情况下，能够<strong>量化模型预测的不确定性（贝叶斯）</strong>。这很重要，因为少量数据必然带来很大的不确定性，处理不好就容易过拟合或做出过于自信的错误预测。</p>
+<p><strong>现有基础：</strong></p>
+<ul>
+<li><strong>MAML：</strong> 一个非常成功的元学习框架。核心思想是：学习一个<strong>好的初始模型参数</strong>。对于新任务，从这个初始点出发，只需几步梯度更新（快速适应）就能达到好效果。优点是简单、通用。</li>
+<li><strong>贝叶斯方法：</strong> 核心思想是认为模型参数本身也是不确定的（服从一个分布）。通过贝叶斯推断得到参数的<strong>后验分布</strong>，而不是单一值。好处是能给出预测的不确定性（可信度），更鲁棒，能用于主动学习、安全探索等。</li>
+</ul>
+<p><strong>现有方法的不足：</strong></p>
+<ul>
+<li>标准的MAML在快速适应后得到一个<strong>点估计</strong>（单一模型参数），忽略了不确定性。</li>
+<li>一些尝试结合贝叶斯的元学习方法（如Bayesian MAML）通常用<strong>简单的高斯分布</strong>来近似不确定性，这在复杂任务（如深度神经网络+少量数据）下效果不佳。</li>
+<li>元学习本身也可能在元训练阶段<strong>过拟合</strong>到元训练任务上。</li>
+</ul>
+<p><strong>BMAML的解决方案：</strong></p>
+<ol>
+<li><strong>用粒子群代替单点模型：</strong><ul>
+<li>不再是维护一个初始参数 <code>θ₀</code>，而是维护一组（M个）初始参数 <code>Θ₀ = &#123;θ₀¹, θ₀², ..., θ₀ᴹ&#125;</code>，称为“粒子”。</li>
+<li>这些粒子共同代表了元知识。</li>
+</ul>
+</li>
+<li><strong>贝叶斯快速适应：</strong><ul>
+<li>面对一个新任务（少量数据 <code>D_trn</code>），BMAML使用 <strong>Stein变分梯度下降 (SVGD)</strong> 对粒子群进行几步快速更新（通常是1步）。</li>
+<li><strong>SVGD的关键作用：</strong><ul>
+<li><strong>协作学习：</strong> 每个粒子在更新时，不仅看自己的梯度，还看其他粒子的梯度和距离（通过一个核函数衡量）。距离近的粒子影响力更大。</li>
+<li><strong>维持多样性：</strong> SVGD包含一个“排斥项”，防止所有粒子挤在一起变成同一个点，从而能<strong>捕捉更复杂的不确定性结构</strong>（不仅是高斯形状）。</li>
+</ul>
+</li>
+<li>更新后的粒子群 <code>Θ_τ</code> 就代表了该任务在给定少量训练数据下的<strong>近似后验分布</strong> <code>p(θ|D_trn)</code>。</li>
+</ul>
+</li>
+<li><strong>基于预测的任务评估：</strong><ul>
+<li>用更新后的粒子群 <code>Θ_τ</code> 在任务的<strong>验证集 <code>D_val</code></strong> 上做预测。</li>
+<li>预测结果是<strong>所有粒子预测的加权平均</strong>（类似贝叶斯模型平均），自然地<strong>包含了不确定性</strong>。</li>
+</ul>
+</li>
+<li><strong>元更新：防止过拟合的“追逐者损失” (Chaser Loss)：</strong><ul>
+<li><strong>核心洞察：</strong> 只用验证集损失做元更新（像MAML那样）可能导致元级过拟合。</li>
+<li><strong>新思路：</strong> 希望经过几步快速适应（<code>n</code>步）得到的“追逐者”粒子群 <code>Θ_τⁿ</code> 能<strong>靠近</strong>更接近真实任务后验的“领导者”粒子群 <code>Θ_τ^&#123;n+s&#125;</code>。</li>
+<li><strong>如何得到领导者？</strong> 在“追逐者” <code>Θ_τⁿ</code> 的基础上，用 <code>D_trn</code> <strong>加上</strong> <code>D_val</code> 作为数据，再跑 <code>s</code> 步（通常是1步）SVGD。这相当于用更多数据（包含了验证集）对模型进行了微调，更接近理想的后验。</li>
+<li><strong>损失函数：</strong> 计算“追逐者”粒子群 <code>Θ_τⁿ</code> 和“领导者”粒子群 <code>Θ_τ^&#123;n+s&#125;</code> 中<strong>对应粒子之间的欧氏距离平方和</strong>。最小化这个距离。</li>
+<li><strong>为什么有效？</strong> “领导者”利用了更多信息（验证集），收敛性更好，不确定性表征更准确。迫使初始粒子 <code>Θ₀</code> 学习到一种状态：只需 <code>n</code> 步快速适应（追逐者）就能接近需要 <code>n+s</code> 步才能达到的更优状态（领导者）。<strong>这本质上是在元级别学习如何更准确、更鲁棒地进行贝叶斯推断</strong>，避免了仅优化验证集经验风险。</li>
+</ul>
+</li>
+</ol>
+<p><strong>关键优势：</strong></p>
+<ol>
+<li><strong>强大的不确定性建模：</strong> 在少样本学习下，能捕捉比简单高斯分布更复杂的模型不确定性。</li>
+<li><strong>防止元级过拟合：</strong> “追逐者损失”机制让元学习过程更关注于如何正确推断不确定性本身，而不是仅仅在验证集上刷分。</li>
+<li><strong>模型无关性：</strong> 继承了MAML的优点，只需要模型可微，适用于分类、回归、强化学习等多种任务。</li>
+<li><strong>效率：</strong> 相对于需要大量采样的纯贝叶斯方法（如MCMC），SVGD只需少量粒子几步更新即可获得不错的近似。</li>
+</ol>
+<p><strong>简单比喻：</strong><br>想象一群探险家（粒子群）在一个未知大陆（元任务分布）上训练。BMAML教会他们：</p>
+<ol>
+<li><strong>快速侦察（贝叶斯快速适应）：</strong> 每到一个新区域（新任务），他们快速协作侦查（SVGD几步），画出一张标有“不确定地带”的地图（后验分布），而不仅是指定一个点。</li>
+<li><strong>学习绘制更准地图（元更新 - 追逐者损失）：</strong> 在训练营（元训练阶段），教官给他们一个区域的部分信息（<code>D_trn</code>），让他们快速画张草图（追逐者）。然后给他们更多信息（加上 <code>D_val</code>）让他们画更准的地图（领导者）。教官评估的是“草图接近更准地图的程度”（追逐者损失），而不仅仅是“草图在某个点的准确性”（验证集损失）。这样训练出来的探险家，面对真正的新区域时，能用极少的线索快速画出包含可靠“不确定地带”信息的地图。</li>
+</ol>
+<p><strong>对初学者的启示：</strong></p>
+<ul>
+<li><strong>少样本学习必须处理不确定性。</strong> BMAML提供了一种将贝叶斯不确定性建模嵌入到高效元学习框架中的强大方法。</li>
+<li><strong>粒子群(SVGD)是核心工具。</strong> 它允许在参数空间进行高效、协作的、保持多样性的近似推断。</li>
+<li><strong>元学习的目标可以超越经验风险最小化。</strong> “追逐者损失”展示了如何设计元损失函数来学习更鲁棒的推断过程本身。</li>
+<li><strong>BMAML是MAML的贝叶斯扩展与增强。</strong> 它在保持MAML通用性的同时，显著提升了在不确定性建模和抗过拟合方面的能力。</li>
+</ul>
+<p>希望这个总结能帮助你抓住BMAML的核心思想和创新点！理解它需要对MAML和贝叶斯基础有一定了解，但核心概念（粒子群协作学习不确定性、追逐领导者防止过拟合）相对直观。</p>
+<hr>
+<h2 id="Amortized-Bayesian-Meta-Learning"><a href="#Amortized-Bayesian-Meta-Learning" class="headerlink" title="Amortized Bayesian Meta-Learning"></a>Amortized Bayesian Meta-Learning</h2><p><strong>核心问题：</strong></p>
+<ul>
+<li>现有的元学习方法（如MAML）在“<strong>小样本学习</strong>”（用极少数据学新任务）上效果不错。</li>
+<li>但它们有个大缺点：<strong>不能很好地估计“不确定性”</strong>。也就是说，模型不知道自己对某个预测有多大把握。</li>
+<li>在现实世界（如医疗诊断、自动驾驶），<strong>知道模型什么时候不确定</strong>（从而寻求人类帮助）和预测准确<strong>同样重要</strong>。</li>
+</ul>
+<p><strong>核心思路：贝叶斯 + 元学习</strong></p>
+<ol>
+<li><strong>贝叶斯思想：</strong> 与其让模型只学“一个”最好的参数（点估计），不如让它学<strong>参数的一个“概率分布”</strong>（先验分布）。对于新任务，根据少量新数据，调整这个分布得到“后验分布”。预测时，从这个分布里“采样”多个模型做预测，就能看出预测结果的一致性（不确定性）。</li>
+<li><strong>元学习思想：</strong> 训练一个“<strong>学会怎么快速学习新任务</strong>”的模型（元学习器）。</li>
+<li><strong>结合：</strong> 让元学习器学一个<strong>好的“先验分布”</strong>（<code>p(φ|θ)</code>）。这样，遇到新任务时：<ul>
+<li>基于这个先验分布 (<code>θ</code>)。</li>
+<li>只用新任务的<strong>少量样本（支持集）</strong>。</li>
+<li>只需进行<strong>几步快速的“贝叶斯推断”</strong>（如贝叶斯反传 - Bayes by Backprop）。</li>
+<li>就能得到一个针对这个新任务的、不错的<strong>近似后验分布</strong> (<code>q(φ|新任务数据)</code>）。</li>
+<li>用这个后验分布做预测，<strong>自然就能给出不确定性估计</strong>。</li>
+</ul>
+</li>
+</ol>
+<p><strong>关键创新：摊销（Amortization）</strong></p>
+<ul>
+<li>传统贝叶斯方法：每个新任务都要从头开始、费时费力地计算后验分布。</li>
+<li>本文方法（摊销）：<strong>元训练阶段</strong>就“<strong>预训练</strong>”好那个先验分布 (<code>θ</code>) 和那个“<strong>快速推断流程</strong>”（几步梯度下降）。遇到<strong>新任务</strong>时，直接套用这个流程，几步就能得到后验分布，<strong>非常高效</strong>。就像把“推断”的成本“分摊”到训练阶段了。</li>
+</ul>
+<p><strong>好处：</strong></p>
+<ol>
+<li><strong>高效：</strong> 新任务上只需几步推断，速度快。</li>
+<li><strong>不确定性好：</strong> 预测时能自然给出“把握有多大”的信息（置信度&#x2F;不确定性）。</li>
+<li><strong>灵活：</strong> 模型自己决定哪些权重在任务间共享（先验方差小），哪些需要针对任务调整（先验方差大），见图5。</li>
+<li><strong>理论扎实：</strong> 基于贝叶斯理论和变分推断，有数学保障。</li>
+</ol>
+<p><strong>实验结果证明：</strong></p>
+<ol>
+<li><strong>上下文赌博机（需要探索）：</strong> 比MAML表现更好，尤其在需要更多探索（高δ值）或数据更少时。因为能更好地利用不确定性指导探索（哪里该冒险试试）。<em>（表1）</em></li>
+<li><strong>小样本图像分类：</strong><ul>
+<li><strong>准确性：</strong> 和MAML差不多，略低一点点。<em>（表2）</em></li>
+<li><strong>不确定性估计（主要优势）：</strong><ul>
+<li><strong>校准更好：</strong> 模型说“我有90%把握”时，它真的接近90%正确。MAML经常过度自信（说90%把握，实际可能只有70%对）。<em>（图3）</em></li>
+<li><strong>知道“不知道”：</strong> 面对完全不认识的类别图片（分布外样本），模型更倾向于说“我不知道”（预测熵高），而不是乱猜一个高置信度的错误答案。<em>（图4）</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>对初学者的意义：</strong></p>
+<ul>
+<li><strong>理解“不确定性”的重要性：</strong> 尤其在数据少、高风险场景，模型能说“我不确定”比盲目自信更有价值。</li>
+<li><strong>了解贝叶斯深度学习的应用：</strong> 如何把贝叶斯思想（参数分布、后验推断）用到复杂模型（神经网络）和特定范式（元学习）中。</li>
+<li><strong>掌握“摊销推断”概念：</strong> 把推断成本转移到训练阶段，是提升效率的关键技巧。</li>
+<li><strong>认识MAML的局限性：</strong> MAML是强大的元学习方法，但它缺乏对不确定性的建模。本文提供了一种结合贝叶斯思想来弥补这个缺陷的有效途径。</li>
+</ul>
+<p><strong>简单比喻：</strong><br>想象学骑自行车（元学习器训练）：</p>
+<ol>
+<li><strong>传统元学习（MAML）：</strong> 教练教你一套通用的起步、平衡、蹬踏的“<strong>初始化动作</strong>”（点估计）。遇到新车（新任务），你微调几下动作就能骑。</li>
+<li><strong>本文方法（摊销贝叶斯元学习）：</strong> 教练不仅教你通用动作，还教你<strong>如何根据新车的特点（车把高低、座椅软硬）快速调整你的“骑行策略分布”</strong>（先验分布 -&gt; 后验分布）。你不仅学会骑新车，还<strong>知道在什么路面（情况）下容易摔（不确定性高）</strong>。遇到一辆完全不同的独轮车（分布外样本），你会更谨慎地说“这车我可能骑不了”（高不确定性）。</li>
+</ol>
+<p>总之，这篇论文提出了一种高效的方法，让元学习模型不仅能快速适应新任务，还能可靠地评估自己预测的把握程度，这对于实际应用至关重要。</p>
+<hr>
+<h2 id="Uncertainty-in-Model-Agnostic-Meta-Learning-using-Variational-Inference-VAMPIRE"><a href="#Uncertainty-in-Model-Agnostic-Meta-Learning-using-Variational-Inference-VAMPIRE" class="headerlink" title="Uncertainty in Model-Agnostic Meta-Learning using Variational Inference (VAMPIRE)"></a>Uncertainty in Model-Agnostic Meta-Learning using Variational Inference (VAMPIRE)</h2><p><strong>核心问题：小样本学习中的不确定性</strong></p>
+<ul>
+<li><strong>背景：</strong> 深度学习通常需要大量数据。但人类能快速用少量例子学习新事物（比如只看一次新动物就能认出）。元学习（Meta-Learning）就是让AI学会这种“学会学习”的能力，典型代表是<strong>MAML</strong>。</li>
+<li><strong>MAML的不足：</strong> MAML找到一个好的<strong>初始参数点</strong>，新任务上微调几步就能学好。但它有个大缺点：它是个<strong>确定性的点估计</strong>。这意味着：<ul>
+<li>它无法知道自己预测的<strong>可信度（不确定性）</strong>。面对模糊或困难样本，它也会“自信地”给出一个答案，这在实际应用中很危险。</li>
+<li>容易在小样本上<strong>过拟合</strong>（只记住了训练的小样本，没学到通用模式）。</li>
+</ul>
+</li>
+<li><strong>贝叶斯方法的优势：</strong> 贝叶斯方法不学一个点，而是学一个<strong>参数的概率分布</strong>。这天然能提供<strong>不确定性估计</strong>：分布越“散”（方差大），模型越不确定；分布越“集中”（方差小），模型越确定。</li>
+</ul>
+<p><strong>VAMPIRE 是什么？</strong></p>
+<p>VAMPIRE 是作者提出的一种<strong>新型贝叶斯元学习算法</strong>。它的核心思想是：<strong>给 MAML 加上“概率”的翅膀！</strong></p>
+<ol>
+<li><strong>不再是点，而是分布：</strong> VAMPIRE 不像 MAML 那样只学一个固定的初始参数点 <code>θ</code>。它学习一个<strong>初始参数的概率分布</strong>（通常是高斯分布），包含均值 <code>μ_θ</code> 和方差 <code>σ_θ^2</code>。</li>
+<li><strong>任务适应也变概率：</strong> 面对一个新任务时：<ul>
+<li>MAML：用任务的少量支持集数据 (<code>support set</code>)，对初始点 <code>θ</code> 做几步梯度下降，得到该任务的<strong>点估计</strong>参数 <code>w_i</code>。</li>
+<li>VAMPIRE：同样基于任务的少量支持集数据，但它利用<strong>变分推断 (Variational Inference, VI)</strong> 技术，从初始分布出发，学出该任务的<strong>参数后验分布</strong> <code>q(w_i)</code> (也假设是高斯分布，有均值 <code>μ_i</code> 和方差 <code>σ_i^2</code>)。</li>
+</ul>
+</li>
+<li><strong>如何学习这个分布？</strong><ul>
+<li>目标：让学到的任务参数分布 <code>q(w_i)</code> 尽可能接近理论上最好的后验分布 <code>p(w_i | 任务数据)</code>。</li>
+<li>方法：定义一个损失函数（变分自由能 VFE），包含两部分：<ul>
+<li><strong>正则项 (KL散度)：</strong> 让 <code>q(w_i)</code> 不要离初始分布 <code>p(w_i; θ)</code> 太远。</li>
+<li><strong>似然项：</strong> 让 <code>q(w_i)</code> 下的参数能很好地解释当前任务的支持集数据。</li>
+</ul>
+</li>
+<li>优化：用<strong>梯度下降</strong>来优化 <code>q(w_i)</code> 的参数 (<code>μ_i</code>, <code>σ_i</code>)，以最小化 VFE。<strong>关键点：</strong> 这个优化过程<strong>直接利用初始分布 <code>θ</code> 的均值作为起点</strong>，类似于 MAML 的梯度更新，但现在是更新分布的参数！</li>
+</ul>
+</li>
+<li><strong>预测与不确定性：</strong> 对新任务的查询集 (<code>query set</code>) 做预测时，VAMPIRE 从学到的任务参数分布 <code>q(w_i)</code> 中<strong>采样多组参数</strong>，用这些参数做多次预测。最终的预测是所有采样预测的平均（或投票），<strong>预测的不确定性（方差）</strong> 就通过这些采样的差异自然体现出来。</li>
+</ol>
+<p><strong>VAMPIRE 牛在哪里？（主要优势）</strong></p>
+<ol>
+<li><strong>天然提供不确定性估计：</strong> 这是它最核心的优势！模型不仅能预测结果，还能告诉你“我有多确定”，这在安全关键或模糊场景中极其重要。</li>
+<li><strong>更好的校准性 (Calibration)：</strong> 模型预测的置信度（比如它说“我有90%把握是猫”）和实际正确率匹配得很好。VAMPIRE 在多个数据集上取得了<strong>最好的校准误差 (ECE, MCE)</strong>。</li>
+<li><strong>准确性有竞争力：</strong> 在小样本分类任务 (Omniglot, mini-ImageNet, tiered-ImageNet) 上，VAMPIRE 的分类准确率<strong>媲美甚至超过</strong> MAML 和其他先进方法（尤其在 1-shot 和 tiered-ImageNet 上表现突出）。</li>
+<li><strong>模型无关且高效：</strong><ul>
+<li><strong>模型无关：</strong> 和 MAML 一样，可以套用各种神经网络结构。</li>
+<li><strong>高效：</strong> 相比其他贝叶斯元学习方法 (PLATIPUS, BMAML)：<ul>
+<li>不需要点估计 (PLATIPUS 需要)。</li>
+<li>不需要计算复杂的 Hessian 矩阵 (LLAMA) 或核矩阵 (BMAML)。</li>
+<li>不需要额外的神经网络 (VERSA)。</li>
+<li>任务适应步骤通常只需一次梯度更新（和 MAML 类似）。</li>
+</ul>
+</li>
+<li><strong>内存友好：</strong> 只学习共享的初始参数分布，不像 PAC-Bayes 方法需要存所有任务的后验分布。</li>
+</ul>
+</li>
+</ol>
+<p><strong>总结给初学者：</strong></p>
+<p>想象你是个刚学画画的新手老师（元学习器）。</p>
+<ul>
+<li><strong>MAML 老师：</strong> 他给你一个<strong>特定的</strong>初始画法（比如“先画轮廓”）。遇到新物体（新任务），他让你用几张例图（support set）稍微调整一下这个初始画法，然后你就按这个<strong>调整好的固定画法</strong>去画新图（query set）。他<strong>不会告诉你</strong>你画得像不像原物体。</li>
+<li><strong>VAMPIRE 老师：</strong> 他教你一种<strong>灵活的初始画法风格</strong>（一个概率分布，比如“轮廓或色块都可以，但色块更常用”）。遇到新物体，他让你用几张例图探索出最适合画<strong>这个物体</strong>的风格范围（后验分布）。画新图时，你尝试几种在这个范围内合理的画法（采样），最终效果是这些画法的综合。更重要的是，他<strong>会告诉你</strong>根据你尝试的画法差异，你画得有多像（不确定性）！而且他教得又快又好（高效准确），教法也适用于各种绘画类型（模型无关）。</li>
+</ul>
+<p><strong>VAMPIRE 的核心贡献就是：在快速适应小样本任务的框架（MAML）里，巧妙地引入了概率分布（变分推断），让模型不仅能学得快、学得好，还能知道自己学得有多“确定”，而且实现起来还比较高效简洁。</strong> 这对于构建更可靠、更鲁棒的 AI 系统非常重要。</p>
+<hr>
+<h2 id="PAC-Bayes-Meta-learning-with-Implicit-Task-specific-Posteriors"><a href="#PAC-Bayes-Meta-learning-with-Implicit-Task-specific-Posteriors" class="headerlink" title="PAC-Bayes Meta-learning with Implicit Task-specific Posteriors"></a>PAC-Bayes Meta-learning with Implicit Task-specific Posteriors</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog2025.github.io/2025/08/02/Few2/" rel="prev" title="learn2learn">
+                  <i class="fa fa-angle-left"></i> learn2learn
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog2025.github.io/2025/08/12/Few4/" rel="next" title="simple-cnaps">
+                  simple-cnaps <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    
+    <!-- 去除心形图案
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    -->
+    <span class="post-meta-divider">|</span>
+
+    <span class="author" itemprop="copyrightHolder">lsdyun</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+<!--隐藏网页底部powered by Hexo 强力驱动-->
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/blog2025.github.io/js/comments.js"></script><script src="/blog2025.github.io/js/utils.js"></script><script src="/blog2025.github.io/js/motion.js"></script><script src="/blog2025.github.io/js/sidebar.js"></script><script src="/blog2025.github.io/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/blog2025.github.io/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/blog2025.github.io/js/third-party/fancybox.js"></script>
+
+  <script src="/blog2025.github.io/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+</body>
+</html>

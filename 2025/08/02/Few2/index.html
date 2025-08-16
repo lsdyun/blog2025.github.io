@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog2025.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog2025.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog2025.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog2025.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog2025.github.io/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lsdyun.github.io","root":"/blog2025.github.io/","images":"/blog2025.github.io/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog2025.github.io/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog2025.github.io/js/config.js"></script>
+
+    <meta name="description" content="Few-Shot少样本图像分类算法总结（含代码链接） Few-shot learning learnables&#x2F;learn2learn learnables&#x2F;learn2learnlearn2learn 是一个用于元学习（Meta-Learning）研究的软件库。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="learn2learn">
+<meta property="og:url" content="https://lsdyun.github.io/blog2025.github.io/2025/08/02/Few2/index.html">
+<meta property="og:site_name" content="记录博客">
+<meta property="og:description" content="Few-Shot少样本图像分类算法总结（含代码链接） Few-shot learning learnables&#x2F;learn2learn learnables&#x2F;learn2learnlearn2learn 是一个用于元学习（Meta-Learning）研究的软件库。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-02T01:04:21.711Z">
+<meta property="article:modified_time" content="2025-08-02T01:27:41.884Z">
+<meta property="article:author" content="lsdyun">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lsdyun.github.io/blog2025.github.io/2025/08/02/Few2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lsdyun.github.io/blog2025.github.io/2025/08/02/Few2/","path":"2025/08/02/Few2/","title":"learn2learn"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>learn2learn | 记录博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog2025.github.io/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog2025.github.io/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记录博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog2025.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/blog2025.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/blog2025.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/blog2025.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#learnables-learn2learn"><span class="nav-number">1.</span> <span class="nav-text">learnables&#x2F;learn2learn</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lsdyun"
+      src="/blog2025.github.io/images/avatar.png">
+  <p class="site-author-name" itemprop="name">lsdyun</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog2025.github.io/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog2025.github.io/categories/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lsdyun" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lsdyun" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/08/02/Few2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="learn2learn | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          learn2learn
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-02 09:04:21 / 修改时间：09:27:41" itemprop="dateCreated datePublished" datetime="2025-08-02T09:04:21+08:00">2025-08-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/Few-shot-learning/" itemprop="url" rel="index"><span itemprop="name">Few-shot learning</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/A15216110998/article/details/144417167">Few-Shot少样本图像分类算法总结（含代码链接）</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44211968/article/details/121314757">Few-shot learning</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/learnables/learn2learn">learnables&#x2F;learn2learn</a></p>
+<h1 id="learnables-learn2learn"><a href="#learnables-learn2learn" class="headerlink" title="learnables&#x2F;learn2learn"></a>learnables&#x2F;learn2learn</h1><p><strong>learn2learn</strong> 是一个用于元学习（Meta-Learning）研究的软件库。</p>
+<p><strong>learn2learn</strong> 构建于 <a target="_blank" rel="noopener" href="https://pytorch.ac.cn/">PyTorch</a> 之上，旨在助力加速元学习研究周期的两个关键环节：</p>
+<ol>
+<li><strong>快速原型设计：</strong> 让研究人员能够迅速尝试新想法。</li>
+<li><strong>可靠的可复现性：</strong> 确保这些新想法得到公平、一致的评估。</li>
+</ol>
+<p><strong>learn2learn</strong> 提供了底层实用工具和统一接口，用于创建新的算法和研究领域（Domains）。同时，它也包含了现有算法的高质量实现以及标准化的基准测试（Benchmarks）。该库保持了与 torchvision、torchaudio、torchtext、cherry 以及你可能使用的任何其他基于 PyTorch 的库的兼容性。</p>
+<p><strong>概述</strong></p>
+<ul>
+<li><strong><code>learn2learn.data</code>：</strong> 提供 <code>Taskset</code> 和转换工具（transforms），用于从任意 PyTorch 数据集创建小样本（few-shot）学习任务。</li>
+<li><strong><code>learn2learn.vision</code>：</strong> 提供面向计算机视觉和小样本学习的模型、数据集和基准测试。</li>
+<li><strong><code>learn2learn.gym</code>：</strong> 提供用于元强化学习（Meta-Reinforcement Learning）的环境和工具。</li>
+<li><strong><code>learn2learn.algorithms</code>：</strong> 提供对现有元学习算法的高级封装（Wrappers）。</li>
+<li><strong><code>learn2learn.optim</code>：</strong> 提供用于可微分优化（Differentiable Optimization）和元梯度下降（Meta-Descent）的工具与算法。</li>
+</ul>
+<p><strong>资源</strong></p>
+<ul>
+<li><strong>官网：</strong> <a target="_blank" rel="noopener" href="http://learn2learn.net/">http://learn2learn.net/</a></li>
+<li><strong>文档：</strong> <a target="_blank" rel="noopener" href="http://learn2learn.net/docs/learn2learn">http://learn2learn.net/docs/learn2learn</a></li>
+<li><strong>教程：</strong> <a target="_blank" rel="noopener" href="http://learn2learn.net/tutorials/getting_started/">http://learn2learn.net/tutorials/getting_started/</a></li>
+<li><strong>示例代码：</strong> <a target="_blank" rel="noopener" href="https://github.com/learnables/learn2learn/tree/master/examples">https://github.com/learnables/learn2learn/tree/master/examples</a></li>
+<li><strong>GitHub 仓库：</strong> <a target="_blank" rel="noopener" href="https://github.com/learnables/learn2learn/">https://github.com/learnables/learn2learn/</a></li>
+<li><strong>Slack 社区：</strong> <a target="_blank" rel="noopener" href="http://slack.learn2learn.net/">http://slack.learn2learn.net/</a> (欢迎加入社区交流)</li>
+</ul>
+<p><strong>安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install learn2learn</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码片段与示例</strong></p>
+<p>以下代码片段提供了对 <code>learn2learn</code> 功能的一瞥。</p>
+<p><strong>高级封装器</strong></p>
+<ul>
+<li><p><strong>Few-Shot Learning with MAML，使用 MAML 进行 Few-shot 小样本学习：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">maml = l2l.algorithms.MAML(model, lr=<span class="number">0.1</span>)</span><br><span class="line">opt = torch.optim.SGD(maml.parameters(), lr=<span class="number">0.001</span>)</span><br><span class="line"><span class="keyword">for</span> iteration <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    opt.zero_grad()</span><br><span class="line">    task_model = maml.clone()  <span class="comment"># 为 nn.Modules 实现类似 torch.clone() 的功能</span></span><br><span class="line">    adaptation_loss = compute_loss(task_model)</span><br><span class="line">    task_model.adapt(adaptation_loss)  <span class="comment"># 计算梯度，就地更新 task_model</span></span><br><span class="line">    evaluation_loss = compute_loss(task_model)</span><br><span class="line">    evaluation_loss.backward()  <span class="comment"># 计算关于 maml.parameters() 的梯度</span></span><br><span class="line">    opt.step()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>更多算法（ProtoNets, ANIL, Meta-SGD, Reptile, Meta-Curvature, KFO）请参考 <code>examples</code> 文件夹。其中大多数可以使用 <code>GBML</code> 封装器实现。(参见<a target="_blank" rel="noopener" href="http://learn2learn.net/docs/learn2learn/learn2learn.algorithms.html#gbml">文档</a>)</em>。</li>
+</ul>
+</li>
+<li><p><strong>Meta-Descent with Hypergradient，使用超梯度（Hypergradient）进行元下降：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">linear = nn.Linear(<span class="number">784</span>, <span class="number">10</span>)</span><br><span class="line">transform = l2l.optim.ModuleTransform(l2l.nn.Scale)</span><br><span class="line">metaopt = l2l.optim.LearnableOptimizer(linear, transform, lr=<span class="number">0.01</span>)  <span class="comment"># metaopt 拥有 .step() 方法</span></span><br><span class="line">opt = torch.optim.SGD(metaopt.parameters(), lr=<span class="number">0.001</span>)  <span class="comment"># metaopt 也拥有 .parameters() 方法</span></span><br><span class="line"></span><br><span class="line">metaopt.zero_grad()</span><br><span class="line">opt.zero_grad()</span><br><span class="line">error = loss(linear(X), y)</span><br><span class="line">error.backward()</span><br><span class="line">opt.step()  <span class="comment"># 更新 metaopt 的参数</span></span><br><span class="line">metaopt.step()  <span class="comment"># 更新 linear 的参数</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>使用 <code>LearnableOptimizer</code> 学习任何类型的优化算法。(参见<a target="_blank" rel="noopener" href="https://github.com/learnables/learn2learn/tree/master/examples">示例</a> 和 <a target="_blank" rel="noopener" href="http://learn2learn.net/docs/learn2learn/learn2learn.optim.html#learnableoptimizer">文档</a>)</em></li>
+</ul>
+</li>
+</ul>
+<p><strong>学习领域（Learning Domains）</strong></p>
+<ul>
+<li><p><strong>Custom Few-Shot Dataset，自定义小样本数据集：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dataset = l2l.data.MetaDataset(MyDataset())  <span class="comment"># 可以是任何 PyTorch 数据集</span></span><br><span class="line">transforms = [  <span class="comment"># 轻松定义你自己的转换</span></span><br><span class="line">    l2l.data.transforms.NWays(dataset, n=<span class="number">5</span>),   <span class="comment"># N 类</span></span><br><span class="line">    l2l.data.transforms.KShots(dataset, k=<span class="number">1</span>),  <span class="comment"># K 样本</span></span><br><span class="line">    l2l.data.transforms.LoadData(dataset),     <span class="comment"># 加载数据</span></span><br><span class="line">]</span><br><span class="line">taskset = Taskset(dataset, transforms, num_tasks=<span class="number">20000</span>)</span><br><span class="line"><span class="keyword">for</span> task <span class="keyword">in</span> taskset:</span><br><span class="line">    X, y = task</span><br><span class="line">    <span class="comment"># 在此任务上进行元训练</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em><code>learn2learn.vision.datasets</code> 中提供了许多标准化数据集（Omniglot, mini-&#x2F;tiered-ImageNet, FC100, CIFAR-FS）。(参见<a target="_blank" rel="noopener" href="http://learn2learn.net/docs/learn2learn/learn2learn.vision.datasets.html">文档</a>)</em></li>
+</ul>
+</li>
+<li><p><strong>Environments and Utilities for Meta-RL，用于元强化学习的环境和工具：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">make_env</span>():</span><br><span class="line">    env = l2l.gym.HalfCheetahForwardBackwardEnv()</span><br><span class="line">    env = cherry.envs.ActionSpaceScaler(env)  <span class="comment"># 缩放动作空间</span></span><br><span class="line">    <span class="keyword">return</span> env</span><br><span class="line"></span><br><span class="line">env = l2l.gym.AsyncVectorEnv([make_env <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>)])  <span class="comment"># 使用 16 个线程进行并行化</span></span><br><span class="line"><span class="keyword">for</span> task_config <span class="keyword">in</span> env.sample_tasks(<span class="number">20</span>):</span><br><span class="line">    env.set_task(task)  <span class="comment"># 所有线程接收相同的任务</span></span><br><span class="line">    state = env.reset()  <span class="comment"># 使用标准的 Gym API</span></span><br><span class="line">    action = my_policy(env)</span><br><span class="line">    env.step(action)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>使用 <code>AsyncVectorEnv</code> 并行化你自己的元环境，或使用标准环境。(参见<a target="_blank" rel="noopener" href="http://learn2learn.net/docs/learn2learn/learn2learn.gym.html">文档</a>)</em></li>
+</ul>
+</li>
+</ul>
+<p><strong>底层实用工具</strong></p>
+<ul>
+<li><p><strong>Low-Level Utilities，可微分优化：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">model = MyModel()</span><br><span class="line">transform = l2l.optim.KroneckerTransform(l2l.nn.KroneckerLinear)</span><br><span class="line">learned_update = l2l.optim.ParameterUpdate(  <span class="comment"># 可学习的更新函数</span></span><br><span class="line">        model.parameters(), transform)</span><br><span class="line">clone = l2l.clone_module(model)  <span class="comment"># 为 nn.Modules 实现类似 torch.clone() 的功能</span></span><br><span class="line">error = loss(clone(X), y)</span><br><span class="line">updates = learned_update(  <span class="comment"># API 类似于 torch.autograd.grad</span></span><br><span class="line">    error,</span><br><span class="line">    clone.parameters(),</span><br><span class="line">    create_graph=<span class="literal">True</span>,  <span class="comment"># 允许计算更高阶导数</span></span><br><span class="line">)</span><br><span class="line">l2l.update_module(clone, updates=updates)  <span class="comment"># 应用更新到克隆模型</span></span><br><span class="line">loss(clone(X), y).backward()  <span class="comment"># 计算关于 model.parameters() 和 learned_update.parameters() 的梯度</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>学习并通过 PyTorch Module 的更新进行微分。(参见<a target="_blank" rel="noopener" href="http://learn2learn.net/docs/learn2learn/learn2learn.optim.html#parameterupdate">文档</a>)</em></li>
+</ul>
+</li>
+</ul>
+<p><strong>变更日志</strong></p>
+<p>可在 <code>CHANGELOG.md</code> 文件中找到。</p>
+<p><strong>引用</strong></p>
+<p>若要在学术出版物中引用 <code>learn2learn</code> 代码库，请使用以下参考文献：</p>
+<blockquote>
+<p>Arnold, Sebastien M. R., Praateek Mahajan, Debajyoti Datta, Ian Bunner, and Konstantinos Saitas Zarkias. 2020. “learn2learn: A Library for Meta-Learning Research.” arXiv [cs.LG]. <a target="_blank" rel="noopener" href="http://arxiv.org/abs/2008.12284">http://arxiv.org/abs/2008.12284</a>.</p>
+</blockquote>
+<p>您也可以使用以下 Bibtex 条目：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@article&#123;Arnold2020-ss,</span><br><span class="line">  title         = &quot;learn2learn: A Library for &#123;Meta-Learning&#125; Research&quot;,</span><br><span class="line">  author        = &quot;Arnold, S&#123;\&#x27;e&#125;bastien M R and Mahajan, Praateek and Datta,</span><br><span class="line">                   Debajyoti and Bunner, Ian and Zarkias, Konstantinos Saitas&quot;,</span><br><span class="line">  month         =  aug,</span><br><span class="line">  year          =  2020,</span><br><span class="line">  url           = &quot;http://arxiv.org/abs/2008.12284&quot;,</span><br><span class="line">  archivePrefix = &quot;arXiv&quot;,</span><br><span class="line">  primaryClass  = &quot;cs.LG&quot;,</span><br><span class="line">  eprint        = &quot;2008.12284&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>鸣谢与相关项目</strong></p>
+<ul>
+<li><strong><a target="_blank" rel="noopener" href="https://github.com/tristandeleu/pytorch-meta">TorchMeta</a>:</strong> 是一个类似的库，专注于监督元学习的数据集。</li>
+<li><strong><a target="_blank" rel="noopener" href="https://github.com/facebookresearch/higher">higher</a>:</strong> 是一个 PyTorch 库，支持通过优化内循环进行微分。虽然 <code>higher</code> 通过使 <code>nn.Module</code> 变为无状态（monkey-patch）来实现，但 <code>learn2learn</code> 保留了 PyTorch 有状态（stateful）的外观和体验。更多信息，请参阅其 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2007.15779">ArXiv 论文</a>。</li>
+<li>我们感谢以下开源实现，它们对 <code>learn2learn</code> 的设计提供了指导和帮助：<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/tristandeleu/pytorch-maml-rl">Tristan Deleu 的 pytorch-maml-rl</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jonasrothfuss/ProMP">Jonas Rothfuss 的 ProMP</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kjunelee/MetaOptNet">Kwonjoon Lee 的 MetaOptNet</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Sha-Lab/FEAT">Han-Jia Ye 和 Hexiang Hu 的 FEAT</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog2025.github.io/2025/07/31/Few/" rel="prev" title="sicara">
+                  <i class="fa fa-angle-left"></i> sicara
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog2025.github.io/2025/08/05/Few3/" rel="next" title="few_shot_meta_learning">
+                  few_shot_meta_learning <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    
+    <!-- 去除心形图案
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    -->
+    <span class="post-meta-divider">|</span>
+
+    <span class="author" itemprop="copyrightHolder">lsdyun</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+<!--隐藏网页底部powered by Hexo 强力驱动-->
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/blog2025.github.io/js/comments.js"></script><script src="/blog2025.github.io/js/utils.js"></script><script src="/blog2025.github.io/js/motion.js"></script><script src="/blog2025.github.io/js/sidebar.js"></script><script src="/blog2025.github.io/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/blog2025.github.io/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/blog2025.github.io/js/third-party/fancybox.js"></script>
+
+  <script src="/blog2025.github.io/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+</body>
+</html>
