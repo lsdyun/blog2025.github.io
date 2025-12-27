@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog2025.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog2025.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog2025.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog2025.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog2025.github.io/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lsdyun.github.io","root":"/blog2025.github.io/","images":"/blog2025.github.io/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog2025.github.io/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog2025.github.io/js/config.js"></script>
+
+    <meta name="description" content="DOM和BOM 一、DOM（Document Object Model ,文档对象模型）📄‌定义‌：将 HTML&#x2F;XML 文档解析为树形结构对象‌作用‌：操作网页内容‌核心对象‌：document‌主要功能‌：  ‌节点操作 12javascriptCopy Codedocument.getElementById(&#x27;box&#x27;)  &#x2F;&#x2F; 获取元素element.app">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript">
+<meta property="og:url" content="https://lsdyun.github.io/blog2025.github.io/2025/07/31/JavaScript/index.html">
+<meta property="og:site_name" content="记录博客">
+<meta property="og:description" content="DOM和BOM 一、DOM（Document Object Model ,文档对象模型）📄‌定义‌：将 HTML&#x2F;XML 文档解析为树形结构对象‌作用‌：操作网页内容‌核心对象‌：document‌主要功能‌：  ‌节点操作 12javascriptCopy Codedocument.getElementById(&#x27;box&#x27;)  &#x2F;&#x2F; 获取元素element.app">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lsdyun.github.io/blog2025.github.io/2025/07/31/JavaScript/91ccc53af38ce227f42999e03197fd6f.jpeg">
+<meta property="article:published_time" content="2025-07-31T03:28:48.693Z">
+<meta property="article:modified_time" content="2025-05-28T03:19:52.177Z">
+<meta property="article:author" content="lsdyun">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lsdyun.github.io/blog2025.github.io/2025/07/31/JavaScript/91ccc53af38ce227f42999e03197fd6f.jpeg">
+
+
+<link rel="canonical" href="https://lsdyun.github.io/blog2025.github.io/2025/07/31/JavaScript/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lsdyun.github.io/blog2025.github.io/2025/07/31/JavaScript/","path":"2025/07/31/JavaScript/","title":"JavaScript"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaScript | 记录博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog2025.github.io/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog2025.github.io/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记录博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog2025.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/blog2025.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/blog2025.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/blog2025.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM%E5%92%8CBOM"><span class="nav-number">1.</span> <span class="nav-text">DOM和BOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81DOM%EF%BC%88Document-Object-Model-%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%89%F0%9F%93%84"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、DOM（Document Object Model ,文档对象模型）📄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81BOM%EF%BC%88Browser-Object-Model%EF%BC%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%89%F0%9F%8C%90"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、BOM（Browser Object Model，浏览器对象模型）🌐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81DOM-vs-BOM-%E5%AF%B9%E6%AF%94%E8%A1%A8"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、DOM vs BOM 对比表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、协同工作示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA"><span class="nav-number">1.0.5.</span> <span class="nav-text">五、常见误区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%8C%E6%80%BB%E7%BB%93%E2%80%8C%EF%BC%9A"><span class="nav-number">1.0.6.</span> <span class="nav-text">‌总结‌：</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lsdyun"
+      src="/blog2025.github.io/images/avatar.png">
+  <p class="site-author-name" itemprop="name">lsdyun</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog2025.github.io/archives/">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog2025.github.io/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lsdyun" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lsdyun" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lsdyun.github.io/blog2025.github.io/2025/07/31/JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog2025.github.io/images/avatar.png">
+      <meta itemprop="name" content="lsdyun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="JavaScript | 记录博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-31 11:28:48" itemprop="dateCreated datePublished" datetime="2025-07-31T11:28:48+08:00">2025-07-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-05-28 11:19:52" itemprop="dateModified" datetime="2025-05-28T11:19:52+08:00">2025-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog2025.github.io/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+
+		<!--  设置置顶图标  -->
+		        
+		<!--  设置置顶图标  -->
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="DOM和BOM"><a href="#DOM和BOM" class="headerlink" title="DOM和BOM"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_52736131/article/details/123563321">DOM和BOM</a></h1><p><img src="/blog2025.github.io/2025/07/31/JavaScript/91ccc53af38ce227f42999e03197fd6f.jpeg" alt="img"></p>
+<h3 id="一、DOM（Document-Object-Model-文档对象模型）📄"><a href="#一、DOM（Document-Object-Model-文档对象模型）📄" class="headerlink" title="一、DOM（Document Object Model ,文档对象模型）📄"></a>一、DOM（<strong>Document Object Model</strong> ,文档对象模型）📄</h3><p>‌<strong>定义</strong>‌：将 HTML&#x2F;XML 文档解析为树形结构对象<br>‌<strong>作用</strong>‌：操作网页内容<br>‌<strong>核心对象</strong>‌：<code>document</code><br>‌<strong>主要功能</strong>‌：</p>
+<ol>
+<li><p>‌节点操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy <span class="title class_">Codedocument</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;box&#x27;</span>)  <span class="comment">// 获取元素</span></span><br><span class="line">element.<span class="title function_">appendChild</span>(newNode)    <span class="comment">// 添加节点</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>‌内容修改</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy <span class="title class_">Codeelement</span>.<span class="property">innerHTML</span> = <span class="string">&#x27;&lt;b&gt;新内容&lt;/b&gt;&#x27;</span>  <span class="comment">// 修改HTML</span></span><br><span class="line">element.<span class="property">textContent</span> = <span class="string">&#x27;纯文本&#x27;</span>        <span class="comment">// 修改文本</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>‌样式控制</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy <span class="title class_">Codeelement</span>.<span class="property">style</span>.<span class="property">color</span> = <span class="string">&#x27;red&#x27;</span>       <span class="comment">// 行内样式</span></span><br><span class="line">element.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;active&#x27;</span>)   <span class="comment">// 类名操作</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>‌事件处理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy <span class="title class_">Codebutton</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;按钮被点击&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>‌<strong>示例场景</strong>‌：动态更新列表、表单验证、页面元素交互</p>
+<h3 id="二、BOM（Browser-Object-Model，浏览器对象模型）🌐"><a href="#二、BOM（Browser-Object-Model，浏览器对象模型）🌐" class="headerlink" title="二、BOM（Browser Object Model，浏览器对象模型）🌐"></a>二、BOM（<strong>Browser Object Model</strong>，浏览器对象模型）🌐</h3><p>‌<strong>定义</strong>‌：提供与浏览器窗口交互的对象模型<br>‌<strong>作用</strong>‌：控制浏览器行为<br>‌<strong>核心对象</strong>‌：<code>window</code>（可省略前缀）<br>‌<strong>主要组件</strong>‌：</p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>作用</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>navigator</code></td>
+<td>浏览器信息</td>
+<td><code>navigator.userAgent</code></td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td>URL操作</td>
+<td><code>location.href = &#39;https://...&#39;</code></td>
+</tr>
+<tr>
+<td><code>history</code></td>
+<td>浏览历史</td>
+<td><code>history.back()</code></td>
+</tr>
+<tr>
+<td><code>screen</code></td>
+<td>屏幕尺寸</td>
+<td><code>screen.width</code></td>
+</tr>
+<tr>
+<td><code>localStorage</code></td>
+<td>本地存储</td>
+<td><code>localStorage.setItem(&#39;key&#39;, &#39;value&#39;)</code></td>
+</tr>
+</tbody></table>
+<p>‌<strong>常用方法</strong>‌：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy <span class="title class_">Codealert</span>(<span class="string">&#x27;提示信息&#x27;</span>)              <span class="comment">// 弹窗</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;&#125;, <span class="number">1000</span>)    <span class="comment">// 定时器</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">open</span>(<span class="string">&#x27;/newpage&#x27;</span>)       <span class="comment">// 新窗口</span></span><br></pre></td></tr></table></figure>
+
+<p>‌<strong>示例场景</strong>‌：页面跳转、浏览器检测、本地数据存储</p>
+<h3 id="三、DOM-vs-BOM-对比表"><a href="#三、DOM-vs-BOM-对比表" class="headerlink" title="三、DOM vs BOM 对比表"></a>三、DOM vs BOM 对比表</h3><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>DOM</th>
+<th>BOM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‌<strong>标准化</strong>‌</td>
+<td>W3C 标准</td>
+<td>无官方标准，浏览器自行实现</td>
+</tr>
+<tr>
+<td>‌<strong>操作对象</strong>‌</td>
+<td>网页文档</td>
+<td>浏览器窗口</td>
+</tr>
+<tr>
+<td>‌<strong>核心对象</strong>‌</td>
+<td>document</td>
+<td>window</td>
+</tr>
+<tr>
+<td>‌<strong>典型应用</strong>‌</td>
+<td>元素增删改查</td>
+<td>页面跳转、弹窗、存储</td>
+</tr>
+<tr>
+<td>‌<strong>跨浏览器</strong>‌</td>
+<td>一致性较高</td>
+<td>部分API存在兼容问题</td>
+</tr>
+</tbody></table>
+<h3 id="四、协同工作示例"><a href="#四、协同工作示例" class="headerlink" title="四、协同工作示例"></a>四、协同工作示例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy <span class="title class_">Code</span><span class="comment">// 通过BOM获取窗口尺寸</span></span><br><span class="line"><span class="keyword">const</span> windowWidth = <span class="variable language_">window</span>.<span class="property">innerWidth</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用DOM调整布局</span></span><br><span class="line"><span class="keyword">const</span> sidebar = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;sidebar&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> (windowWidth &lt; <span class="number">768</span>) &#123;</span><br><span class="line">  sidebar.<span class="property">style</span>.<span class="property">display</span> = <span class="string">&#x27;none&#x27;</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过BOM存储数据</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&#x27;lastWidth&#x27;</span>, windowWidth)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过BOM的history API操作浏览记录</span></span><br><span class="line">history.<span class="title function_">pushState</span>(&#123;<span class="attr">page</span>: <span class="number">1</span>&#125;, <span class="string">&#x27;Page 1&#x27;</span>, <span class="string">&#x27;?page=1&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、常见误区"><a href="#五、常见误区" class="headerlink" title="五、常见误区"></a>五、常见误区</h3><ol>
+<li>‌**❌ <code>window</code> 是BOM的全部**‌ → 还包含location&#x2F;navigator等对象</li>
+<li>‌**❌ DOM只能操作现有元素**‌ → 可动态创建新元素</li>
+<li>‌**❌ BOM完全标准化**‌ → 不同浏览器可能实现不同（如IE的<code>attachEvent</code> vs 标准的<code>addEventListener</code>）</li>
+</ol>
+<h3 id="‌总结‌："><a href="#‌总结‌：" class="headerlink" title="‌总结‌："></a>‌<strong>总结</strong>‌：</h3><ul>
+<li>‌<strong>DOM</strong>‌ 是你的网页手术刀（精确操作内容）</li>
+<li>‌<strong>BOM</strong>‌ 是你的浏览器遥控器（控制浏览器行为）<br>两者配合使用，才能实现完整的网页交互功能。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog2025.github.io/2025/07/31/Git%E5%91%BD%E4%BB%A4/" rel="prev" title="Git">
+                  <i class="fa fa-angle-left"></i> Git
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog2025.github.io/2025/07/31/Nginx/" rel="next" title="Nginx">
+                  Nginx <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    
+    <!-- 去除心形图案
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    -->
+    <span class="post-meta-divider">|</span>
+
+    <span class="author" itemprop="copyrightHolder">lsdyun</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+<!--隐藏网页底部powered by Hexo 强力驱动-->
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/blog2025.github.io/js/comments.js"></script><script src="/blog2025.github.io/js/utils.js"></script><script src="/blog2025.github.io/js/motion.js"></script><script src="/blog2025.github.io/js/sidebar.js"></script><script src="/blog2025.github.io/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/blog2025.github.io/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/blog2025.github.io/js/third-party/fancybox.js"></script>
+
+  <script src="/blog2025.github.io/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+</body>
+</html>
